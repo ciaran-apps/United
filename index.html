@@ -1372,7 +1372,6 @@ function renderRComp(){
 Promise.resolve().then(()=>Promise.resolve()).then(()=>renderRivals(false));
 document.querySelector('[data-t="rivals"]').addEventListener("click",()=>setTimeout(()=>{const el=document.querySelector(`#rbar [data-rs="${rS}"]`);if(el)el.scrollIntoView({inline:"center",block:"nearest"})},0));
 </script>
-
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
 </body>
 </html>
