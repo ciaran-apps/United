@@ -1,0 +1,1379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#c8102e">
+<meta name="description" content="Manchester United squad, transfers, managers and player stats since 2013, plus rivals' transfers.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="United">
+<title>United 2026/27 Squad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: matchday-programme team sheet. Status band on top, tabbed sections below, big shirt numbers as the signature. */
+:root{
+  --bg:#f6f4f3; --paper:#ffffff; --ink:#1d1718; --muted:#6c6062; --line:#e4dcdc;
+  --red:#c8102e; --red-soft:#fbe7ea; --gold:#a6801f; --gold-soft:#f5ecd6;
+  --win:#1f7a4a; --draw:#8a7a3a; --loss:#b3263a;
+  --display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141011; --paper:#1e1819; --ink:#f2ecec; --muted:#a8999b; --line:#342a2c;
+  --red:#ef3b55; --red-soft:#3a1a20; --gold:#d6b25a; --gold-soft:#3a2f14; --win:#4fbf83; --draw:#c7b46a; --loss:#ef6b7c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141011; --paper:#1e1819; --ink:#f2ecec; --muted:#a8999b; --line:#342a2c;
+  --red:#ef3b55; --red-soft:#3a1a20; --gold:#d6b25a; --gold-soft:#3a2f14; --win:#4fbf83; --draw:#c7b46a; --loss:#ef6b7c; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+header{display:grid;gap:14px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,7vw,56px);line-height:.95;margin:0;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+h1 span{color:var(--red)}
+.status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.status div{background:var(--paper);padding:10px 12px;min-width:0}
+.status b{display:block;font-family:var(--display);font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.status small{color:var(--muted);font-size:12px}
+@media (max-width:620px){.status{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.form{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.r{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:4px;font-family:var(--display);font-weight:700;color:#fff;font-size:14px;cursor:default}
+.r.W{background:var(--win)}.r.D{background:var(--draw)}.r.L{background:var(--loss)}
+.formnote{font-size:13px;color:var(--muted)}
+nav{display:flex;gap:4px;margin-top:22px;border-bottom:2px solid var(--ink);overflow-x:auto}
+nav button{font-family:var(--display);font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.03em;background:none;border:0;color:var(--muted);padding:8px 12px;cursor:pointer;white-space:nowrap;border-radius:4px 4px 0 0}
+nav button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+nav button:focus-visible,.chip:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+section{padding-top:18px}
+.rmg{color:var(--ink);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{font:500 13px var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+h2{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.04em;margin:22px 0 8px;display:flex;gap:8px;align-items:baseline}
+h2 em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.sheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.p{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:0}
+.p .n{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--red);text-align:center;font-variant-numeric:tabular-nums}
+.p .nm{font-weight:600;line-height:1.25}
+.p .meta{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;font:500 10.5px var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:1px 6px;border-radius:3px;margin-left:4px;vertical-align:1px}
+.tag.new{background:var(--red-soft);color:var(--red)}
+.tag.acad{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.timeline{display:grid;gap:0;border-left:2px solid var(--line);margin-left:8px}
+.m{position:relative;padding:4px 0 18px 22px}
+.m::before{content:"";position:absolute;left:-7px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.m.cur::before{background:var(--red);border-color:var(--red)}
+.m .when{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.m .who{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.1}
+.m .role{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.m p{margin:4px 0 0;max-width:62ch}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.fee{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+td.dt{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.totals{display:flex;flex-wrap:wrap;gap:18px;margin:4px 0 14px;font-size:14px}
+.totals b{font-family:var(--display);font-size:22px;margin-right:4px}
+.spendhead{display:flex;flex-wrap:wrap;gap:18px;align-items:baseline;margin:4px 0 12px}
+.spendhead b{font-family:var(--display);font-size:34px;font-weight:800;color:var(--red);margin-right:6px;font-variant-numeric:tabular-nums}
+.bars{display:grid;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px;margin-bottom:22px}
+.bar{display:grid;grid-template-columns:118px 1fr 58px;gap:10px;align-items:center;font-size:13px}
+.bar .lbl{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .lbl small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.bar .track{height:16px;background:var(--bg);border-radius:3px;overflow:hidden}
+.bar .fill{height:100%;background:var(--red);border-radius:3px}
+.bar .fill.est{background:repeating-linear-gradient(45deg,var(--red) 0 6px,var(--red-soft) 6px 9px)}
+.bar .v{font-family:var(--display);font-weight:700;font-size:17px;text-align:right;font-variant-numeric:tabular-nums}
+.legend{font-size:12px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;background:var(--red)}
+.legend i.est{background:repeating-linear-gradient(45deg,var(--red) 0 4px,var(--red-soft) 4px 6px)}
+.stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.stat{font:500 12px var(--mono);border:1px solid var(--line);border-radius:3px;padding:2px 7px;background:var(--paper)}
+.stat.money{border-color:var(--red);color:var(--red)}
+.bar{cursor:pointer;border-radius:4px;padding:2px 4px;margin:-2px -4px}
+.bar:hover,.bar.sel{background:var(--red-soft)}
+.dealgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:24px}
+@media (max-width:760px){.dealgrid{grid-template-columns:minmax(0,1fr)}}
+.dealcol{min-width:0}
+.dealcol h3{font-family:var(--display);font-size:17px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 6px;display:flex;justify-content:space-between;gap:8px}
+.dealcol h3 span{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:500}
+.dealcol table{min-width:0}
+.dealcol td{padding:7px 10px}
+.dealcol .sea{font:500 11px var(--mono);color:var(--muted);white-space:nowrap}
+.dealcol .kind{font:500 10.5px var(--mono);color:var(--muted);text-transform:uppercase}
+.mgrsum{font-size:14px;margin:0 0 10px;max-width:70ch}
+.empty{background:var(--paper);border:1px dashed var(--line);border-radius:6px;padding:16px;color:var(--muted);margin-bottom:24px}
+.cabinet{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:8px}
+.cup{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:6px;padding:10px 12px;min-width:0}
+.cup.lost{border-top-color:var(--line)}
+.cup .yr{font-family:var(--display);font-weight:800;font-size:26px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.cup.lost .yr{color:var(--muted)}
+.cup .cn{font-weight:600;margin-top:4px;line-height:1.25}
+.cup .fx{font-size:12.5px;color:var(--muted)}
+.cabhead{display:flex;flex-wrap:wrap;gap:18px;margin:0 0 12px;font-size:14px}
+.cabhead b{font-family:var(--display);font-size:24px;margin-right:4px}
+.stagekey{margin:0 0 8px}
+table.runs{min-width:720px;font-size:13.5px}
+table.runs td,table.runs th{padding:8px 10px}
+table.runs td:first-child,table.runs th:first-child{position:sticky;left:0;background:var(--paper);z-index:1}
+table.runs .ssn{font-family:var(--display);font-weight:700;font-size:17px;white-space:nowrap}
+table.runs .ssn small{display:block;font:400 11px var(--body);color:var(--muted)}
+.stg{display:inline-block;font:600 11.5px var(--body);padding:2px 8px;border-radius:999px;white-space:nowrap;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.stg.w{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stg.f{background:transparent;color:var(--gold);border-color:var(--gold)}
+.stg.sf,.stg.qf{color:var(--ink);border-color:var(--muted)}
+.stg.live{border-style:dashed;color:var(--ink)}
+.stg.na{border:0;background:none;padding-left:0}
+.stg.e{color:var(--muted)}
+.by{display:block;font-size:11.5px;color:var(--muted);margin-top:3px;white-space:nowrap}
+.pos{font-family:var(--display);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.pos.top4{color:var(--win)}
+.pos.low{color:var(--loss)}
+.alltime{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.alltime div{background:var(--paper);padding:10px 12px}
+.alltime b{display:block;font-family:var(--display);font-size:30px;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
+.alltime span{font-size:13px}
+.alltime small{display:block;font-size:11.5px;color:var(--muted)}
+table.mcomp tbody tr{cursor:pointer}
+table.mcomp tbody tr:hover td{background:var(--red-soft)}
+table.mcomp tbody tr:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+.mhint{font-size:12px;color:var(--muted);margin:-2px 0 6px}
+.stack{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:10px;margin-bottom:22px}
+.srow{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;align-items:center;cursor:pointer;border-radius:4px;padding:2px 4px;margin:-2px -4px}
+.srow:hover{background:var(--red-soft)}
+.srow:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.srow .lbl{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.srow .lbl small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.sbar{display:flex;height:22px;border-radius:3px;overflow:hidden;background:var(--bg)}
+.sbar .net{background:var(--red)}
+.sbar .rec{background:var(--gold)}
+.sbar .est{background-image:repeating-linear-gradient(45deg,transparent 0 5px,rgba(255,255,255,.45) 5px 8px)}
+.snums{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+.snums b{color:var(--ink);font-family:var(--display);font-size:15px}
+.skey{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted)}
+.skey i{display:inline-block;width:12px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#pdlg.wide{width:min(760px,calc(100vw - 32px))}
+.mseas{min-width:560px}
+.mseas td{white-space:normal!important}
+.mseas .stg{white-space:nowrap}
+.mdeals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.mdeals{grid-template-columns:minmax(0,1fr)}}
+.mdeals ul{list-style:none;margin:0;padding:0;font-size:13px;display:grid;gap:3px}
+.mdeals li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding:3px 0}
+.mdeals li{align-items:center}
+.dtog{display:flex;gap:6px;margin:0 0 10px}
+.acadf{display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding-bottom:9px}
+.acadf input{width:18px;height:18px;accent-color:var(--red)}
+table.ptbl .tag.acad{margin-left:6px}
+.txh{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid var(--line);display:grid;gap:10px}
+.txh li{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;font-size:14px}
+.txh li::before{content:"";position:absolute;left:-20px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--gold)}
+.txh li.in::before{border-color:var(--red);background:var(--red)}
+.txh li.acad::before{border-color:var(--red);background:var(--paper)}
+.txd{font:500 11.5px var(--mono);color:var(--muted);padding-top:2px;white-space:nowrap}
+.txw{font-weight:600;min-width:0}
+.txw small{display:block;font:400 12px var(--body);color:var(--muted)}
+.plink2{font:600 14px var(--body);color:var(--ink);background:none;border:0;padding:0;cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.plink2:hover{color:var(--red);text-decoration-color:var(--red)}
+.plink2:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.backbtn{font:500 13px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;margin-bottom:10px}
+.backbtn:hover{border-color:var(--red);color:var(--red)}
+#tgrid[hidden],#twin[hidden],[data-dview][hidden]{display:none!important}
+.wcard{border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:10px;background:var(--paper)}
+.whd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.whd h5{font-family:var(--display);font-size:18px;text-transform:uppercase;letter-spacing:.03em;margin:0}
+.wsum{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.wwage{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--muted);margin-bottom:8px;align-items:baseline}
+.wwage b{color:var(--ink);font-variant-numeric:tabular-nums}
+.wwage .wchg{font-size:15px}
+.mdeals .dn{display:grid;gap:1px;min-width:0}
+.mdeals .dn b{font-weight:600;font-size:14px;color:var(--ink)}
+.mdeals .dn small{font:500 10.5px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.mdeals li>span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(7.5em,1fr))!important}
+.kpis b{white-space:nowrap;font-size:clamp(20px,1.75em,28px)}
+.kpis b span{font-size:.6em}
+.srow{display:flex!important;flex-wrap:wrap;gap:4px 10px}
+.srow .lbl{flex:0 0 8em}
+.srow>div:last-child{flex:1 1 14em;min-width:0}
+.mlink{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.mlink:hover{color:var(--red);text-decoration:underline}
+table.mcomp{min-width:760px;font-size:13.5px}
+table.mcomp td,table.mcomp th{padding:8px 10px;white-space:nowrap}
+table.mcomp th.num,table.mcomp td.num{text-align:right;font-variant-numeric:tabular-nums}
+table.mcomp td:first-child,table.mcomp th:first-child{position:sticky;left:0;background:var(--paper);z-index:1}
+table.mcomp .mn{font-weight:600}
+table.mcomp .mn small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+table.mcomp tr.int td{color:var(--muted)}
+.wbar{display:inline-grid;grid-template-columns:52px 40px;gap:6px;align-items:center}
+.wbar i{display:block;height:8px;border-radius:2px;background:var(--bg);overflow:hidden}
+.wbar i b{display:block;height:100%;background:var(--red)}
+.chartwrap{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 8px 6px;margin-bottom:22px;overflow-x:auto}
+.chartwrap svg{display:block;width:100%;min-width:560px;height:auto}
+.chartwrap text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.chartwrap .lbl{font-family:var(--display);font-weight:700;font-size:15px;fill:var(--ink)}
+.chartwrap .mlab{font-family:var(--body);font-size:11px;fill:var(--ink);font-weight:600}
+.chartwrap .grid{stroke:var(--line);stroke-width:1}
+.chartwrap .cl{stroke:var(--line);stroke-dasharray:3 3}
+.chartwrap .line{fill:none;stroke:var(--ink);stroke-width:2}
+.chartwrap .dot{fill:var(--red);stroke:var(--paper);stroke-width:2}
+.chartwrap .dot.live{fill:var(--paper);stroke:var(--red)}
+.chartwrap .band0{fill:var(--bg)}
+.chartwrap .band1{fill:var(--paper)}
+#vsort{font:inherit;font-size:15px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
+table.vtbl{min-width:760px}
+table.vtbl td.st{font-size:12.5px;color:var(--muted);white-space:nowrap}
+table.vtbl td.st b{color:var(--ink);font-weight:600}
+.early{font:500 10.5px var(--mono);text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px;margin-left:6px}
+table.scorers{min-width:0}
+table.scorers td{vertical-align:middle}
+.plink{font:600 14px var(--body);color:var(--ink);background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.plink:hover{color:var(--red);text-decoration:underline}
+.plink:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.gl{font-family:var(--display);font-weight:800;font-size:18px;color:var(--red);margin-left:8px;font-variant-numeric:tabular-nums}
+.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.board{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 14px 10px;min-width:0}
+.board h3{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1.1}
+.board .sub{font-size:12px;color:var(--muted);margin:2px 0 10px}
+.board ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.board li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 4px;border-radius:4px;position:relative}
+.board li .rk{font-family:var(--display);font-weight:800;font-size:17px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.board li:first-child .rk{color:var(--red)}
+.board li .who{min-width:0}
+.board li .who button{font:600 14px var(--body);color:var(--ink);background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.board li .who button:hover{color:var(--red);text-decoration:underline}
+.board li .who button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.board li .who span{display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board li .val{font-family:var(--display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.board li .bk{position:absolute;left:30px;right:0;bottom:1px;height:2px;background:var(--bg)}
+.board li .bk i{display:block;height:100%;background:var(--red);opacity:.55}
+.pbar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:end;margin-bottom:10px}
+.sn.all{font-weight:600}
+.ptools{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-bottom:6px}
+.srch{display:grid;gap:4px;flex:1 1 240px;max-width:360px}
+.srch input{font:inherit;font-size:15px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
+.srch input:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+table.ptbl{min-width:560px}
+table.ptbl th button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-transform:inherit;letter-spacing:inherit}
+table.ptbl th button[aria-sort]{color:var(--red)}
+table.ptbl th.num,table.ptbl td.num{text-align:right;font-variant-numeric:tabular-nums}
+table.ptbl td:first-child,table.ptbl th:first-child{position:sticky;left:0;background:var(--paper);z-index:1}
+table.ptbl tbody tr{cursor:pointer}
+table.ptbl tbody tr:hover td{background:var(--red-soft)}
+table.ptbl .pn{font-weight:600}
+table.ptbl .pp{font:500 10.5px var(--mono);color:var(--muted);margin-left:6px}
+table.ptbl td.hl{font-weight:700}
+.linkbtn{font:500 13px var(--body);color:var(--red);background:none;border:1px solid var(--red);border-radius:999px;padding:6px 12px;cursor:pointer;margin-top:14px}
+.cbars{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:3px;align-items:end;height:70px;margin-top:6px}
+.cbars div{display:flex;flex-direction:column;justify-content:flex-end;height:100%;align-items:center;gap:2px;min-width:0}
+.cbars i{display:block;width:100%;background:var(--red);border-radius:2px 2px 0 0;min-height:0}
+.cbars i.z{background:var(--line);height:2px}
+.cbars small{font:500 9px var(--mono);color:var(--muted)}
+.seasonbar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:end;margin-bottom:4px}
+.step{font:700 22px var(--display);width:40px;height:40px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;cursor:pointer;line-height:1}
+.step:disabled{opacity:.35;cursor:default}
+.step:focus-visible,.sn:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(34px,1fr);gap:3px;overflow-x:auto;padding-bottom:2px}
+.sn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:4px 2px;cursor:pointer;border-radius:4px;color:var(--muted);font:500 10.5px var(--mono);font-variant-numeric:tabular-nums}
+.sn .b{width:62%;height:44px;display:flex;align-items:flex-end}
+.sn .b i{display:block;width:100%;background:var(--line);border-radius:2px 2px 0 0}
+.sn:hover .b i{background:var(--muted)}
+.sn[aria-pressed="true"]{color:var(--ink);background:var(--red-soft)}
+.sn[aria-pressed="true"] .b i{background:var(--red)}
+table.seas{min-width:0}
+table.seas td.fee{white-space:normal;text-align:right}
+table.seas th:last-child{text-align:right}
+table.seas .kind{text-transform:none;font-family:var(--body);font-size:12.5px}
+button.p{font:inherit;color:inherit;text-align:left;width:100%;cursor:pointer;transition:border-color .15s}
+button.p:hover{border-color:var(--red)}
+button.p:focus-visible,.pclose:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+dialog#pdlg{box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:20px;width:min(520px,calc(100vw - 32px));max-height:calc(100vh - 48px);overflow-y:auto;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog#pdlg::backdrop{background:rgba(20,10,12,.55)}
+.pclose{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
+.phead{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding-right:40px}
+.bign{font-family:var(--display);font-weight:800;font-size:64px;line-height:.9;color:var(--red);font-variant-numeric:tabular-nums}
+.phead h3{font-family:var(--display);font-size:30px;line-height:1.05;margin:2px 0;text-transform:uppercase;text-wrap:balance}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:16px 0 4px}
+.kpis div{background:var(--bg);padding:8px 10px;text-align:center}
+.kpis b{display:block;font-family:var(--display);font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpis small{color:var(--muted);font-size:11.5px}
+#pdlg h4{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:16px 0 6px}
+table.mini{min-width:0;font-size:14px}
+table.mini td,table.mini th{padding:7px 7px}
+table.mini td{white-space:nowrap}
+table.mini th{white-space:normal;line-height:1.2}
+table.mini .num{text-align:right;font-variant-numeric:tabular-nums}
+table.mini .sub{color:var(--muted);font-size:12px}
+table.mini tr.tot td{font-weight:600;background:var(--bg)}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px}
+.facts b{font-family:var(--display);font-size:20px;margin-right:2px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wage{font-size:12.5px;margin-top:2px;font-variant-numeric:tabular-nums}
+.wage b{font-family:var(--display);font-size:16px;color:var(--ink)}
+.wage .alt{display:block;font-size:11px;color:var(--muted)}
+.wage.none{color:var(--muted);font-style:italic}
+.av{position:relative;flex:0 0 auto;display:inline-grid;place-items:center;width:var(--s,44px);height:var(--s,44px);border-radius:50%;background:var(--red-soft);color:var(--red);font-family:var(--display);font-weight:800;font-size:calc(var(--s,44px)*.4);letter-spacing:.02em;line-height:1;border:2px solid color-mix(in srgb,var(--red) 35%,transparent);box-sizing:border-box;overflow:visible}
+.av.mgr{background:var(--gold-soft);color:var(--gold);border-color:color-mix(in srgb,var(--gold) 45%,transparent)}
+.av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.av .no{position:absolute;right:-6px;bottom:-4px;min-width:20px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:10px;background:var(--red);color:#fff;font-size:12px;display:grid;place-items:center;border:2px solid var(--paper)}
+.p{grid-template-columns:56px 1fr!important}
+.p .avwrap{display:grid;place-items:center}
+.phead .av{--s:72px}
+.phead .av .no{min-width:28px;height:26px;font-size:15px;border-radius:13px;right:-8px}
+.plinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.plinks a{font:500 13px var(--body);color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:var(--bg)}
+.plinks a:hover{border-color:var(--red);color:var(--red)}
+.plinks a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.plinks .linkbtn{margin-top:0}
+table.ptbl .pcell{display:flex;align-items:center;gap:8px}
+table.ptbl .av{--s:26px;border-width:1px}
+table.mcomp .mcell{display:flex;align-items:center;gap:10px}
+table.mcomp .av{--s:34px}
+.m .whorow{display:flex;align-items:center;gap:10px}
+.m .av{--s:40px}
+.tkey{display:flex;gap:14px;font-size:12px;color:var(--muted);margin:2px 0 4px}
+.tkey i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.tkey .ki,.sn .b.two .bi{background:var(--red)}
+.tkey .ko,.sn .b.two .bo{background:var(--gold)}
+.sn .b.two{gap:2px}
+.sn .b.two i{width:50%}
+.sn:not([aria-pressed="true"]) .b.two i{opacity:.45}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:18px 22px}
+.tcol{min-width:0;border-top:4px solid var(--red);padding-top:10px}
+.tcol.tout{border-top-color:var(--gold)}
+.thead{font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 4px}
+.tin .thead{color:var(--red)}
+.tout .thead{color:var(--gold)}
+.tnet{margin-bottom:10px}
+.chartwrap .wbarr{fill:var(--red)}
+table.wtbl{min-width:760px}
+.chartwrap .wbarp{fill:var(--gold)}
+table.wtbl tbody tr{cursor:pointer}
+.wchg{font-family:var(--display);font-weight:700;font-size:16px;white-space:nowrap}
+.wchg.up{color:var(--loss)}
+.wchg.down{color:var(--win)}
+.pct{display:block;font-size:11px;color:var(--muted)}
+.nextup{font-size:13px;color:var(--ink);margin-top:6px;font-weight:500}
+.srcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.srcs>div{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0}
+.srcs h3{font-family:var(--display);font-size:17px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 6px}
+.srcs ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted);display:grid;gap:4px}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);max-width:70ch}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Old Trafford · 2026/27 · updated 24 Oct 2026</div>
+  <h1>Manchester United <span>squad &amp; transfers</span></h1>
+  <div class="status">
+    <div><small>Head coach</small><b>Carrick</b></div>
+    <div><small>Premier League</small><b>13th</b></div>
+    <div><small>Champions League phase</small><b>22nd</b></div>
+    <div><small>Winless run, all comps</small><b>7</b></div>
+  </div>
+  <div>
+    <div class="eyebrow" style="margin-bottom:6px">Last 8 · oldest to newest</div>
+    <div class="form" id="form"></div>
+    <div class="nextup" id="nextup">Next up: Bournemouth (H), Sun 25 Oct</div>
+  </div>
+</header>
+
+<nav role="tablist" id="tabs">
+  <button role="tab" data-t="squad">Squad</button>
+  <button role="tab" data-t="players">Players</button>
+  <button role="tab" data-t="top">Top 10</button>
+  <button role="tab" data-t="honours">Trophies</button>
+  <button role="tab" data-t="managers">Managers</button>
+  <button role="tab" data-t="transfers">Transfers</button>
+  <button role="tab" data-t="rivals">Rivals</button>
+  <button role="tab" data-t="value">Value</button>
+  <button role="tab" data-t="sources">Sources</button>
+</nav>
+
+<section id="squad" role="tabpanel">
+  <div class="totals" id="wagebill"></div>
+  <div class="chips" id="poschips"></div>
+  <div id="sheet"></div>
+</section>
+
+<dialog id="pdlg" aria-labelledby="ptitle">
+  <button class="pclose" id="pclose" aria-label="Close">×</button>
+  <div id="pbody"></div>
+</dialog>
+
+<section id="players" role="tabpanel" hidden>
+  <div class="pbar" id="pbar"></div>
+  <div class="ptools">
+    <label class="acadf" for="pacad"><input type="checkbox" id="pacad"> Academy players only</label>
+    <label class="srch" for="psearch"><span class="eyebrow">Find a player · searches every season</span><input id="psearch" type="search" placeholder="e.g. Rooney, Pogba, Rashford" autocomplete="off"></label>
+  </div>
+  <div id="pview"></div>
+</section>
+
+<section id="top" role="tabpanel" hidden>
+  <p class="mgrsum">Leaderboards since Ferguson retired in 2013. Player stats cover all competitions for United only; tap a name to see their record.</p>
+  <h2>Top scorer by season <em>Premier League and all competitions</em></h2>
+  <div class="tbl" style="margin-bottom:22px"><table class="runs scorers" id="scorers"></table></div>
+  <div class="boards" id="boards"></div>
+</section>
+
+<section id="honours" role="tabpanel" hidden>
+  <h2>Trophies since Ferguson <em>2013/14 to now</em></h2>
+  <div class="cabinet" id="cabinet"></div>
+  <h2>Season by season <em>how far United got in every competition</em></h2>
+  <div class="legend stagekey" id="stagekey"></div>
+  <div class="tbl"><table class="runs" id="runs"></table></div>
+  <p class="meta" style="font-size:12px;margin-top:6px">* Current position after 7 games. FA Cup and League Cup show the round United went out in and who beat them; Europe shows the furthest stage reached.</p>
+  <h2>All-time honours <em>club total, every era</em></h2>
+  <div class="alltime" id="alltime"></div>
+</section>
+
+<section id="rivals" role="tabpanel" hidden>
+  <h2>Rivals' transfers <em>permanent deals of £5m or more since 2013/14</em></h2>
+  <div class="chips" id="rclubs"></div>
+  <div class="totals" id="rtot"></div>
+  <h2>By manager <em>tap one to list only their deals</em></h2>
+  <p class="mhint">Each deal counts for the manager in charge when that transfer window closed.</p>
+  <div class="stack" id="rstack"></div>
+  <div id="rbar"></div>
+  <div id="rhead"></div>
+  <div class="tgrid"><div class="tcol tin" id="rin"></div><div class="tcol tout" id="rout"></div></div>
+  <h2 style="margin-top:28px">Big six compared <em>same rules for every club, £m</em></h2>
+  <div class="tbl"><table class="mcomp" id="rcomp"></table></div>
+  <p class="meta" style="font-size:12px;margin-top:6px">Permanent first-team transfers with a reported fee of £5m or more. Loans, free transfers and add-ons are left out, and a loan made permanent counts in the season the fee was agreed. United's row uses the same rules on this page's own deal list.</p>
+</section>
+
+<section id="value" role="tabpanel" hidden>
+  <h2>Transfer value check <em>every signing of £15m or more since 2013</em></h2>
+  <p class="mgrsum">What each big signing cost, what they gave United, and what United got back when they left. Total cost is the fee paid, minus any fee received, plus wages paid while at the club.</p>
+  <div class="boards" id="vboards" style="margin-bottom:18px"></div>
+  <div class="ptools"><label class="srch" for="vsort"><span class="eyebrow">Sort by</span>
+    <select id="vsort"><option value="fee">Fee paid</option><option value="total">Total cost (fee + wages)</option><option value="net">Net fee</option><option value="wpaid">Wages paid</option><option value="ppa">Total cost per appearance</option><option value="a">Appearances</option><option value="g">Goals</option><option value="yr">Season signed</option></select></label></div>
+  <div class="tbl"><table class="ptbl vtbl" id="vtbl"></table></div>
+  <h2 style="margin-top:28px">Academy graduates <em>what the youth system produced and earned</em></h2>
+  <div class="totals" id="acadtot"></div>
+  <div class="tbl"><table class="ptbl vtbl" id="acadtbl"></table></div>
+  <p class="meta" style="font-size:12px;margin-top:6px">Academy sales are pure profit on the books, since there was no transfer fee to recover. Undisclosed fees count as £0.</p>
+  <p class="meta" style="font-size:12px;margin-top:6px">Base fees as reported, add-ons excluded. Wages paid are Capology weekly wages × 52 for each season at the club, including this one in full. Appearances and goals are for United in all competitions. Players signed this summer are marked as too early to judge and left out of the best and worst lists.</p>
+</section>
+
+<section id="managers" role="tabpanel" hidden>
+  <h2>Managers compared <em>competitive games, all competitions</em></h2>
+  <p class="mhint">Tap a manager for their season-by-season record, deals and money in and out.</p>
+  <div class="tbl" style="margin-bottom:6px"><table class="mcomp" id="mcomp"></table></div>
+  <p class="meta" style="font-size:12px;margin:0 0 22px" id="mcompnote"></p>
+  <h2>Spent vs recouped <em>transfer fees per manager, £m</em></h2>
+  <div class="stack" id="stack"></div>
+  <h2>Wage bill by season <em>club accounts, year to 30 June, £m</em></h2>
+  <div class="chartwrap" id="wagechart"></div>
+  <div class="tbl" style="margin-bottom:6px"><table class="mcomp wtbl" id="wagetbl"></table></div>
+  <p class="meta" style="font-size:12px;margin:0 0 22px">Red is total staff costs from the club's accounts, which include non-playing staff and bonuses. Gold is the first-team squad's weekly wages from Capology. Each season counts for the manager who finished it.</p>
+  <h2>League finish by season <em>shaded by the manager who finished each season</em></h2>
+  <div class="chartwrap" id="poschart"></div>
+  <h2>Transfer spend since Ferguson <em>gross, per manager</em></h2>
+  <div class="spendhead" id="spendhead"></div>
+  <div class="bars" id="bars"></div>
+  <h2>Deals by manager <em>tap a name</em></h2>
+  <p class="mhint">Summer departures count for the manager in charge of that transfer window, even when the previous manager picked the squad.</p>
+  <div class="chips" id="mgrchips"></div>
+  <div id="mgrdeals"></div>
+  <h2>Every manager since 2013 <em>newest first</em></h2>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section id="transfers" role="tabpanel" hidden>
+  <div class="seasonbar" data-view="all"></div>
+  <div class="tkey"><span><i class="ki"></i>Spent on signings</span><span><i class="ko"></i>Received from sales</span></div>
+  <div class="dtog" role="group" aria-label="Transfers view" id="ttog"><button class="chip" data-tv="season" aria-pressed="true">Whole season</button><button class="chip" data-tv="window" aria-pressed="false">By window</button></div>
+  <div class="tgrid" id="tgrid"><div class="tcol tin" id="inview"></div><div class="tcol tout" id="outview"></div></div>
+  <div id="twin" hidden></div>
+</section>
+
+
+<section id="sources" role="tabpanel" hidden>
+  <h2>Sources &amp; notes</h2>
+  <div class="srcs">
+    <div><h3>Squad, results and this season</h3><ul>
+      <li>Squad, results and cup runs: the club's 2026/27 season record, ESPN, BBC Sport and match reports.</li>
+      <li>This season's appearances and goals: unitedstats.co.uk. Premier League minutes and cards: VAVEL.</li>
+      <li>Updated every Monday morning; the date is in the header.</li></ul></div>
+    <div><h3>Player history</h3><ul>
+      <li>Every player to appear for United since 2013/14, all competitions, from each season's squad statistics in the club's Wikipedia season records.</li>
+      <li>Assists: 2013/14 to 2019/20 from FBref (its early seasons leave out a few domestic cup games); 2020/21 onwards from United In Focus's season assist tables. Sources count assists slightly differently.</li></ul></div>
+    <div><h3>Transfers and money</h3><ul>
+      <li>All money is in pounds, using reported base fees; add-ons are noted but not counted.</li>
+      <li>The deal lists cover major first-team moves, not every academy transfer, so spend, sales and net spend leave out add-ons and small undisclosed fees.</li>
+      <li>Summer departures count for the manager in charge of that transfer window.</li>
+      <li>Season views put each deal in the window it happened: June–December into that season, January–May into the one already running.</li></ul></div>
+    <div><h3>Player wages</h3><ul>
+      <li>All player wages, current and past, are Capology estimates from screenshots of every season from 2013/14 to 2026/27. Each season was checked against Capology's total. A player Capology doesn't list counts as £0.</li>
+      <li>One manual correction: Jadon Sancho is set to £250k a week for every season at the club (2021/22 to 2025/26). Capology shows less for his loan years because the loan clubs paid part of it.</li></ul></div>
+    <div><h3>Wage bill</h3><ul>
+      <li>Total staff costs from United's annual accounts (year to 30 June): 2015/16, 2018/19, 2019/20 and 2020/21 to 2025/26 checked against published reports; earlier years from the club's accounts as widely reported.</li></ul></div>
+    <div><h3>Managers</h3><ul>
+      <li>Games, wins, draws and losses: Wikipedia's list of United managers, with Carrick's updated after each game.</li></ul></div>
+    <div><h3>Badges and links</h3><ul>
+      <li>Badges show initials until real photos are added. The premierleague.com profile links use player codes from FPL Core Insights.</li></ul></div>
+  </div>
+</section>
+</div>
+
+<script>
+const form=[
+ ["L","Man City","H","0–1","PL · 13 Sep"],
+ ["L","Brighton","H","2–3","League Cup · 16 Sep"],
+ ["D","Fulham","A","1–1","PL · 20 Sep"],
+ ["D","Tottenham","H","1–1","PL · 10 Oct"],
+ ["L","Atlético Madrid","A","0–2","UCL · 13 Oct"],
+ ["D","Leeds","A","1–1","PL · 18 Oct"],
+ ["L","Como","A","1–4","UCL · 21 Oct"]
+];
+// prepend the last win so the strip shows 8
+form.unshift(["W","Sabah","H","4–0","UCL · 10 Sep"]);
+document.getElementById("form").innerHTML=form.map(f=>`<span class="r ${f[0]}" title="${f[1]} (${f[2]}) ${f[3]} — ${f[4]}">${f[0]}</span>`).join("")+`<span class="formnote">Last win: 4–0 v Sabah, 10 Sep</span>`;
+
+const squad=[
+ [1,"GK","Senne Lammens","Belgium"],[12,"GK","Karl Darlow","Wales","new"],[22,"GK","Tom Heaton","England"],[45,"GK","Dermot Mee","N. Ireland","acad"],
+ [2,"DF","Diogo Dalot","Portugal"],[3,"DF","Noussair Mazraoui","Morocco"],[4,"DF","Matthijs de Ligt","Netherlands"],[5,"DF","Harry Maguire","England"],
+ [6,"DF","Lisandro Martínez","Argentina"],[13,"DF","Patrick Dorgu","Denmark"],[15,"DF","Leny Yoro","France"],[23,"DF","Luke Shaw","England"],
+ [26,"DF","Ayden Heaven","England"],[41,"DF","Harry Amass","England","acad"],
+ [7,"MF","Mason Mount","England"],[8,"MF","Bruno Fernandes","Portugal"],[17,"MF","Andrey Santos","Brazil","new"],[18,"MF","Youri Tielemans","Belgium","new"],
+ [20,"MF","Carlos Baleba","Cameroon","new"],[25,"MF","Manuel Ugarte","Uruguay"],[37,"MF","Kobbie Mainoo","England","acad"],
+ [38,"MF","Jack Fletcher","England","acad"],[39,"MF","Tyler Fletcher","Scotland","acad"],
+ [9,"FW","Marcus Rashford","England","acad"],[10,"FW","Matheus Cunha","Brazil"],[11,"FW","Joshua Zirkzee","Netherlands"],[16,"FW","Amad Diallo","Ivory Coast"],
+ [19,"FW","Bryan Mbeumo","Cameroon"],[27,"FW","Tynan Thompson","England","new"],[30,"FW","Benjamin Šeško","Slovenia"],[31,"FW","Shea Lacey","England","acad"]
+];
+const groups={GK:"Goalkeepers",DF:"Defenders",MF:"Midfielders",FW:"Forwards"};
+// Premier League player codes (FPL Core Insights, 2026/27) for profile links
+const PLID={"Karl Darlow":59735,"Dermot Mee":461537,"Youri Tielemans":166989,"Carlos Baleba":535301,"Andrey Santos":532605,"Senne Lammens":465247,"Tom Heaton":21205,"Patrick Dorgu":596777,"Matthijs de Ligt":209365,"Diogo Dalot":216051,"Harry Maguire":95658,"Lisandro Martínez":221820,"Leny Yoro":550864,"Ayden Heaven":606745,"Noussair Mazraoui":230001,"Luke Shaw":106760,"Harry Amass":577974,"Bruno Fernandes":141746,"Bryan Mbeumo":446008,"Matheus Cunha":430871,"Marcus Rashford":176297,"Mason Mount":184341,"Amad Diallo":493250,"Kobbie Mainoo":516895,"Manuel Ugarte":232112,"Jack Fletcher":547037,"Shea Lacey":576628,"Tyler Fletcher":519913,"Benjamin Šeško":485711,"Joshua Zirkzee":458249};
+// Real photos go here as they arrive: name -> {src:"data:...", credit:"Photographer, licence"}
+const PHOTOS={};
+const slug=n=>n.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const plUrl=n=>PLID[n]?`https://www.premierleague.com/en/players/${PLID[n]}/${slug(n)}/overview`:null;
+const initials=n=>{const w=n.split("|")[0].replace(/\(.*?\)/g,"").trim().split(/\s+/);return (w.length===1?w[0].slice(0,2):w[0][0]+w[w.length-1][0]).toUpperCase()};
+function avatar(n,o={}){const ph=PHOTOS[n.split("|")[0]];const sz=o.size?` style="--s:${o.size}px"`:"";return `<span class="av${o.mgr?" mgr":""}"${sz} aria-hidden="true">${ph?`<img src="${ph.src}" alt="">`:initials(n)}${o.num!=null?`<span class="no">${o.num}</span>`:""}</span>`}
+let filt="ALL";
+const chips=[["ALL","All"],["GK","Keepers"],["DF","Defence"],["MF","Midfield"],["FW","Attack"],["new","New this summer"]];
+function renderSquad(){
+  document.getElementById("poschips").innerHTML=chips.map(c=>`<button class="chip" id="chip-${c[0]}" aria-pressed="${filt===c[0]}" data-f="${c[0]}">${c[1]}</button>`).join("");
+  document.getElementById("poschips").innerHTML+=`<button class="chip" id="chip-sort" aria-pressed="${byWage}" data-s="1">Sort by wage</button>`;
+  const keep=p=>filt==="ALL"||filt===p[1]||(filt==="new"&&p[4]==="new");
+  const card=p=>{const w=wages[p[2]];const wl=w&&w[0]?`<div class="wage"><b>£${w[0]}k</b>/wk</div>`:`<div class="wage none">£0/wk · not listed</div>`;
+    const t=tot26(p[2]);
+    return `<button class="p" data-p="${p[2]}" aria-haspopup="dialog"><div class="avwrap">${avatar(p[2],{num:p[0],size:46})}</div><div style="min-width:0"><div class="nm">${p[2]}${p[4]==="new"?'<span class="tag new">New</span>':p[4]==="acad"?'<span class="tag acad">Academy</span>':""}</div><div class="meta">${p[3]} · ${t.a} apps${t.g?`, ${t.g} goal${t.g>1?"s":""}`:""}</div>${wl}</div></button>`};
+  let html="";
+  if(byWage){
+    const ps=squad.filter(keep).sort((a,b)=>((wages[b[2]]||[0])[0])-((wages[a[2]]||[0])[0]));
+    html=`<h2>By weekly wage <em>${ps.length}</em></h2><div class="sheet">${ps.map(card).join("")}</div>`;
+  } else for(const g in groups){
+    const ps=squad.filter(p=>p[1]===g&&keep(p));
+    if(!ps.length)continue;
+    const gw=ps.reduce((t,p)=>t+((wages[p[2]]||[0])[0]),0);
+    html+=`<h2>${groups[g]} <em>${ps.length} · £${(gw/1000).toFixed(2)}m/wk</em></h2><div class="sheet">${ps.map(card).join("")}</div>`;
+  }
+  const tot=squad.filter(keep).reduce((t,p)=>t+((wages[p[2]]||[0])[0]),0);
+  document.getElementById("wagebill").innerHTML=`<span><b>£${(tot/1000).toFixed(2)}m</b>a week${filt==="ALL"?"":" for this selection"}</span><span><b>£${(tot*52/1000).toFixed(0)}m</b>a year</span><span class="formnote">Capology estimates, before bonuses</span>`;
+  document.getElementById("sheet").innerHTML=html;
+}
+let byWage=false;
+// 2026/27 apps [apps, starts] by competition — unitedstats.co.uk, as of 21 Oct 2026
+const S26={"Youri Tielemans":{pl:[7,7],ucl:[3,3],lc:[1,1]},"Bryan Mbeumo":{pl:[7,7],ucl:[3,3],lc:[1,0]},"Bruno Fernandes":{pl:[7,7],ucl:[3,3],lc:[1,0]},
+"Matheus Cunha":{pl:[7,6],ucl:[3,2],lc:[1,0]},"Senne Lammens":{pl:[7,7],ucl:[3,3]},"Diogo Dalot":{pl:[7,5],ucl:[2,2],lc:[1,1]},"Harry Maguire":{pl:[7,7],ucl:[2,1]},
+"Lisandro Martínez":{pl:[6,6],ucl:[2,2]},"Kobbie Mainoo":{pl:[6,5],ucl:[1,1],lc:[1,0]},"Marcus Rashford":{pl:[6,4],ucl:[1,1],lc:[1,1]},"Andrey Santos":{pl:[4,2],ucl:[3,2],lc:[1,1]},
+"Leny Yoro":{pl:[4,2],ucl:[2,2],lc:[1,1]},"Noussair Mazraoui":{pl:[4,1],ucl:[2,2],lc:[1,1]},"Joshua Zirkzee":{pl:[3,0],ucl:[3,0],lc:[1,0]},"Patrick Dorgu":{pl:[5,2],ucl:[1,1]},
+"Mason Mount":{pl:[2,0],ucl:[3,1],lc:[1,1]},"Benjamin Šeško":{pl:[4,0],ucl:[1,1],lc:[1,1]},"Luke Shaw":{pl:[5,5]},"Ayden Heaven":{pl:[2,1],ucl:[1,1],lc:[1,1]},
+"Amad Diallo":{pl:[2,2],ucl:[2,0]},"Carlos Baleba":{pl:[2,1],ucl:[2,1]},"Shea Lacey":{pl:[1,0],ucl:[2,0],lc:[1,1]},"Harry Amass":{ucl:[2,0]},"Karl Darlow":{lc:[1,1]},"Matthijs de Ligt":{ucl:[1,1]}};
+const G26={"Bryan Mbeumo":{pl:4},"Bruno Fernandes":{pl:3,ucl:1},"Matheus Cunha":{pl:1,ucl:1},"Benjamin Šeško":{pl:1,ucl:1},"Joshua Zirkzee":{ucl:1},"Shea Lacey":{lc:1},"Mason Mount":{lc:1},"Lisandro Martínez":{ucl:1}};
+// Premier League detail [assists, minutes, yellows] — VAVEL, after 7 PL games
+const PX={"Bryan Mbeumo":[0,630,1],"Bruno Fernandes":[1,630,2],"Matheus Cunha":[2,511,0],"Kobbie Mainoo":[1,447,0],"Luke Shaw":[1,427,2],"Patrick Dorgu":[1,172,1],"Youri Tielemans":[1,547,0],
+"Harry Maguire":[0,630,2],"Senne Lammens":[0,630,0],"Lisandro Martínez":[0,495,1],"Diogo Dalot":[0,469,2],"Marcus Rashford":[0,355,0],"Andrey Santos":[0,173,1],"Leny Yoro":[0,171,0],"Amad Diallo":[0,149,0]};
+// 2025/26 all comps [apps, goals, yellows, reds] — club season record
+const L25={"Diogo Dalot":[36,1,5,0],"Noussair Mazraoui":[20,0,3,0],"Matthijs de Ligt":[14,1,0,0],"Harry Maguire":[25,2,4,1],"Lisandro Martínez":[19,0,0,1],"Mason Mount":[25,3,2,0],
+"Bruno Fernandes":[37,9,5,0],"Matheus Cunha":[35,10,4,0],"Joshua Zirkzee":[26,2,3,0],"Patrick Dorgu":[28,4,4,0],"Leny Yoro":[33,0,1,0],"Amad Diallo":[33,2,2,0],"Bryan Mbeumo":[34,12,4,0],
+"Luke Shaw":[38,1,9,0],"Manuel Ugarte":[24,0,1,0],"Ayden Heaven":[18,0,2,0],"Benjamin Šeško":[32,12,2,0],"Senne Lammens":[33,0,0,0],"Kobbie Mainoo":[30,1,2,0],"Jack Fletcher":[3,0,0,0],"Tyler Fletcher":[2,0,0,0],"Shea Lacey":[4,0,2,1]};
+const L25note={"Marcus Rashford":"On loan at Barcelona","Youri Tielemans":"At Aston Villa","Andrey Santos":"At Chelsea","Carlos Baleba":"At Brighton","Karl Darlow":"At Leeds United","Tynan Thompson":"At Tottenham","Harry Amass":"On loan at Sheffield Wednesday"};
+const COMPS=[["pl","Premier League"],["ucl","Champions League"],["lc","League Cup"]];
+function tot26(n){const s=S26[n]||{},g=G26[n]||{};let a=0,st=0,go=0;COMPS.forEach(([k])=>{if(s[k]){a+=s[k][0];st+=s[k][1]}go+=g[k]||0});return {a,st,g:go}}
+const wages={"Senne Lammens":[80.0],"Karl Darlow":[35.0],"Tom Heaton":[45.0],"Dermot Mee":[10.0],"Diogo Dalot":[95.0],"Noussair Mazraoui":[135.0],"Matthijs de Ligt":[205.0],"Harry Maguire":[180.0],"Lisandro Martínez":[130.0],"Patrick Dorgu":[50.0],"Leny Yoro":[120.0],"Luke Shaw":[150.0],"Ayden Heaven":[35.0],"Harry Amass":[15.0],"Mason Mount":[150.0],"Bruno Fernandes":[320.0],"Andrey Santos":[120.0],"Youri Tielemans":[250.0],"Carlos Baleba":[150.0],"Manuel Ugarte":[130.0],"Kobbie Mainoo":[160.0],"Jack Fletcher":[8.0],"Tyler Fletcher":[15.0],"Marcus Rashford":[300.0],"Matheus Cunha":[220.0],"Joshua Zirkzee":[110.0],"Amad Diallo":[130.0],"Bryan Mbeumo":[170.0],"Tynan Thompson":[0],"Benjamin Šeško":[210.0],"Shea Lacey":[20.0]}; // weekly £k, Capology 2026/27; not listed = 0
+const dlg=document.getElementById("pdlg");let lastCard=null;
+function openPlayer(n){
+  const p=squad.find(x=>x[2]===n);if(!p)return;
+  const s=S26[n]||{},g=G26[n]||{},t=tot26(n),px=PX[n],l=L25[n],w=wages[n];
+  const rows=COMPS.map(([k,lab])=>{const a=s[k];return `<tr><td>${lab}</td><td class="num">${a?a[0]:0}${a&&a[0]-a[1]?` <span class="sub">(${a[0]-a[1]} sub)</span>`:""}</td><td class="num">${g[k]||0}</td></tr>`}).join("");
+  const isGK=p[1]==="GK";
+  document.getElementById("pbody").innerHTML=`
+   <div class="phead">${avatar(n,{num:p[0]})}<div style="min-width:0"><div class="eyebrow">${groups[p[1]].replace(/s$/,"")} · ${p[3]}</div><h3 id="ptitle">${n}</h3>${w?`<div class="meta">${w[0]?`Wage £${w[0]}k a week`:"Wage not listed (£0)"}</div>`:""}</div></div>
+   <div class="kpis"><div><b>${t.a}</b><small>Apps</small></div><div><b>${t.st}</b><small>Starts</small></div><div><b>${t.g}</b><small>Goals</small></div><div><b>${px?px[0]:"–"}</b><small>PL assists</small></div></div>
+   <h4>2026/27 by competition</h4>
+   <div class="tbl"><table class="mini"><thead><tr><th>Competition</th><th class="num">Apps</th><th class="num">Goals</th></tr></thead><tbody>${rows}<tr class="tot"><td>Total</td><td class="num">${t.a}</td><td class="num">${t.g}</td></tr></tbody></table></div>
+   ${px?`<h4>Premier League detail</h4><div class="facts"><span><b>${px[1]}</b> minutes</span><span><b>${px[0]}</b> assists</span><span><b>${px[2]}</b> yellow cards</span>${n==="Senne Lammens"?`<span><b>21</b> saves</span>`:""}${g.pl&&px[1]?`<span><b>${Math.round(px[1]/g.pl)}</b> mins per PL goal</span>`:""}</div>`:""}
+   <h4>Last season, 2025/26</h4>
+   ${l?`<div class="facts"><span><b>${l[0]}</b> apps</span><span><b>${l[1]}</b> goals</span><span><b>${l[2]}</b> yellows</span>${l[3]?`<span><b>${l[3]}</b> red</span>`:""}</div>`:`<p class="meta">${L25note[n]||"No first-team appearances"}</p>`}
+   ${t.a===0?`<p class="meta">Yet to play this season.</p>`:""}`;
+  const pu=plUrl(n);document.getElementById("pbody").insertAdjacentHTML("beforeend",`${txHistory(n)}<div class="plinks">${ALLP[n]?`<button class="linkbtn" data-career="${n}">Every season at United →</button>`:""}${pu?`<a href="${pu}" target="_blank" rel="noopener">Photo &amp; profile on premierleague.com ↗</a>`:""}</div>${PHOTOS[n]?`<p class="meta" style="font-size:11.5px">Photo: ${PHOTOS[n].credit}</p>`:""}`);
+  if(!dlg.open){if(dlg.showModal){dlg.showModal()}else dlg.setAttribute("open","")}
+}
+const ALLP={"David de Gea":{"pos":"GK","s":{"2013":[37,0,52,0,1,0,0],"2014":[37,0,43,0,0,0,0],"2015":[34,0,49,0,0,0,0],"2016":[35,0,45,0,2,0,0],"2017":[37,0,46,0,0,0,0],"2018":[38,0,47,0,1,0,0],"2019":[38,0,43,0,2,0,0],"2020":[26,0,36,0,0,0,0],"2021":[38,0,46,0,0,0,0],"2022":[38,0,58,0,2,0,0]}},"Rafael":{"pos":"DF","s":{"2013":[19,0,29,0,6,0,1],"2014":[10,0,11,0,2,0,0]}},"Patrice Evra":{"pos":"DF","s":{"2013":[33,1,45,3,6,0,4]}},"Phil Jones":{"pos":"DF","s":{"2013":[26,1,39,3,8,0,2],"2014":[22,0,24,0,3,0,0],"2015":[10,0,13,0,0,0,0],"2016":[18,0,26,0,3,0,0],"2017":[23,0,25,0,3,0,0],"2018":[18,0,24,0,1,0,1],"2019":[2,0,8,1,2,0,0],"2021":[4,0,5,0,0,0,0]}},"Rio Ferdinand":{"pos":"DF","s":{"2013":[14,0,23,0,2,0,0]}},"Jonny Evans":{"pos":"DF","s":{"2013":[17,0,25,2,0,0,0],"2014":[14,0,17,0,1,0,0],"2023":[23,0,30,0,2,0,1],"2024":[7,0,13,1,1,0,0]}},"Anderson":{"pos":"MF","s":{"2013":[4,0,8,0,0,0,0],"2014":[1,0,2,0,0,0,0]}},"Juan Mata":{"pos":"MF","s":{"2013":[15,6,15,6,0,0,4],"2014":[33,9,35,10,2,0,4],"2015":[38,6,54,10,5,1,8],"2016":[25,6,41,10,5,0,5],"2017":[28,3,40,3,1,0,7],"2018":[22,3,32,6,3,0,2],"2019":[19,0,37,3,1,0,7],"2020":[9,1,18,3,0,0,3],"2021":[7,0,12,0,0,0,0]}},"Wayne Rooney":{"pos":"FW","s":{"2013":[29,17,40,19,8,0,16],"2014":[33,12,37,14,5,1,5],"2015":[28,8,41,15,6,0,6],"2016":[25,5,39,8,9,0,10]}},"Ryan Giggs":{"pos":"MF","s":{"2013":[12,0,22,0,4,0,1]}},"Chris Smalling":{"pos":"DF","s":{"2013":[25,1,38,2,3,0,0],"2014":[25,4,29,4,1,1,0],"2015":[35,0,55,2,11,1,1],"2016":[18,1,36,2,0,0,0],"2017":[29,4,46,4,4,0,0],"2018":[24,1,34,1,2,0,0]}},"Anders Lindegaard":{"pos":"GK","s":{"2013":[1,0,3,0,0,0,0]}},"Javier Hernández":{"pos":"FW","s":{"2013":[24,4,35,9,2,0,3],"2015":[1,0,3,0,0,0,0]}},"Nemanja Vidić":{"pos":"DF","s":{"2013":[25,0,34,2,6,2,0]}},"Michael Carrick":{"pos":"MF","s":{"2013":[29,1,40,1,6,0,0],"2014":[18,1,20,1,1,0,2],"2015":[28,0,42,0,6,0,0],"2016":[23,0,38,1,1,0,1],"2017":[2,0,5,0,0,0,0]}},"Nani":{"pos":"MF","s":{"2013":[11,0,13,1,0,0,0]}},"Ashley Young":{"pos":"DF","s":{"2013":[20,2,30,3,5,0,1],"2014":[26,2,29,2,6,0,6],"2015":[18,1,26,1,6,0,2],"2016":[12,0,23,0,5,0,1],"2017":[30,2,38,2,9,0,6],"2018":[30,2,41,2,13,1,3],"2019":[12,0,18,1,8,0,1]}},"Danny Welbeck":{"pos":"FW","s":{"2013":[25,9,36,10,2,0,1],"2014":[2,0,3,0,0,0,0]}},"Robin van Persie":{"pos":"FW","s":{"2013":[21,12,28,18,3,0,4],"2014":[27,10,29,10,5,0,3]}},"Fábio da Silva":{"pos":"DF","s":{"2013":[1,0,3,1,0,1,0]}},"Tom Cleverley":{"pos":"MF","s":{"2013":[22,1,31,1,5,0,0],"2014":[1,0,1,0,1,0,0]}},"Darren Fletcher":{"pos":"MF","s":{"2013":[12,0,18,0,0,0,0],"2014":[11,0,12,0,1,0,0]}},"Antonio Valencia":{"pos":"DF","s":{"2013":[29,2,44,4,7,1,5],"2014":[32,0,35,0,4,0,3],"2015":[14,0,22,0,1,0,4],"2016":[29,1,43,1,7,0,5],"2017":[31,3,39,3,10,0,1],"2018":[6,0,9,0,4,0,0]}},"Shinji Kagawa":{"pos":"MF","s":{"2013":[18,0,30,0,1,0,3],"2014":[0,0,1,0,0,0,0]}},"Alexander Büttner":{"pos":"DF","s":{"2013":[8,0,15,0,3,0,0]}},"Wilfried Zaha":{"pos":"FW","s":{"2013":[2,0,4,0,0,0,0]}},"Marouane Fellaini":{"pos":"MF","s":{"2013":[16,0,21,0,3,1,1],"2014":[27,6,31,7,7,1,1],"2015":[18,1,34,4,7,0,1],"2016":[28,1,47,4,9,1,1],"2017":[16,4,23,5,1,0,0],"2018":[14,0,21,2,1,0,1]}},"Tom Lawrence":{"pos":"MF","s":{"2013":[1,0,1,0,0,0,0]}},"Adnan Januzaj":{"pos":"MF","s":{"2013":[27,4,35,4,8,0,3],"2014":[18,0,21,0,1,0,0],"2015":[5,1,7,1,1,0,0]}},"James Wilson":{"pos":"FW","s":{"2013":[1,2,1,2,0,0,0],"2014":[13,1,17,2,4,0,0],"2015":[1,0,2,0,0,0,0]}},"Luke Shaw":{"pos":"DF","s":{"2014":[16,0,20,0,1,1,0],"2015":[5,0,8,0,1,0,1],"2016":[11,0,19,0,1,0,1],"2017":[11,0,19,0,2,0,0],"2018":[29,1,40,1,14,0,5],"2019":[24,0,33,1,8,0,2],"2020":[32,1,47,1,13,0,6],"2021":[20,0,27,0,11,0,5],"2022":[31,1,47,1,12,0,6],"2023":[12,0,15,0,7,0,2],"2024":[7,0,12,0,1,0,0],"2025":[38,1,38,1,9,0,1],"2026":[5,0,5,0,null,null,1]}},"Marcos Rojo":{"pos":"DF","s":{"2014":[22,0,26,1,8,0,0],"2015":[16,0,28,0,5,0,1],"2016":[21,1,41,1,5,0,1],"2017":[9,0,12,0,6,0,1],"2018":[5,0,6,0,2,0,0],"2019":[3,0,9,0,1,0,0]}},"Ángel Di María":{"pos":"MF","s":{"2014":[27,3,32,4,2,1,11]}},"Radamel Falcao":{"pos":"FW","s":{"2014":[26,4,29,4,2,0,4]}},"Daley Blind":{"pos":"DF","s":{"2014":[25,2,29,2,4,0,2],"2015":[35,1,56,2,3,0,3],"2016":[24,1,40,1,4,0,2],"2017":[7,0,17,1,2,0,2]}},"Ander Herrera":{"pos":"MF","s":{"2014":[26,6,31,8,8,0,4],"2015":[27,3,41,5,8,0,4],"2016":[31,1,50,2,13,2,10],"2017":[26,0,39,2,6,0,2],"2018":[22,2,28,3,7,0,3]}},"Nick Powell":{"pos":"MF","s":{"2014":[0,0,1,0,0,0,0],"2015":[1,0,2,0,0,0,0]}},"Víctor Valdés":{"pos":"GK","s":{"2014":[2,0,2,0,0,0,0]}},"Paddy McNair":{"pos":"DF","s":{"2014":[16,0,18,0,2,0,0],"2015":[8,0,9,0,0,0,0]}},"Jesse Lingard":{"pos":"MF","s":{"2014":[1,0,1,0,0,0,0],"2015":[25,4,40,6,8,0,3],"2016":[25,1,42,5,6,0,2],"2017":[33,8,48,13,5,0,6],"2018":[27,4,36,5,6,0,3],"2019":[22,1,40,4,5,0,2],"2020":[0,0,3,0,0,0,0],"2021":[16,2,22,2,1,0,1]}},"Marnick Vermijl":{"pos":"DF","s":{"2014":[0,0,1,0,0,0,0]}},"Saidy Janko":{"pos":"DF","s":{"2014":[0,0,1,0,0,0,0]}},"Michael Keane":{"pos":"DF","s":{"2014":[1,0,2,0,0,0,0]}},"Tom Thorpe":{"pos":"DF","s":{"2014":[1,0,1,0,0,0,0]}},"Reece James":{"pos":"DF","s":{"2014":[0,0,1,0,1,0,0]}},"Tyler Blackett":{"pos":"DF","s":{"2014":[11,0,12,0,3,1,0]}},"Andreas Pereira":{"pos":"MF","s":{"2014":[1,0,2,0,0,0,0],"2015":[4,0,11,1,2,0,0],"2018":[15,1,22,1,5,0,1],"2019":[25,1,40,2,4,0,4]}},"Memphis Depay":{"pos":"FW","s":{"2015":[29,2,45,7,4,0,1],"2016":[4,0,8,0,1,0,0]}},"Anthony Martial":{"pos":"FW","s":{"2015":[31,11,49,17,4,0,7],"2016":[25,4,42,8,3,0,7],"2017":[30,9,45,11,1,0,9],"2018":[27,10,38,12,3,0,2],"2019":[32,17,48,23,1,0,9],"2020":[22,4,36,7,1,1,5],"2021":[8,1,11,1,0,0,0],"2022":[21,6,29,9,0,0,3],"2023":[13,1,19,2,0,0,1]}},"Sergio Romero":{"pos":"GK","s":{"2015":[4,0,10,0,0,0,0],"2016":[2,0,18,0,0,0,0],"2017":[1,0,10,0,0,0,0],"2018":[0,0,6,0,0,1,0],"2019":[0,0,17,0,0,0,0]}},"Morgan Schneiderlin":{"pos":"MF","s":{"2015":[29,1,39,1,4,0,1],"2016":[3,0,8,0,1,0,0]}},"Guillermo Varela":{"pos":"MF","s":{"2015":[4,0,11,0,2,0,1]}},"Bastian Schweinsteiger":{"pos":"MF","s":{"2015":[18,1,31,1,5,0,0],"2016":[0,0,4,1,0,0,1]}},"Matteo Darmian":{"pos":"DF","s":{"2015":[28,1,39,1,10,0,0],"2016":[18,0,29,0,3,0,1],"2017":[8,0,17,0,1,0,2],"2018":[6,0,7,0,0,0,0]}},"Donald Love":{"pos":"DF","s":{"2015":[1,0,2,0,1,0,0]}},"Marcus Rashford":{"pos":"FW","s":{"2015":[11,5,18,8,1,0,2],"2016":[32,5,53,11,3,0,4],"2017":[35,7,52,13,7,0,8],"2018":[33,10,47,13,6,1,8],"2019":[31,17,44,22,4,0,9],"2020":[37,11,57,21,4,0,12],"2021":[25,4,32,5,3,0,2],"2022":[35,17,56,30,3,0,10],"2023":[33,7,43,8,2,1,6],"2024":[15,4,24,7,4,0,3],"2026":[6,0,8,0,null,null,0]}},"Regan Poole":{"pos":"DF","s":{"2015":[0,0,1,0,0,0,0]}},"Cameron Borthwick-Jackson":{"pos":"DF","s":{"2015":[10,0,14,0,0,0,1]}},"James Weir":{"pos":"MF","s":{"2015":[1,0,1,0,0,0,0]}},"Will Keane":{"pos":"FW","s":{"2015":[1,0,2,0,0,0,0]}},"Joe Riley":{"pos":"MF","s":{"2015":[0,0,2,0,0,0,0]}},"Timothy Fosu-Mensah":{"pos":"DF","s":{"2015":[8,0,10,0,1,0,1],"2016":[4,0,11,0,1,0,0],"2019":[3,0,6,0,1,0,0],"2020":[1,0,3,0,1,0,0]}},"Eric Bailly":{"pos":"DF","s":{"2016":[25,0,38,0,7,2,0],"2017":[13,1,18,1,3,0,0],"2018":[12,0,18,0,1,1,0],"2019":[4,0,11,0,2,0,0],"2020":[12,0,21,0,4,0,1],"2021":[4,0,7,0,1,0,0]}},"Paul Pogba":{"pos":"MF","s":{"2016":[30,5,51,9,10,0,6],"2017":[27,6,37,6,6,1,12],"2018":[35,13,47,16,7,1,11],"2019":[16,1,22,1,2,0,3],"2020":[26,3,42,6,8,0,6],"2021":[20,1,27,1,8,1,9]}},"Zlatan Ibrahimović":{"pos":"FW","s":{"2016":[28,17,45,28,8,0,9],"2017":[5,0,7,1,0,0,0]}},"Henrikh Mkhitaryan":{"pos":"MF","s":{"2016":[23,4,40,11,4,0,5],"2017":[15,1,22,2,2,0,5]}},"Demetri Mitchell":{"pos":"DF","s":{"2016":[1,0,1,0,0,0,0]}},"Axel Tuanzebe":{"pos":"DF","s":{"2016":[4,0,5,0,0,0,0],"2017":[1,0,3,0,1,0,0],"2019":[5,0,10,0,0,0,0],"2020":[9,0,19,0,7,0,0]}},"Scott McTominay":{"pos":"MF","s":{"2016":[2,0,2,0,1,0,0],"2017":[13,0,23,0,4,0,0],"2018":[16,2,22,2,1,0,0],"2019":[27,4,37,5,4,0,1],"2020":[32,4,49,7,7,0,2],"2021":[30,1,37,2,10,0,1],"2022":[24,1,39,3,10,0,1],"2023":[32,7,43,10,4,0,3],"2024":[2,0,3,0,0,0,0]}},"Joel Castro Pereira":{"pos":"GK","s":{"2016":[1,0,2,0,0,0,0],"2017":[0,0,1,0,0,0,0]}},"Josh Harrop":{"pos":"FW","s":{"2016":[1,1,1,1,0,0,0]}},"Angel Gomes":{"pos":"MF","s":{"2016":[1,0,1,0,0,0,0],"2017":[0,0,1,0,0,0,0],"2018":[2,0,2,0,0,0,0],"2019":[2,0,6,0,0,0,0]}},"Victor Lindelöf":{"pos":"DF","s":{"2017":[17,0,29,0,1,0,0],"2018":[30,1,40,1,3,0,1],"2019":[35,1,47,1,6,0,1],"2020":[29,1,45,1,4,0,2],"2021":[28,0,35,0,5,0,2],"2022":[20,0,35,0,2,0,0],"2023":[19,1,28,1,3,0,1],"2024":[16,0,25,0,1,0,0]}},"Alexis Sánchez":{"pos":"FW","s":{"2017":[12,2,18,3,2,0,5],"2018":[20,1,27,2,3,0,4]}},"Romelu Lukaku":{"pos":"FW","s":{"2017":[34,16,51,27,4,0,9],"2018":[32,12,45,15,5,0,3]}},"Nemanja Matić":{"pos":"MF","s":{"2017":[36,1,49,2,6,0,2],"2018":[28,1,38,1,12,1,0],"2019":[21,0,34,1,4,1,3],"2020":[20,0,36,0,4,0,1],"2021":[23,0,32,0,5,0,4]}},"Lee Grant":{"pos":"GK","s":{"2018":[0,0,1,0,0,0,0],"2019":[0,0,1,0,0,0,null]}},"Fred":{"pos":"MF","s":{"2018":[17,1,25,1,3,0,2],"2019":[29,0,48,2,12,0,4],"2020":[30,1,48,1,9,1,2],"2021":[28,4,36,4,8,0,5],"2022":[35,2,56,6,10,0,6]}},"Diogo Dalot":{"pos":"DF","s":{"2018":[16,0,23,0,4,0,2],"2019":[4,0,11,1,1,0,0],"2020":[0,0,1,0,0,0,0],"2021":[24,0,30,0,6,0,0],"2022":[26,1,42,2,8,0,2],"2023":[36,2,50,3,6,1,5],"2024":[33,0,53,3,6,1,5],"2025":[34,1,36,1,5,0,3],"2026":[7,0,10,0,null,null,0]}},"James Garner":{"pos":"MF","s":{"2018":[1,0,1,0,0,0,0],"2019":[1,0,6,0,0,0,0]}},"Tahith Chong":{"pos":"FW","s":{"2018":[2,0,4,0,1,0,0],"2019":[3,0,12,0,0,0,2]}},"Mason Greenwood":{"pos":"FW","s":{"2018":[3,0,4,0,0,0,0],"2019":[31,10,49,17,0,0,3],"2020":[31,7,52,12,2,0,5],"2021":[18,5,24,6,2,0,2]}},"Harry Maguire":{"pos":"DF","s":{"2019":[38,1,55,3,9,0,2],"2020":[34,2,52,2,15,0,1],"2021":[30,1,37,2,9,1,0],"2022":[16,0,31,0,9,0,0],"2023":[22,2,31,4,4,0,2],"2024":[27,1,40,4,10,0,1],"2025":[23,1,25,2,4,1,2],"2026":[7,0,9,0,null,null,0]}},"Bruno Fernandes":{"pos":"MF","s":{"2019":[14,8,22,12,3,0,8],"2020":[37,18,58,28,7,0,18],"2021":[36,10,46,10,10,0,14],"2022":[37,8,59,14,12,0,16],"2023":[35,10,48,15,12,0,13],"2024":[36,8,57,19,8,3,19],"2025":[35,9,37,9,5,0,22],"2026":[7,3,11,4,null,null,1]}},"Daniel James":{"pos":"MF","s":{"2019":[33,3,46,4,4,0,6],"2020":[15,3,26,5,3,0,2],"2021":[2,0,2,0,0,0,0]}},"Odion Ighalo":{"pos":"FW","s":{"2019":[11,0,19,5,0,0,1],"2020":[1,0,4,0,0,0,0]}},"Aaron Wan-Bissaka":{"pos":"DF","s":{"2019":[35,0,46,0,8,0,4],"2020":[34,2,54,2,4,0,5],"2021":[20,0,26,0,2,1,0],"2022":[19,0,34,0,3,0,1],"2023":[22,0,30,0,5,0,3]}},"Ethan Laird":{"pos":"DF","s":{"2019":[0,0,2,0,1,0,0]}},"D'Mani Mellor":{"pos":"FW","s":{"2019":[0,0,1,0,0,0,null]}},"Brandon Williams":{"pos":"DF","s":{"2019":[17,1,36,1,9,0,0],"2020":[4,0,14,0,2,0,0],"2022":[0,0,1,0,0,0,0]}},"Ethan Galbraith":{"pos":"MF","s":{"2019":[0,0,1,0,0,0,null]}},"Di'Shon Bernard":{"pos":"DF","s":{"2019":[0,0,1,0,0,0,null]}},"Largie Ramazani":{"pos":"FW","s":{"2019":[0,0,1,0,0,0,null]}},"Dylan Levitt":{"pos":"MF","s":{"2019":[0,0,1,0,1,0,null]}},"Teden Mengi":{"pos":"DF","s":{"2019":[0,0,1,0,0,0,null],"2021":[0,0,1,0,0,0,0]}},"Edinson Cavani":{"pos":"FW","s":{"2020":[26,10,39,17,5,0,5],"2021":[15,2,20,2,1,0,1]}},"Amad Diallo":{"pos":"FW","s":{"2020":[3,0,8,1,0,0,1],"2021":[0,0,1,0,0,0,0],"2023":[9,1,12,2,1,1,1],"2024":[26,8,43,11,6,0,8],"2025":[32,2,33,2,2,0,3],"2026":[2,0,4,0,null,null,1]}},"Dean Henderson":{"pos":"GK","s":{"2020":[13,0,26,0,3,0,0],"2021":[0,0,3,0,0,0,0]}},"Alex Telles":{"pos":"DF","s":{"2020":[9,0,24,0,1,0,3],"2021":[21,0,26,1,2,0,4]}},"Donny van de Beek":{"pos":"MF","s":{"2020":[19,1,36,1,1,0,2],"2021":[8,1,14,1,1,0,0],"2022":[7,0,10,0,0,0,0],"2023":[1,0,2,0,0,0,0]}},"Hannibal Mejbri":{"pos":"MF","s":{"2020":[1,0,1,0,0,0,0],"2021":[2,0,2,0,2,0,0],"2023":[5,1,10,1,3,0,0]}},"Will Fish":{"pos":"DF","s":{"2020":[1,0,1,0,0,0,0]}},"Anthony Elanga":{"pos":"FW","s":{"2020":[2,1,2,1,0,0,0],"2021":[21,2,27,3,0,0,2],"2022":[16,0,26,0,0,0,2]}},"Shola Shoretire":{"pos":"FW","s":{"2020":[2,0,3,0,0,0,0],"2021":[1,0,2,0,1,0,0]}},"Cristiano Ronaldo":{"pos":"FW","s":{"2021":[30,18,38,24,9,0,3],"2022":[10,1,16,3,3,0,2]}},"Raphaël Varane":{"pos":"DF","s":{"2021":[22,1,29,1,1,0,1],"2022":[24,0,34,0,3,0,0],"2023":[22,1,32,1,2,0,0]}},"Tom Heaton":{"pos":"GK","s":{"2021":[0,0,1,0,0,0,0],"2022":[0,0,2,0,0,0,0]}},"Jadon Sancho":{"pos":"FW","s":{"2021":[29,3,38,5,0,0,4],"2022":[26,6,41,7,0,0,3],"2023":[3,0,3,0,0,0,0]}},"Charlie Savage":{"pos":"MF","s":{"2021":[0,0,1,0,0,0,0]}},"Zidane Iqbal":{"pos":"MF","s":{"2021":[0,0,1,0,0,0,0]}},"Alejandro Garnacho":{"pos":"FW","s":{"2021":[2,0,2,0,0,0,0],"2022":[19,3,34,5,4,0,4],"2023":[36,7,50,10,4,0,5],"2024":[36,6,58,11,5,0,12]}},"Lisandro Martínez":{"pos":"DF","s":{"2022":[27,1,45,1,10,0,0],"2023":[11,0,14,0,4,0,1],"2024":[20,2,32,2,8,0,2],"2025":[18,0,19,0,0,1,0],"2026":[6,0,8,1,null,null,0]}},"Tyrell Malacia":{"pos":"DF","s":{"2022":[22,0,39,0,9,0,0],"2024":[3,0,8,0,2,0,0],"2025":[3,0,3,0,0,0,0]}},"Christian Eriksen":{"pos":"MF","s":{"2022":[28,1,44,2,4,0,10],"2023":[22,1,28,1,1,0,3],"2024":[23,1,35,5,4,0,6]}},"Marcel Sabitzer":{"pos":"MF","s":{"2022":[11,0,18,3,1,0,1]}},"Casemiro":{"pos":"MF","s":{"2022":[28,4,51,7,13,2,6],"2023":[25,1,32,5,9,1,3],"2024":[24,1,42,5,8,0,2],"2025":[34,9,35,9,11,1,2]}},"Antony":{"pos":"FW","s":{"2022":[25,4,44,8,8,0,3],"2023":[29,1,38,3,6,0,2],"2024":[8,0,14,1,0,0,0]}},"Wout Weghorst":{"pos":"FW","s":{"2022":[17,0,31,2,2,0,3]}},"Facundo Pellistri":{"pos":"MF","s":{"2022":[4,0,10,0,3,0,1],"2023":[9,0,14,0,0,0,1]}},"Martin Dúbravka":{"pos":"GK","s":{"2022":[0,0,2,0,0,0,0]}},"Charlie McNeill":{"pos":"FW","s":{"2022":[0,0,1,0,0,0,0]}},"Kobbie Mainoo":{"pos":"MF","s":{"2022":[1,0,3,0,0,0,0],"2023":[24,3,32,5,4,0,1],"2024":[25,0,37,2,7,0,1],"2025":[28,1,30,1,2,0,3],"2026":[6,0,8,0,null,null,2]}},"Altay Bayındır":{"pos":"GK","s":{"2023":[0,0,1,0,0,0,0],"2024":[4,0,10,0,1,0,0],"2025":[6,0,6,0,0,0,0]}},"Sofyan Amrabat":{"pos":"MF","s":{"2023":[21,0,30,0,9,0,0]}},"Mason Mount":{"pos":"MF","s":{"2023":[14,1,20,1,2,0,1],"2024":[17,1,27,3,5,0,0],"2025":[23,3,25,3,2,0,1],"2026":[2,0,6,1,null,null,0]}},"Rasmus Højlund":{"pos":"FW","s":{"2023":[30,10,43,16,2,0,2],"2024":[32,4,52,10,2,0,2]}},"Sergio Reguilón":{"pos":"DF","s":{"2023":[9,0,12,0,4,0,0]}},"André Onana":{"pos":"GK","s":{"2023":[38,0,51,0,7,0,0],"2024":[34,0,50,0,1,0,0],"2025":[0,0,1,0,0,0,0]}},"Dan Gore":{"pos":"MF","s":{"2023":[1,0,2,0,0,0,0]}},"Willy Kambwala":{"pos":"DF","s":{"2023":[8,0,10,0,1,0,0]}},"Omari Forson":{"pos":"MF","s":{"2023":[4,0,7,0,0,0,1]}},"Ethan Wheatley":{"pos":"FW","s":{"2023":[3,0,3,0,0,0,0]}},"Noussair Mazraoui":{"pos":"DF","s":{"2024":[37,0,57,0,6,0,2],"2025":[20,0,20,0,3,0,0],"2026":[4,0,7,0,null,null,0]}},"Matthijs de Ligt":{"pos":"DF","s":{"2024":[29,2,42,2,5,0,0],"2025":[13,1,14,1,0,0,0],"2026":[0,0,1,0,null,null,0]}},"Joshua Zirkzee":{"pos":"FW","s":{"2024":[32,3,49,7,3,0,1],"2025":[24,2,26,2,3,0,1],"2026":[3,0,7,1,null,null,1]}},"Patrick Dorgu":{"pos":"DF","s":{"2024":[12,0,20,0,4,1,0],"2025":[26,4,28,4,4,0,4],"2026":[5,0,6,0,null,null,2]}},"Leny Yoro":{"pos":"DF","s":{"2024":[21,0,33,1,7,0,1],"2025":[32,0,33,0,1,0,0],"2026":[4,0,7,0,null,null,0]}},"Manuel Ugarte":{"pos":"MF","s":{"2024":[29,1,45,2,15,0,6],"2025":[22,0,24,0,1,0,0]}},"Ayden Heaven":{"pos":"DF","s":{"2024":[4,0,6,0,1,0,0],"2025":[17,0,18,0,2,0,1],"2026":[2,0,4,0,null,null,0]}},"Harry Amass":{"pos":"DF","s":{"2024":[5,0,7,0,0,0,0],"2026":[0,0,2,0,null,null,0]}},"Toby Collyer":{"pos":"MF","s":{"2024":[6,0,13,0,1,0,0]}},"Tyler Fredricson":{"pos":"DF","s":{"2024":[2,0,2,0,0,0,0],"2025":[1,0,2,0,1,0,0]}},"Chido Obi":{"pos":"FW","s":{"2024":[7,0,8,0,1,0,0]}},"Matheus Cunha":{"pos":"FW","s":{"2025":[33,10,35,10,4,0,2],"2026":[7,1,11,2,null,null,2]}},"Bryan Mbeumo":{"pos":"FW","s":{"2025":[33,11,34,12,4,0,3],"2026":[7,4,11,4,null,null,1]}},"Benjamin Šeško":{"pos":"FW","s":{"2025":[30,11,32,12,2,0,1],"2026":[4,1,6,2,null,null,0]}},"Senne Lammens":{"pos":"GK","s":{"2025":[32,0,33,0,0,0,0],"2026":[7,0,10,0,null,null,0]}},"Jack Fletcher":{"pos":"MF","s":{"2025":[3,0,3,0,0,0,0]}},"Tyler Fletcher":{"pos":"MF","s":{"2025":[2,0,2,0,0,0,0]}},"Shea Lacey":{"pos":"FW","s":{"2025":[3,0,4,0,2,1,0],"2026":[1,0,4,1,null,null,0]}},"Bendito Mantato":{"pos":"FW","s":{"2025":[1,0,1,0,0,0,0]}},"Youri Tielemans":{"pos":"MF","s":{"2026":[7,0,11,0,null,null,2]}},"Andrey Santos":{"pos":"MF","s":{"2026":[4,0,8,0,null,null,0]}},"Carlos Baleba":{"pos":"MF","s":{"2026":[2,0,4,0,null,null,0]}},"Karl Darlow":{"pos":"GK","s":{"2026":[0,0,1,0,null,null,0]}}};
+const AST_SEASONS=[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+const AST_PARTIAL=[];
+// Weekly player wages by season, £k (Capology, via screenshots)
+const PWAGE={"2013":{"Robin van Persie":180.0,"Wayne Rooney":180.0,"Ashley Young":120.0,"Rio Ferdinand":100.0,"Nani":90.0,"Patrice Evra":90.0,"Michael Carrick":80.0,"Shinji Kagawa":80.0,"Marouane Fellaini":75.0,"Ryan Giggs":75.0,"Antonio Valencia":70.0,"Danny Welbeck":70.0,"Darren Fletcher":70.0,"David de Gea":70.0,"Juan Mata":70.0,"Jonny Evans":65.0,"Adnan Januzaj":50.0,"Chris Smalling":50.0,"Phil Jones":50.0,"Rafael":50.0,"Anders Lindegaard":40.0,"Tom Cleverley":40.0,"Wilfried Zaha":35.0,"Fábio da Silva":25.0,"Alexander Büttner":20.0,"Ben Amos":10.0,"Sam Johnstone":8.0,"Michael Keane":3.5,"Jesse Lingard":2.5,"James Wilson":1.0,"Tom Lawrence":1.0},"2014":{"Radamel Falcao":285.0,"Ángel Di María":250.0,"Wayne Rooney":235.0,"Robin van Persie":210.0,"Juan Mata":160.0,"Ashley Young":120.0,"Danny Welbeck":115.0,"Ander Herrera":115.0,"Marcos Rojo":110.0,"Luke Shaw":110.0,"Michael Carrick":100.0,"Marouane Fellaini":90.0,"Antonio Valencia":85.0,"Daley Blind":75.0,"Jonny Evans":70.0,"David de Gea":70.0,"Víctor Valdés":70.0,"Rafael":65.0,"Adnan Januzaj":60.0,"Chris Smalling":55.0,"Darren Fletcher":52.0,"Phil Jones":50.0,"Anders Lindegaard":40.0,"Tom Cleverley":40.0,"Wilfried Zaha":35.0,"James Wilson":15.0,"Ben Amos":15.0,"Michael Keane":15.0,"Nick Powell":12.0,"Tom Thorpe":10.0,"Tyler Blackett":5.0,"Andreas Pereira":5.0,"Saidy Janko":5.0,"Reece James":2.0},"2015":{"Bastian Schweinsteiger":240.0,"Wayne Rooney":235.0,"David de Gea":200.0,"Juan Mata":160.0,"Memphis Depay":120.0,"Ashley Young":120.0,"Ander Herrera":115.0,"Luke Shaw":110.0,"Anthony Martial":110.0,"Marcos Rojo":110.0,"Morgan Schneiderlin":100.0,"Michael Carrick":100.0,"Marouane Fellaini":90.0,"Antonio Valencia":85.0,"Daley Blind":75.0,"Chris Smalling":70.0,"Sergio Romero":65.0,"Adnan Januzaj":60.0,"Phil Jones":50.0,"Matteo Darmian":45.0,"Paddy McNair":22.0,"Andreas Pereira":20.0,"Guillermo Varela":15.0,"Jesse Lingard":10.0,"Will Keane":10.0,"Sam Johnstone":8.0,"Joel Castro Pereira":5.0,"Marcus Rashford":5.0,"Sean Goss":5.0,"James Weir":3.0,"Joe Rothwell":2.0,"Donald Love":1.5,"Dean Henderson":1.0,"Cameron Borthwick-Jackson":1.0,"Joe Riley":0.75,"Ro-Shaun Williams":0.4,"Regan Poole":0.4,"Axel Tuanzebe":0.4,"Timothy Fosu-Mensah":0.4},"2016":{"Bastian Schweinsteiger":240.0,"Wayne Rooney":235.0,"Zlatan Ibrahimović":220.0,"Paul Pogba":200.0,"David de Gea":200.0,"Henrikh Mkhitaryan":180.0,"Juan Mata":160.0,"Morgan Schneiderlin":120.0,"Ashley Young":120.0,"Ander Herrera":115.0,"Marcos Rojo":110.0,"Luke Shaw":110.0,"Anthony Martial":110.0,"Marouane Fellaini":90.0,"Antonio Valencia":85.0,"Eric Bailly":80.0,"Michael Carrick":80.0,"Daley Blind":75.0,"Chris Smalling":70.0,"Sergio Romero":65.0,"Adnan Januzaj":60.0,"Phil Jones":50.0,"Matteo Darmian":45.0,"Jesse Lingard":20.0,"Marcus Rashford":20.0,"James Wilson":20.0,"Timothy Fosu-Mensah":15.0,"Scott McTominay":10.0,"Axel Tuanzebe":10.0,"Joel Castro Pereira":5.0,"Josh Harrop":5.0,"Dean Henderson":1.0,"Zak Dearnley":0.808,"Demetri Mitchell":0.75,"Kieran O'Hara":0.654,"Angel Gomes":0.4},"2017":{"Alexis Sánchez":350.0,"David de Gea":200.0,"Paul Pogba":200.0,"Henrikh Mkhitaryan":200.0,"Romelu Lukaku":180.0,"Juan Mata":160.0,"Wayne Rooney":160.0,"Zlatan Ibrahimović":125.0,"Nemanja Matić":120.0,"Ashley Young":120.0,"Ander Herrera":115.0,"Anthony Martial":110.0,"Luke Shaw":110.0,"Marcos Rojo":110.0,"Marouane Fellaini":90.0,"Antonio Valencia":85.0,"Eric Bailly":80.0,"Michael Carrick":80.0,"Victor Lindelöf":75.0,"Daley Blind":75.0,"Jesse Lingard":75.0,"Sergio Romero":70.0,"Chris Smalling":70.0,"Phil Jones":50.0,"Matteo Darmian":45.0,"Marcus Rashford":20.0,"Timothy Fosu-Mensah":15.0,"Joel Castro Pereira":15.0,"Axel Tuanzebe":10.0,"Scott McTominay":10.0,"Cameron Borthwick-Jackson":10.0,"Ethan Hamilton":0.5,"Angel Gomes":0.4},"2018":{"Alexis Sánchez":350.0,"Paul Pogba":290.0,"David de Gea":200.0,"Romelu Lukaku":180.0,"Juan Mata":160.0,"Luke Shaw":150.0,"Fred":120.0,"Nemanja Matić":120.0,"Ashley Young":120.0,"Ander Herrera":115.0,"Marcos Rojo":110.0,"Anthony Martial":110.0,"Antonio Valencia":85.0,"Eric Bailly":80.0,"Jesse Lingard":75.0,"Phil Jones":75.0,"Victor Lindelöf":75.0,"Sergio Romero":70.0,"Chris Smalling":70.0,"Matteo Darmian":45.0,"Andreas Pereira":30.0,"Lee Grant":30.0,"Diogo Dalot":25.0,"Scott McTominay":20.0,"Marcus Rashford":20.0},"2019":{"David de Gea":375.0,"Paul Pogba":290.0,"Anthony Martial":250.0,"Marcus Rashford":200.0,"Harry Maguire":190.0,"Bruno Fernandes":180.0,"Juan Mata":160.0,"Luke Shaw":150.0,"Victor Lindelöf":120.0,"Fred":120.0,"Nemanja Matić":120.0,"Odion Ighalo":99.038,"Aaron Wan-Bissaka":90.0,"Eric Bailly":80.0,"Jesse Lingard":75.0,"Phil Jones":75.0,"Sergio Romero":70.0,"Brandon Williams":65.0,"Daniel James":45.0,"Axel Tuanzebe":30.0,"Andreas Pereira":30.0,"Lee Grant":30.0,"Mason Greenwood":27.5,"Diogo Dalot":25.0,"Scott McTominay":20.0,"Timothy Fosu-Mensah":15.0},"2020":{"David de Gea":375.0,"Paul Pogba":290.0,"Edinson Cavani":250.0,"Anthony Martial":250.0,"Marcus Rashford":200.0,"Harry Maguire":190.0,"Bruno Fernandes":180.0,"Juan Mata":160.0,"Luke Shaw":150.0,"Victor Lindelöf":120.0,"Donny van de Beek":120.0,"Fred":120.0,"Nemanja Matić":120.0,"Dean Henderson":100.0,"Alex Telles":93.077,"Aaron Wan-Bissaka":90.0,"Eric Bailly":80.0,"Mason Greenwood":75.0,"Phil Jones":75.0,"Sergio Romero":70.0,"Brandon Williams":65.0,"Scott McTominay":60.0,"Daniel James":45.0,"Lee Grant":30.0,"Axel Tuanzebe":30.0,"Amad Diallo":28.846,"Nathan Bishop":18.269},"2021":{"Cristiano Ronaldo":515.0,"David de Gea":375.0,"Raphaël Varane":340.0,"Paul Pogba":290.0,"Edinson Cavani":250.0,"Jadon Sancho":250,"Bruno Fernandes":240.0,"Marcus Rashford":200.0,"Harry Maguire":190.0,"Juan Mata":160.0,"Luke Shaw":150.0,"Victor Lindelöf":120.0,"Fred":120.0,"Nemanja Matić":120.0,"Dean Henderson":100.0,"Alex Telles":93.077,"Aaron Wan-Bissaka":90.0,"Eric Bailly":80.0,"Jesse Lingard":75.0,"Phil Jones":75.0,"Scott McTominay":60.0,"Tom Heaton":45.0,"Lee Grant":30.0,"Diogo Dalot":25.0,"Tahith Chong":20.0,"Anthony Elanga":5.0},"2022":{"Cristiano Ronaldo":515.0,"David de Gea":375.0,"Casemiro":350.0,"Raphaël Varane":340.0,"Anthony Martial":250.0,"Jadon Sancho":250,"Bruno Fernandes":240.0,"Marcel Sabitzer":210.0,"Marcus Rashford":200.0,"Harry Maguire":190.0,"Christian Eriksen":150.0,"Luke Shaw":150.0,"Lisandro Martínez":120.0,"Fred":120.0,"Donny van de Beek":120.0,"Victor Lindelöf":120.0,"Antony":105.0,"Aaron Wan-Bissaka":90.0,"Diogo Dalot":85.0,"Mason Greenwood":75.0,"Phil Jones":75.0,"Tyrell Malacia":75.0,"Brandon Williams":65.0,"Scott McTominay":60.0,"Alejandro Garnacho":50.0,"Tom Heaton":45.0,"Alex Telles":37.5,"Wout Weghorst":35.0,"Axel Tuanzebe":25.0,"Facundo Pellistri":20.0,"Jack Butland":17.5,"Teden Mengi":5.0,"Anthony Elanga":5.0,"Shola Shoretire":2.5},"2023":{"Casemiro":350.0,"Raphaël Varane":340.0,"Marcus Rashford":300.0,"Anthony Martial":250.0,"Bruno Fernandes":240.0,"Mason Mount":200.0,"Jadon Sancho":250,"Harry Maguire":190.0,"Luke Shaw":150.0,"Christian Eriksen":150.0,"Victor Lindelöf":120.0,"André Onana":120.0,"Lisandro Martínez":120.0,"Antony":105.0,"Aaron Wan-Bissaka":90.0,"Donny van de Beek":90.0,"Rasmus Højlund":85.0,"Diogo Dalot":85.0,"Tyrell Malacia":75.0,"Jonny Evans":65.0,"Sofyan Amrabat":65.0,"Scott McTominay":60.0,"Mason Greenwood":50.0,"Alejandro Garnacho":50.0,"Tom Heaton":45.0,"Altay Bayındır":35.0,"Amad Diallo":28.846,"Kobbie Mainoo":25.0,"Facundo Pellistri":10.0,"Willy Kambwala":7.5,"Shola Shoretire":5.0},"2024":{"Casemiro":350.0,"Bruno Fernandes":300.0,"Mason Mount":200.0,"Matthijs de Ligt":195.0,"Harry Maguire":190.0,"Christian Eriksen":150.0,"Jadon Sancho":250,"Luke Shaw":150.0,"Noussair Mazraoui":135.0,"Victor Lindelöf":120.0,"Manuel Ugarte":120.0,"Amad Diallo":120.0,"Lisandro Martínez":120.0,"André Onana":120.0,"Leny Yoro":115.0,"Joshua Zirkzee":105.0,"Rasmus Højlund":85.0,"Diogo Dalot":85.0,"Marcus Rashford":75.0,"Jonny Evans":65.0,"Antony":60.0,"Alejandro Garnacho":50.0,"Tom Heaton":45.0,"Patrick Dorgu":40.0,"Tyrell Malacia":37.5,"Altay Bayındır":35.0,"Kobbie Mainoo":25.0,"Chido Obi":15.0,"Ethan Wheatley":9.0,"Joe Hugill":5.5,"Tyler Fredricson":5.0,"Harry Amass":5.0,"Ayden Heaven":4.0,"Toby Collyer":4.0,"Rhys Bennett":1.75,"Sam Mather":1.0},"2025":{"Casemiro":350.0,"Bruno Fernandes":310.0,"Matheus Cunha":210.0,"Matthijs de Ligt":200.0,"Harry Maguire":175.0,"Benjamin Šeško":160.0,"Bryan Mbeumo":160.0,"Mason Mount":150.0,"Luke Shaw":150.0,"Noussair Mazraoui":135.0,"Manuel Ugarte":120.0,"Lisandro Martínez":120.0,"Amad Diallo":120.0,"Leny Yoro":115.0,"Joshua Zirkzee":105.0,"Diogo Dalot":90.0,"Tyrell Malacia":75.0,"Senne Lammens":70.0,"André Onana":57.5,"Jadon Sancho":250,"Tom Heaton":45.0,"Patrick Dorgu":40.0,"Altay Bayındır":35.0,"Kobbie Mainoo":25.0,"Ayden Heaven":25.0,"Diego León":25.0,"Tyler Fredricson":25.0,"Chido Obi":15.0,"Harry Amass":10.0,"Ethan Ennis":5.0,"Joe Hugill":5.0,"Ethan Wheatley":5.0,"Dan Gore":3.0,"James Scanlon":1.5,"Radek Vítek":1.5,"Gabriele Biancheri":1.25,"Elyh Harrison":1.0,"Habeeb Ogunneye":1.0,"Ethan Williams":1.0,"Sonny Aljofree":0.75},"2026":{"Bruno Fernandes":320.0,"Marcus Rashford":300.0,"Youri Tielemans":250.0,"Matheus Cunha":220.0,"Benjamin Šeško":210.0,"Matthijs de Ligt":205.0,"Harry Maguire":180.0,"Bryan Mbeumo":170.0,"Kobbie Mainoo":160.0,"Carlos Baleba":150.0,"Mason Mount":150.0,"Luke Shaw":150.0,"Noussair Mazraoui":135.0,"Amad Diallo":130.0,"Lisandro Martínez":130.0,"Manuel Ugarte":130.0,"Leny Yoro":120.0,"Andrey Santos":120.0,"Joshua Zirkzee":110.0,"Diogo Dalot":95.0,"Senne Lammens":80.0,"Patrick Dorgu":50.0,"Tom Heaton":45.0,"Karl Darlow":35.0,"Ayden Heaven":35.0,"Shea Lacey":20.0,"Harry Amass":15.0,"Tyler Fletcher":15.0,"Dermot Mee":10.0,"Chido Obi":10.0,"Ethan Wheatley":8.0,"Jack Fletcher":8.0}};
+const POSN={GK:"Goalkeeper",DF:"Defender",MF:"Midfielder",FW:"Forward"};
+function openCareer(n){
+  const P=ALLP[n];if(!P)return;
+  const yrs=Object.keys(P.s).map(Number).sort((a,b)=>a-b);
+  let A=0,G=0,LA=0,LG=0,Y=0,R=0,AS=0;yrs.forEach(y=>{const v=P.s[y];LA+=v[0];LG+=v[1];A+=v[2];G+=v[3];Y+=v[4]||0;R+=v[5]||0;AS+=v[6]||0});
+  const astOk=y=>AST_SEASONS.includes(y), astAll=yrs.every(astOk);
+  const sq=squad.find(x=>x[2]===n);
+  const maxA=Math.max(...yrs.map(y=>P.s[y][2]),1);
+  const span=`${sl(yrs[0])} – ${yrs.at(-1)===2026?"present":sl(yrs.at(-1))}`;
+  // bars across every season from first to last, zeros included
+  let bars="";for(let y=yrs[0];y<=yrs.at(-1);y++){const v=P.s[y];bars+=`<div title="${sl(y)}: ${v?v[2]:0} apps, ${v?v[3]:0} goals">${v?`<i style="height:${(v[2]/maxA*100).toFixed(0)}%"></i>`:`<i class="z"></i>`}<small>${String(y).slice(2)}</small></div>`}
+  document.getElementById("pbody").innerHTML=`
+   <div class="phead">${avatar(n,{num:sq?sq[0]:null})}<div style="min-width:0"><div class="eyebrow">${POSN[P.pos]} · ${span}</div><h3 id="ptitle">${n}</h3>${sq?`<div class="meta">In the current squad</div>`:""}</div></div>
+   <div class="kpis"><div><b>${yrs.length}</b><small>Seasons</small></div><div><b>${A}</b><small>Apps</small></div><div><b>${G}</b><small>Goals</small></div><div><b>${AS}${astAll?"":"<sup>*</sup>"}</b><small>Assists</small></div></div>
+   <div class="facts" style="margin-top:8px"><span><b>${G+AS}</b> goal involvements</span><span><b>${A?(G/A).toFixed(2):"–"}</b> goals per game</span>${(()=>{let b=null;yrs.forEach(y=>{const w=PWAGE[y]&&PWAGE[y][n];if(w&&(!b||w>b[1]))b=[y,w]});const earned=Object.keys(PWAGE).reduce((t,y)=>t+(PWAGE[y][n]||0)*52/1000,0);return b?`<span><b>£${Math.round(b[1])}k</b> peak weekly wage (${sl(b[0])})</span><span><b>£${earned.toFixed(1)}m</b> earned at United</span>`:""})()}</div>
+   <h4>Appearances by season</h4><div class="cbars">${bars}</div>
+   <h4>Season by season</h4>
+   <div class="tbl"><table class="mini"><thead><tr><th>Season</th><th class="num">Apps</th><th class="num">Goals</th><th class="num">Ast</th><th class="num">PL apps</th><th class="num">PL goals</th><th class="num">Cards</th><th class="num">Wage /wk</th></tr></thead><tbody>
+   ${yrs.map(y=>{const v=P.s[y];const wk=PWAGE[y]?(PWAGE[y][n]??0):undefined;return `<tr><td>${sl(y)}</td><td class="num">${v[2]}</td><td class="num">${v[3]}</td><td class="num">${astOk(y)?(v[6]??0):(v[6]??"–")}</td><td class="num">${v[0]}</td><td class="num">${v[1]}</td><td class="num">${v[4]==null?"–":`${v[4]}Y${v[5]?` ${v[5]}R`:""}`}</td><td class="num">${wk!=null?(wk?`£${wk>=1?Math.round(wk):wk}k`:"£0"):"–"}</td></tr>`}).join("")}
+   <tr class="tot"><td>Total</td><td class="num">${A}</td><td class="num">${G}</td><td class="num">${AS}${astAll?"":"*"}</td><td class="num">${LA}</td><td class="num">${LG}</td><td class="num">${Y}Y${R?` ${R}R`:""}</td><td class="num">–</td></tr></tbody></table></div>
+   ${astAll?"":`<p class="meta">* Assist data is incomplete for ${yrs.filter(y=>!astOk(y)).map(sl).join(", ")}, so the assist total may be low.</p>`}
+   ${yrs.includes(2026)?`<p class="meta">2026/27 is to 21 Oct; cards for this season aren't included.</p>`:""}
+   ${yrs[0]===2013?`<p class="meta">Figures start in 2013/14, so any earlier United seasons aren't counted.</p>`:""}
+   ${txHistory(n)}`;
+  if(!dlg.open){if(dlg.showModal){dlg.showModal()}else dlg.setAttribute("open","")}
+  dlg.scrollTop=0;
+}
+document.getElementById("pbody").addEventListener("click",e=>{const bk=e.target.closest("[data-back]");if(bk){const k=backTo;backTo=null;openManager(k);return}const b=e.target.closest("[data-career]");if(b){backTo=dlg.classList.contains("wide")?curMgr:null;openCareer(b.dataset.career)}});
+// Players tab
+let pS=2026, pSort="a", pQ="";
+const pRows=(M)=>{
+  if(M==="all")return Object.entries(ALLP).map(([n,P])=>{let r={n,pos:P.pos,seas:0,la:0,lg:0,a:0,g:0,y:0,r:0,as:0,gi:0};for(const y in P.s){const v=P.s[y];r.seas++;r.la+=v[0];r.lg+=v[1];r.a+=v[2];r.g+=v[3];r.y+=v[4]||0;r.r+=v[5]||0;r.as+=v[6]||0}r.gi=r.g+r.as;return r});
+  return Object.entries(ALLP).filter(([n,P])=>P.s[M]).map(([n,P])=>{const v=P.s[M];const as=AST_SEASONS.includes(M)?(v[6]??0):(v[6]??null);const w=PWAGE[M]?(PWAGE[M][n]??0):null;return {n,pos:P.pos,la:v[0],lg:v[1],a:v[2],g:v[3],y:v[4],r:v[5],as,gi:as==null?null:v[3]+as,w}});
+};
+function renderPlayers(scroll){
+  const counts={};for(let s=FIRST;s<=LAST;s++)counts[s]=Object.values(ALLP).filter(P=>P.s[s]).length;
+  const mx=Math.max(...Object.values(counts));
+  let strip="";for(let s=FIRST;s<=LAST;s++)strip+=`<button class="sn" id="ps-${s}" data-ps="${s}" aria-pressed="${pS===s}" aria-label="${sl(s)}, ${counts[s]} players used"><span class="b"><i style="height:${(counts[s]/mx*100).toFixed(0)}%"></i></span>${String(s).slice(2)}/${String(s+1).slice(2)}</button>`;
+  strip+=`<button class="sn all" id="ps-all" data-ps="all" aria-pressed="${pS==="all"}" aria-label="All seasons combined"><span class="b"><i style="height:100%"></i></span>All</button>`;
+  const idx=pS==="all"?LAST+1:pS;
+  document.getElementById("pbar").innerHTML=`<button class="step" data-pstep="-1" aria-label="Previous season" ${idx===FIRST?"disabled":""}>‹</button><div class="strip">${strip}</div><button class="step" data-pstep="1" aria-label="Next season" ${idx===LAST+1?"disabled":""}>›</button>`;
+  const q=pQ.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  const M=q?"all":pS;
+  let rows=pRows(M);
+  if(document.getElementById("pacad").checked)rows=rows.filter(r=>ACADEMY.has(r.n));
+  if(q)rows=rows.filter(r=>r.n.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q));
+  rows.sort((a,b)=>pSort==="n"?a.n.localeCompare(b.n):((b[pSort]??-1)-(a[pSort]??-1))||b.a-a.a||a.n.localeCompare(b.n));
+  const cols=[["n","Player"],...(M==="all"?[["seas","Seasons"]]:[]),["a","Apps"],["g","Goals"],["as","Assists"],["gi","G+A"],["la","PL apps"],["lg","PL goals"],["y","Yellow"],["r","Red"],...(M!=="all"&&PWAGE[M]?[["w","Wage /wk"]]:[])];
+  const top=rows.reduce((t,r)=>t+r.g,0);
+  const title=q?`Search results <em>every season, 2013/14 – 2026/27</em>`:M==="all"?`Every player, 2013/14 – 2026/27`:`${sl(M)} <em>${MS[M]}</em>`;
+  document.getElementById("pview").innerHTML=`<h2>${title}</h2><div class="totals"><span><b>${rows.length}</b>${q?"matching ":""}players</span><span><b>${top}</b>goals between them</span>${M===2026?`<span class="formnote">To 21 Oct; cards not yet included</span>`:""}${M!=="all"&&PWAGE[M]?`<span><b>£${(Object.values(PWAGE[M]).reduce((a,b)=>a+b,0)/1000).toFixed(2)}m</b>a week in player wages</span>`:M!=="all"?`<span class="formnote">No wage data for this season yet</span>`:""}${M==="all"&&AST_SEASONS.length<14?`<span class="formnote">Assists cover ${AST_SEASONS.length} of 14 seasons</span>`:AST_PARTIAL.includes(M)?`<span class="formnote">Assists: only the top 6 providers are known this season</span>`:!AST_SEASONS.includes(M)?`<span class="formnote">No assist data for this season yet</span>`:""}</div>
+   ${rows.length?`<div class="tbl"><table class="ptbl"><thead><tr>${cols.map(([k,l])=>`<th class="${k==="n"?"":"num"}"><button data-sort="${k}" ${pSort===k?`aria-sort="${k==="n"?"ascending":"descending"}"`:""}>${l}${pSort===k?(k==="n"?" ↑":" ↓"):""}</button></th>`).join("")}</tr></thead><tbody>
+   ${rows.map(r=>`<tr data-career="${r.n}" tabindex="0"><td><span class="pcell">${avatar(r.n)}<span><span class="pn">${r.n}</span><span class="pp">${r.pos}</span>${ACADEMY.has(r.n)?`<span class="tag acad">Academy</span>`:""}</span></span></td>${M==="all"?`<td class="num">${r.seas}</td>`:""}<td class="num ${pSort==="a"?"hl":""}">${r.a}</td><td class="num ${pSort==="g"?"hl":""}">${r.g}</td><td class="num ${pSort==="as"?"hl":""}">${r.as??"–"}</td><td class="num ${pSort==="gi"?"hl":""}">${r.gi??"–"}</td><td class="num">${r.la}</td><td class="num">${r.lg}</td><td class="num">${r.y??"–"}</td><td class="num">${r.r??"–"}</td>${M!=="all"&&PWAGE[M]?`<td class="num ${pSort==="w"?"hl":""}">${r.w!=null?(r.w?`£${r.w>=1?Math.round(r.w):r.w}k`:"£0"):"–"}</td>`:""}</tr>`).join("")}</tbody></table></div>`
+   :`<div class="empty">No one called "${pQ}" played for United ${M==="all"?"between 2013/14 and now":`in ${sl(M)}`}. Check the spelling, or try a surname only.</div>`}`;
+  if(scroll)document.getElementById("ps-"+pS)?.scrollIntoView({inline:"center",block:"nearest"});
+}
+const stepP=d=>{const order=[];for(let s=FIRST;s<=LAST;s++)order.push(s);order.push("all");const i=Math.min(order.length-1,Math.max(0,order.indexOf(pS)+d));pS=order[i];renderPlayers(true)};
+document.getElementById("pbar").addEventListener("click",e=>{const st=e.target.closest("[data-pstep]"),sn=e.target.closest("[data-ps]");if(st){stepP(+st.dataset.pstep);document.querySelector(`[data-pstep="${st.dataset.pstep}"]`)?.focus()}else if(sn){pS=sn.dataset.ps==="all"?"all":+sn.dataset.ps;renderPlayers(true);document.getElementById("ps-"+pS)?.focus()}});
+document.getElementById("pbar").addEventListener("keydown",e=>{if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;e.preventDefault();stepP(e.key==="ArrowRight"?1:-1);document.getElementById("ps-"+pS)?.focus()});
+document.getElementById("pview").addEventListener("click",e=>{const s=e.target.closest("[data-sort]");if(s){pSort=s.dataset.sort;renderPlayers();document.querySelector(`[data-sort="${pSort}"]`)?.focus();return}const r=e.target.closest("[data-career]");if(r){lastCard=r;openCareer(r.dataset.career)}});
+document.getElementById("pview").addEventListener("keydown",e=>{if(e.key!=="Enter")return;const r=e.target.closest("tr[data-career]");if(r){lastCard=r;openCareer(r.dataset.career)}});
+document.getElementById("psearch").addEventListener("input",e=>{pQ=e.target.value;renderPlayers()});
+document.getElementById("pacad").addEventListener("change",()=>renderPlayers());
+Promise.resolve().then(()=>renderPlayers(false));
+
+// ---- Top 10 boards ----
+function renderBoards(){
+  const deals=(dir)=>{const out=[];for(const k in D){const list=D[k][dir];list.forEach(r=>{if(r[3]&&r[5]!=="loan"&&r[5]!=="swap")out.push({n:r[1],v:r[3],d:`${dir==="in"?"from":"to"} ${r[2]} · ${r[0].replace(/^\d+ /,"")} · ${SHORT[k]}`})})}
+    if(dir==="out")outs.forEach(r=>{const f=num(r[4]);if(f&&!out.some(o=>o.n===r[1]&&o.d.includes("2026")))out.push({n:r[1],v:f,d:`to ${r[3]} · ${r[0].replace(/^\d+ /,"")} 2026 · Carrick`})});
+    const seen=new Set();return out.sort((a,b)=>b.v-a.v).filter(o=>{const key=o.n+o.v;if(seen.has(key))return false;seen.add(key);return true}).slice(0,10)};
+  const career=Object.entries(ALLP).map(([n,P])=>{let a=0,g=0,lg=0,y=0,r=0,as=0,ys=Object.keys(P.s).map(Number);for(const s in P.s){const v=P.s[s];a+=v[2];g+=v[3];lg+=v[1];y+=v[4]||0;r+=v[5]||0;as+=v[6]||0}return {n,a,g,lg,y,r,as,gi:g+as,pos:P.pos,span:`${sl(Math.min(...ys))}${ys.length>1?`–${Math.max(...ys)===2026?"now":String(Math.max(...ys)+1).slice(2)}`:""}`}});
+  const singles=[];Object.entries(ALLP).forEach(([n,P])=>{for(const s in P.s)singles.push({n,s:+s,a:P.s[s][2],g:P.s[s][3],as:P.s[s][6]??0})});
+  const astNote=AST_SEASONS.length<14?` · ${AST_SEASONS.length} of 14 seasons so far`:"";
+  const top=(arr,key,fmt,det)=>arr.slice().sort((a,b)=>b[key]-a[key]||a.n.localeCompare(b.n)).slice(0,10).map(o=>({n:o.n,v:o[key],f:fmt(o),d:det(o)}));
+  const B=[
+   ["Record signings","Biggest reported base fees paid",deals("in").map(o=>({...o,f:`£${o.v}m`}))],
+   ["Biggest sales","Largest reported fees received",deals("out").map(o=>({...o,f:`£${o.v}m`}))],
+   ["Most appearances","All competitions, 2013/14 to now",top(career,"a",o=>o.a,o=>`${o.pos} · ${o.span}`)],
+   ["Most goals","All competitions, 2013/14 to now",top(career,"g",o=>o.g,o=>`${o.a} apps · ${o.span}`)],
+   ["Most assists",`All competitions${astNote}`,top(career,"as",o=>o.as,o=>`${o.a} apps · ${o.span}`)],
+   ["Most goal involvements",`Goals plus assists${astNote}`,top(career,"gi",o=>o.gi,o=>`${o.g} goals, ${o.as} assists`)],
+   ["Best season for assists",`Most assists in one season${astNote}`,singles.slice().sort((a,b)=>b.as-a.as||b.g-a.g).slice(0,10).map(o=>({n:o.n,v:o.as,f:o.as,d:`${sl(o.s)} · ${o.g} goals`}))],
+   ["Most Premier League goals","League only",top(career,"lg",o=>o.lg,o=>`${o.g} in all comps`)],
+   ["Best goals per game","Minimum 50 appearances",top(career.filter(o=>o.a>=50).map(o=>({...o,gpg:o.g/o.a})),"gpg",o=>o.gpg.toFixed(2),o=>`${o.g} goals in ${o.a}`)],
+   ["Best single season","Most goals in one season, all comps",singles.sort((a,b)=>b.g-a.g||a.a-b.a).slice(0,10).map(o=>({n:o.n,v:o.g,f:o.g,d:`${sl(o.s)} · ${o.a} apps`}))],
+   ["Most games in a season","Appearances in one season",singles.slice().sort((a,b)=>b.a-a.a||b.g-a.g).slice(0,10).map(o=>({n:o.n,v:o.a,f:o.a,d:`${sl(o.s)} · ${o.g} goals`}))],
+   ["Most yellow cards","2013/14 to 2025/26",top(career,"y",o=>o.y,o=>`${o.r?`plus ${o.r} red${o.r>1?"s":""} · `:""}${o.a} apps`)],
+   ["Most earned at United","Weekly wage × 52, every season since 2013/14",Object.entries(Object.entries(PWAGE).reduce((acc,[y,d])=>{for(const n in d)acc[n]=(acc[n]||0)+d[n]*52/1000;return acc},{})).map(([n,v])=>({n,v,f:`£${v.toFixed(0)}m`,d:`${Object.keys(PWAGE).filter(y=>PWAGE[y][n]).length} seasons`})).sort((a,b)=>b.v-a.v).slice(0,10)],
+   ["Biggest academy sales","Academy graduates sold for a fee",acadRows().filter(r=>r.fee>0).sort((a,b)=>b.fee-a.fee).slice(0,10).map(r=>({n:r.n,v:r.fee,f:`£${r.fee}m`,d:`to ${r.sale.club} · ${r.sale.d.replace(/^\d+ /,"")}`}))],
+   ["Highest-paid seasons","Weekly wage in a single season",Object.entries(PWAGE).flatMap(([y,d])=>Object.entries(d).map(([n,w])=>({n,v:w,f:`£${Math.round(w)}k`,d:`${sl(+y)}`}))).sort((a,b)=>b.v-a.v).slice(0,10)],
+   ["Highest weekly wages","Current squad",Object.entries(wages).map(([n,w])=>({n,v:w[0],f:`£${w[0]}k`,d:(squad.find(p=>p[2]===n)||[])[3]||""})).sort((a,b)=>b.v-a.v).slice(0,10)]
+  ];
+  document.getElementById("boards").innerHTML=B.map(([t,s,rows])=>{const mx=Math.max(...rows.map(r=>+r.v),0.0001);return `<div class="board"><h3>${t}</h3><div class="sub">${s}</div><ol>${rows.map((r,i)=>`<li><span class="rk">${i+1}</span><span class="who">${ALLP[r.n]?`<button data-career="${r.n}">${r.n}</button>`:`<strong style="font-size:14px">${r.n}</strong>`}<span>${r.d}</span></span><span class="val">${r.f}</span><span class="bk"><i style="width:${(r.v/mx*100).toFixed(0)}%"></i></span></li>`).join("")}</ol></div>`}).join("");
+}
+function renderScorers(){
+  const lead=(s,i)=>{let best=-1,who=[];for(const n in ALLP){const v=ALLP[n].s[s];if(!v)continue;if(v[i]>best){best=v[i];who=[n]}else if(v[i]===best)who.push(n)}return {best,who}};
+  const fmt=(o)=>o.best>0?`${o.who.map(n=>`<button class="plink" data-career="${n}">${n}</button>`).join(" &amp; ")}<span class="gl">${o.best}</span>`:"–";
+  let rows="";for(let s=LAST;s>=FIRST;s--){const pl=lead(s,1),all=lead(s,3);rows+=`<tr><td class="ssn">${sl(s)}${s===LAST?"<small>so far</small>":`<small>${MGR[s]}</small>`}</td><td>${fmt(pl)}</td><td>${fmt(all)}</td></tr>`}
+  document.getElementById("scorers").innerHTML=`<thead><tr><th>Season</th><th>Premier League</th><th>All competitions</th></tr></thead><tbody>${rows}</tbody>`;
+}
+Promise.resolve().then(()=>Promise.resolve()).then(renderScorers);
+document.getElementById("scorers").addEventListener("click",e=>{const b=e.target.closest("[data-career]");if(b){lastCard=b;openCareer(b.dataset.career)}});
+document.getElementById("boards").addEventListener("click",e=>{const b=e.target.closest("[data-career]");if(b){lastCard=b;openCareer(b.dataset.career)}});
+Promise.resolve().then(()=>Promise.resolve()).then(renderBoards);
+
+// ---- Trophies & cup runs ----
+const WON=[
+ [2013,"Community Shield","2–0 v Wigan Athletic","Moyes"],
+ [2016,"FA Cup","2–1 v Crystal Palace (aet)","Van Gaal"],
+ [2016,"Community Shield","2–1 v Leicester City","Mourinho"],
+ [2017,"League Cup","3–2 v Southampton","Mourinho"],
+ [2017,"Europa League","2–0 v Ajax, Stockholm","Mourinho"],
+ [2023,"League Cup","2–0 v Newcastle United","Ten Hag"],
+ [2024,"FA Cup","2–1 v Manchester City","Ten Hag"]];
+const LOSTF=[
+ [2017,"UEFA Super Cup","1–2 v Real Madrid"],
+ [2018,"FA Cup final","0–1 v Chelsea"],
+ [2021,"Europa League final","1–1 v Villarreal, lost 10–11 on pens"],
+ [2023,"FA Cup final","1–2 v Manchester City"],
+ [2024,"Community Shield","1–1 v Manchester City, lost on pens"],
+ [2025,"Europa League final","0–1 v Tottenham"]];
+// [season, league pos, FA Cup, League Cup, Europe, other]; stage code|label|knocked out by
+const RUNS=[
+ [2013,7,"e|Third round|Swansea City","sf|Semi-final|Sunderland (pens)","qf|UCL quarter-final|Bayern Munich","w|Community Shield winners"],
+ [2014,4,"qf|Quarter-final|Arsenal","e|Second round|MK Dons","na|Not in Europe",""],
+ [2015,5,"w|Winners","e|Fourth round|Middlesbrough (pens)","e|UCL group stage, then Europa League last 16|Liverpool",""],
+ [2016,6,"qf|Quarter-final|Chelsea","w|Winners","w|Europa League winners","w|Community Shield winners"],
+ [2017,2,"f|Runners-up|Chelsea","qf|Quarter-final|Bristol City","e|UCL last 16|Sevilla","f|Super Cup runners-up"],
+ [2018,6,"qf|Quarter-final|Wolves","e|Third round|Derby County (pens)","qf|UCL quarter-final|Barcelona",""],
+ [2019,3,"sf|Semi-final|Chelsea","sf|Semi-final|Manchester City","sf|Europa League semi-final|Sevilla",""],
+ [2020,2,"qf|Quarter-final|Leicester City","sf|Semi-final|Manchester City","f|UCL group stage, then Europa League runners-up|Villarreal",""],
+ [2021,6,"e|Fourth round|Middlesbrough (pens)","e|Third round|West Ham","e|UCL last 16|Atlético Madrid",""],
+ [2022,3,"f|Runners-up|Manchester City","w|Winners","qf|Europa League quarter-final|Sevilla",""],
+ [2023,8,"w|Winners","e|Fourth round|Newcastle United","e|UCL group stage (4th)",""],
+ [2024,15,"e|Fifth round|Fulham (pens)","qf|Quarter-final|Tottenham","f|Europa League runners-up|Tottenham","f|Community Shield runners-up"],
+ [2025,3,"e|Third round|Brighton","e|Second round|Grimsby Town (pens)","na|Not in Europe",""],
+ [2026,"13*","live|Enters in January","e|Third round|Brighton","live|UCL league phase, in progress (22nd)",""]];
+const MGR={2013:"Moyes",2014:"Van Gaal",2015:"Van Gaal",2016:"Mourinho",2017:"Mourinho",2018:"Mourinho / Solskjær",2019:"Solskjær",2020:"Solskjær",2021:"Solskjær / Rangnick",2022:"Ten Hag",2023:"Ten Hag",2024:"Ten Hag / Amorim",2025:"Amorim / Carrick",2026:"Carrick"};
+function cell(c){if(!c)return `<span class="stg na">–</span>`;const [k,l,by]=c.split("|");return `<span class="stg ${k}">${l}</span>${by?`<span class="by">${k==="f"?"lost to":"out to"} ${by}</span>`:""}`}
+function renderHonours(){
+  const major=WON.filter(w=>w[1]!=="Community Shield").length;
+  document.getElementById("cabinet").outerHTML=`<div class="cabhead"><span><b>${major}</b>major trophies</span><span><b>${WON.length-major}</b>Community Shields</span><span><b>${LOSTF.length}</b>finals lost</span><span class="formnote">No league title since 2012/13</span></div><div class="cabinet" id="cabinet">${WON.map(w=>`<div class="cup"><div class="yr">${w[0]}</div><div class="cn">${w[1]}</div><div class="fx">${w[2]} · ${w[3]}</div></div>`).join("")}${LOSTF.map(l=>`<div class="cup lost"><div class="yr">${l[0]}</div><div class="cn">${l[1]}</div><div class="fx">${l[2]}</div></div>`).join("")}</div>`;
+  document.getElementById("stagekey").innerHTML=`<span><span class="stg w">Won</span></span><span><span class="stg f">Final</span></span><span><span class="stg sf">Semi / quarter</span></span><span><span class="stg">Earlier exit</span></span><span><span class="stg live">Still to play</span></span>`;
+  document.getElementById("runs").innerHTML=`<thead><tr><th>Season</th><th>League</th><th>FA Cup</th><th>League Cup</th><th>Europe</th><th>Other</th></tr></thead><tbody>${RUNS.slice().reverse().map(r=>{const p=parseInt(r[1]);return `<tr><td class="ssn">${sl(r[0])}<small>${MGR[r[0]]}</small></td><td><span class="pos ${p<=4?"top4":p>=10?"low":""}">${r[1]}</span></td><td>${cell(r[2])}</td><td>${cell(r[3])}</td><td>${cell(r[4])}</td><td>${cell(r[5])}</td></tr>`}).join("")}</tbody>`;
+  const AT=[[20,"League titles","Last in 2012/13"],[13,"FA Cups","Last in 2024"],[6,"League Cups","Last in 2023"],[3,"European Cups","1968, 1999, 2008"],[1,"Europa League","2017"],[1,"Cup Winners' Cup","1991"],[1,"UEFA Super Cup","1991"],[1,"Intercontinental Cup","1999"],[1,"Club World Cup","2008"],[21,"Community Shields","4 of them shared"]];
+  document.getElementById("alltime").innerHTML=AT.map(a=>`<div><b>${a[0]}</b><span>${a[1]}</span><small>${a[2]}</small></div>`).join("");
+}
+Promise.resolve().then(renderHonours);
+
+// ---- Manager comparison ----
+// [name, spend key, tenure, P, W, D, L, trophies, best league finish, interim?]  P/W/D/L: Wikipedia list of managers to 10 Sep 2026, Carrick updated to 21 Oct
+const MREC=[
+ ["David Moyes","David Moyes","Jul 2013 – Apr 2014",51,27,9,15,"Community Shield","7th"],
+ ["Louis van Gaal","Louis van Gaal","Jul 2014 – May 2016",103,54,25,24,"FA Cup","4th"],
+ ["José Mourinho","José Mourinho","May 2016 – Dec 2018",144,84,32,28,"Europa League, League Cup, Community Shield","2nd"],
+ ["Ole Gunnar Solskjær","Ole Gunnar Solskjær","Dec 2018 – Nov 2021",168,91,37,40,"–","2nd"],
+ ["Ralf Rangnick","Ralf Rangnick","Dec 2021 – May 2022",29,11,10,8,"–","6th",true],
+ ["Erik ten Hag","Erik ten Hag","May 2022 – Oct 2024",128,70,23,35,"FA Cup, League Cup","3rd"],
+ ["Ruben Amorim","Ruben Amorim","Nov 2024 – Jan 2026",63,24,18,21,"–","15th"],
+ ["Michael Carrick","Michael Carrick|Head coach","Jan 2026 – now",28,14,7,7,"–","3rd"]];
+const CARE=[["Ryan Giggs",4,2,1,1],["Michael Carrick (2021)",3,2,1,0],["Ruud van Nistelrooy",4,3,1,0],["Darren Fletcher",2,0,1,1]];
+function renderMgrComp(){
+  const best=Math.max(...MREC.map(m=>m[4]/m[3]));
+  document.getElementById("mcomp").innerHTML=`<thead><tr><th>Manager</th><th class="num">Games</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th>Win rate</th><th class="num">Spend</th><th class="num">Spend per win</th><th>Best league finish</th><th>Trophies</th></tr></thead><tbody>${MREC.map(m=>{const wr=m[4]/m[3]*100,sp=(spend[m[1]]||[0])[0];return `<tr class="${m[9]?"int":""}" data-mgr="${m[1]}" tabindex="0"><td class="mn"><span class="mcell">${avatar(m[0],{mgr:true})}<span>${m[0]}<small>${m[2]}${m[9]?" · interim":""}</small></span></span></td><td class="num">${m[3]}</td><td class="num">${m[4]}</td><td class="num">${m[5]}</td><td class="num">${m[6]}</td><td><span class="wbar"><i><b style="width:${(wr/(best*100)*100).toFixed(0)}%"></b></i><span class="num">${wr.toFixed(1)}%</span></span></td><td class="num">${sp?`${(spend[m[1]]||[])[1]?"≈":""}£${sp}m`:"£0"}</td><td class="num">${sp?`£${(sp/m[4]).toFixed(1)}m`:"–"}</td><td>${m[8]}</td><td style="white-space:normal;min-width:150px">${m[7]}</td></tr>`}).join("")}</tbody>`;
+  document.getElementById("mcompnote").textContent=`Caretakers: ${CARE.map(c=>`${c[0]} ${c[2]}W ${c[3]}D ${c[4]}L`).join(" · ")}. Win rates count every competitive game; Carrick's include this season to 21 Oct. Spend is gross transfer spend during each spell.`;
+  // League position chart
+  const W=700,H=300,L=34,R=26,T=52,B=46,yr=RUNS.map(r=>r[0]),n=yr.length;
+  const X=i=>L+i*(W-L-R)/(n-1), Y=p=>T+(p-1)*(H-T-B)/15;
+  const owner={2013:"Moyes",2014:"Van Gaal",2015:"Van Gaal",2016:"Mourinho",2017:"Mourinho",2018:"Solskjær",2019:"Solskjær",2020:"Solskjær",2021:"Rangnick",2022:"Ten Hag",2023:"Ten Hag",2024:"Amorim",2025:"Carrick",2026:"Carrick"};
+  let bands="",k=0,i=0;while(i<n){let j=i;while(j+1<n&&owner[yr[j+1]]===owner[yr[i]])j++;const x0=i===0?L-10:(X(i-1)+X(i))/2,x1=j===n-1?W-R+6:(X(j)+X(j+1))/2;bands+=`<rect class="band${k%2}" x="${x0.toFixed(1)}" y="4" width="${(x1-x0).toFixed(1)}" height="${H-B+14}"/><text class="mlab" x="${((x0+x1)/2).toFixed(1)}" y="20" text-anchor="middle">${owner[yr[i]]}</text>`;k++;i=j+1}
+  const grid=[1,4,8,12,16].map(p=>`<line class="grid" x1="${L-10}" x2="${W-R+6}" y1="${Y(p)}" y2="${Y(p)}"/><text x="${L-16}" y="${Y(p)+4}" text-anchor="end">${p}</text>`).join("");
+  const cl=`<line class="cl" x1="${L-10}" x2="${W-R+6}" y1="${(Y(4)+Y(5))/2}" y2="${(Y(4)+Y(5))/2}"/><text x="${L-6}" y="${(Y(4)+Y(5))/2+13}" text-anchor="start">top four</text>`;
+  const pts=RUNS.map((r,i)=>[X(i),Y(parseInt(r[1])),parseInt(r[1]),r[0]]);
+  const line=`<polyline class="line" points="${pts.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ")}"/>`;
+  const dots=pts.map((p,i)=>{const pv=pts[i-1]?.[2]??99,nx=pts[i+1]?.[2]??99,above=p[2]<=pv&&p[2]<=nx;return `<circle class="dot${p[3]===2026?" live":""}" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="5"><title>${sl(p[3])}: ${p[2]}${p[3]===2026?" (so far)":""}</title></circle><text class="lbl" x="${p[0].toFixed(1)}" y="${(p[1]+(above?-11:21)).toFixed(1)}" text-anchor="middle">${p[2]}</text>`}).join("");
+  const xl=pts.map(p=>`<text x="${p[0].toFixed(1)}" y="${H-8}" text-anchor="middle">${String(p[3]).slice(2)}/${String(p[3]+1).slice(2)}</text>`).join("");
+  document.getElementById("poschart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="United's league finish each season from 2013/14 (7th) to 2026/27 (13th so far); best 2nd in 2017/18 and 2020/21, worst 15th in 2024/25">${bands}${grid}${cl}${line}${dots}${xl}</svg><div class="legend" style="padding:4px 6px 2px"><span>1st at the top. Hollow dot = this season so far.</span></div>`;
+}
+
+
+// ---- Wage bill (club accounts, employee benefit expenses, £m; season start year -> year to 30 June) ----
+const WAGES={2012:181.0,2013:214.8,2014:202.8,2015:232.2,2016:263.5,2017:295.9,2018:332.4,2019:284.0,2020:322.6,2021:384.2,2022:331.4,2023:364.7,2024:313.3,2025:302.0};
+const WOWN={2013:"Moyes",2014:"Van Gaal",2015:"Van Gaal",2016:"Mourinho",2017:"Mourinho",2018:"Solskjær",2019:"Solskjær",2020:"Solskjær",2021:"Rangnick",2022:"Ten Hag",2023:"Ten Hag",2024:"Amorim",2025:"Carrick"};
+const WKEY={"Moyes":"David Moyes","Van Gaal":"Louis van Gaal","Mourinho":"José Mourinho","Solskjær":"Ole Gunnar Solskjær","Rangnick":"Ralf Rangnick","Ten Hag":"Erik ten Hag","Amorim":"Ruben Amorim","Carrick":"Michael Carrick|Head coach"};
+function wageSpells(){const out=[];let cur=null;for(let y=2013;y<=2025;y++){const o=WOWN[y];if(!cur||cur.m!==o){cur={m:o,first:y,last:y};out.push(cur)}else cur.last=y}
+  return out.map(c=>({...c,key:WKEY[c.m],before:WAGES[c.first-1],after:WAGES[c.last],diff:WAGES[c.last]-WAGES[c.first-1]}))}
+const pBill=y=>PWAGE[y]?Object.values(PWAGE[y]).reduce((a,b)=>a+b,0):null; // weekly £k
+function renderWages(){
+  const ys=Object.keys(WAGES).map(Number).filter(y=>y>=2013);
+  const W=700,H=250,L=40,R=14,T=40,B=34,mx=400,n=ys.length,bw=(W-L-R)/n;
+  const Y=v=>T+(1-v/mx)*(H-T-B);
+  let bands="",k=0;wageSpells().forEach(sp=>{const i0=ys.indexOf(sp.first),i1=ys.indexOf(sp.last);const x0=L+i0*bw,x1=L+(i1+1)*bw;bands+=`<rect class="band${k%2}" x="${x0.toFixed(1)}" y="4" width="${(x1-x0).toFixed(1)}" height="${H-B}"/><text class="mlab" x="${((x0+x1)/2).toFixed(1)}" y="20" text-anchor="middle">${sp.m}</text>`;k++});
+  const grid=[0,100,200,300,400].map(v=>`<line class="grid" x1="${L}" x2="${W-R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}"/><text x="${L-6}" y="${(Y(v)+4).toFixed(1)}" text-anchor="end">£${v}m</text>`).join("");
+  const bars=ys.map((y,i)=>{const v=WAGES[y],pw=pBill(y)*52/1000,x=L+i*bw+bw*.12,w=bw*.42,x2=x+w+2;return `<rect class="wbarr" x="${x.toFixed(1)}" y="${Y(v).toFixed(1)}" width="${w.toFixed(1)}" height="${(Y(0)-Y(v)).toFixed(1)}"><title>${sl(y)}: £${v}m total staff costs</title></rect><rect class="wbarp" x="${x2.toFixed(1)}" y="${Y(pw).toFixed(1)}" width="${(w*.8).toFixed(1)}" height="${(Y(0)-Y(pw)).toFixed(1)}"><title>${sl(y)}: £${pw.toFixed(0)}m player wages (Capology)</title></rect><text class="lbl" style="font-size:12px" x="${(x+w/2).toFixed(1)}" y="${(Y(v)-5).toFixed(1)}" text-anchor="middle">${Math.round(v)}</text><text x="${(x+w/2).toFixed(1)}" y="${H-12}" text-anchor="middle">${String(y).slice(2)}/${String(y+1).slice(2)}</text>`}).join("");
+  document.getElementById("wagechart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Wage bill by season from £215m in 2013/14 to a peak of £384m in 2021/22, then down to £302m in 2025/26, with player wages shown alongside">${bands}${grid}${bars}</svg><div class="legend" style="padding:4px 6px 2px"><span><i style="background:var(--red)"></i>Total staff costs (club accounts)</span><span><i style="background:var(--gold)"></i>Player wages, weekly × 52 (Capology)</span></div>`;
+  document.getElementById("wagetbl").innerHTML=`<thead><tr><th>Manager</th><th>Seasons</th><th class="num">Inherited</th><th class="num">Left it at</th><th class="num">Change</th><th class="num">Player wages /wk</th><th class="num">Change</th></tr></thead><tbody>${wageSpells().map(sp=>`<tr data-mgr="${sp.key}" tabindex="0"><td class="mn"><span class="mcell">${avatar(sp.key.split("|")[0],{mgr:true})}<span>${sp.m}</span></span></td><td>${sl(sp.first)}${sp.last>sp.first?` – ${sl(sp.last)}`:""}</td><td class="num">£${sp.before.toFixed(1)}m</td><td class="num">£${sp.after.toFixed(1)}m</td><td class="num"><span class="wchg ${sp.diff>0?"up":"down"}">${sp.diff>0?"▲ +":"▼ −"}£${Math.abs(sp.diff).toFixed(1)}m</span><small class="pct">${sp.diff>0?"+":"−"}${Math.abs(sp.diff/sp.before*100).toFixed(0)}%</small></td>${(()=>{const pb=pBill(sp.first-1),pa=pBill(sp.last);if(pa==null)return `<td class="num">–</td><td class="num">–</td>`;const d=pb==null?null:pa-pb;return `<td class="num">${pb==null?"":`£${(pb/1000).toFixed(2)}m → `}£${(pa/1000).toFixed(2)}m</td><td class="num">${d==null?`<small class="pct">no earlier data</small>`:`<span class="wchg ${d>0?"up":"down"}">${d>0?"▲ +":"▼ −"}£${Math.abs(d).toFixed(0)}k</span><small class="pct">a week</small>`}</td>`})()}</tr>`).join("")}</tbody>`;
+}
+// ---- Money in/out per manager, £m, from the deal lists on this page ----
+let MONEY=[];
+const MLAB=[["David Moyes","Moyes","2013–14"],["Louis van Gaal","Van Gaal","2014–16"],["José Mourinho","Mourinho","2016–18"],["Ole Gunnar Solskjær","Solskjær","2018–21"],["Erik ten Hag","Ten Hag","2022–24"],["Ruben Amorim","Amorim","2024–26"],["Michael Carrick|Head coach","Carrick","2026–"]];
+function computeMoney(){
+  spend={"Ralf Rangnick":[0]};MONEY=[];
+  MLAB.forEach(([k,lab,span])=>{
+    const d=D[k];const inS=d.in.reduce((t,r)=>t+(r[3]||0),0);
+    const outL=k==="Michael Carrick|Head coach"?outs.map(r=>[r[0],r[1],r[3],num(r[4]),r[4],/Released/.test(r[4])?"free":undefined]):d.out;
+    const outS=outL.reduce((t,r)=>t+(r[3]&&r[5]!=="loan"?r[3]:0),0);
+    spend[k]=[Math.round(inS)];MONEY.push([k,lab,span,Math.round(inS),Math.round(outS)]);
+  });
+}
+const SEAS_OF={"David Moyes":[[2013]],"Louis van Gaal":[[2014],[2015]],"José Mourinho":[[2016],[2017],[2018,"until Dec"]],"Ole Gunnar Solskjær":[[2018,"from Dec"],[2019],[2020],[2021,"until Nov"]],"Ralf Rangnick":[[2021,"from Dec"]],"Erik ten Hag":[[2022],[2023],[2024,"until Oct"]],"Ruben Amorim":[[2024,"from Nov"],[2025,"until Jan"]],"Michael Carrick|Head coach":[[2025,"from Jan"],[2026,"so far"]]};
+function renderStack(){
+  const max=Math.max(...MONEY.map(m=>m[3]));
+  document.getElementById("stack").innerHTML=MONEY.map(m=>{const net=m[3]-m[4];return `<div class="srow" data-mgr="${m[0]}" role="button" tabindex="0"><div class="lbl">${m[1]}<small>${m[2]}</small></div><div><div class="sbar" style="width:${(m[3]/max*100).toFixed(1)}%"><span class="rec" style="width:${(m[4]/m[3]*100).toFixed(1)}%" title="Recouped £${m[4]}m"></span><span class="net" style="width:${(net/m[3]*100).toFixed(1)}%" title="Net spend £${net}m"></span></div><div class="snums"><span>Spent <b>£${m[3]}m</b></span><span>Recouped <b>£${m[4]}m</b></span><span>Net <b>£${net}m</b></span><span>${Math.round(m[4]/m[3]*100)}% back</span></div></div></div>`}).join("")+
+  `<div class="skey"><span><i style="background:var(--gold)"></i>Recouped from sales</span><span><i style="background:var(--red)"></i>Net spend</span><span>Whole bar = total spent</span></div>`;
+}
+Promise.resolve().then(()=>{computeMoney();renderSpendViews();renderMgrComp();renderStack();renderWages()});
+// Transfer windows: Jun–Oct = summer of that year; Nov–Dec and Jan–May = the January window of that season
+function winOf(dstr){const p=pd(dstr);const summer=p.m>=5&&p.m<=9;const start=p.m>=5?p.y:p.y-1;return {start,summer,key:start*2+(summer?0:1),label:summer?`Summer ${p.y}`:`January ${p.m<=4?p.y:p.y+1}`}}
+const wAt=(n,season)=>PWAGE[season]?(PWAGE[season][n]||0):null;
+// departures: last season they were listed, at or before their final season; signings: first season listed
+const wageOut=(n,season)=>{if(!PWAGE[season]&&!PWAGE[season-1])return null;for(let y=season;y>=2013;y--){const w=PWAGE[y]&&PWAGE[y][n];if(w)return w}return 0};
+const wageIn=(n,season)=>{if(!PWAGE[season])return null;for(let y=season;y<=season+1;y++){const w=PWAGE[y]&&PWAGE[y][n];if(w)return w}return 0};
+function windowView(ins,outsM){
+  const W={};const add=(r,dir)=>{const w=winOf(r[0]);const k=w.key;W[k]=W[k]||{...w,in:[],out:[]};
+    // signing: wage in their first season; departure: wage in their last season at the club
+    const wage=(r[5]==="loan"&&dir==="out")?null:dir==="in"?wageIn(r[1],w.start):wageOut(r[1],w.summer?w.start-1:w.start);W[k][dir].push({r,wage})};
+  ins.forEach(r=>add(r,"in"));outsM.forEach(r=>add(r,"out"));
+  const fmtk=v=>v==null?"–":v>=1000?`£${(v/1000).toFixed(2)}m`:`£${Math.round(v)}k`;
+  const row=(x,dir)=>`<li><span class="dn">${pname(x.r[1])}<small>${[x.r[2]==="—"?"":/^Retired/.test(x.r[2])?x.r[2]:`${dir==="in"?"from":"to"} ${x.r[2]}`,x.wage!=null?(x.wage?fmtk(x.wage)+"/wk":"£0/wk"):""].filter(Boolean).join(" · ")||"—"}</small></span><span>${feeLbl(x.r).replace(/ \+.*$/,"")}</span></li>`;
+  let totIn=0,totOut=0;
+  const cards=Object.values(W).sort((a,b)=>a.key-b.key).map(w=>{
+    const fi=w.in.reduce((t,x)=>t+(x.r[3]||0),0),fo=w.out.reduce((t,x)=>t+(x.r[3]||0),0);
+    const wi=w.in.reduce((t,x)=>t+(x.wage||0),0),wo=w.out.reduce((t,x)=>t+(x.wage||0),0),known=w.in.concat(w.out).some(x=>x.wage!=null);
+    totIn+=wi;totOut+=wo;const net=wi-wo;
+    return `<div class="wcard"><div class="whd"><h5>${w.label}</h5><span class="wsum">£${Math.round(fi)}m in · £${Math.round(fo)}m out</span></div>
+      ${known?`<div class="wwage"><span>Wages added <b>+${fmtk(wi)}</b></span><span>Wages removed <b>−${fmtk(wo)}</b></span><span class="wchg ${net>0?"up":"down"}">${net>0?"▲ +":net<0?"▼ −":""}${fmtk(Math.abs(net))}/wk</span></div>`:""}
+      <div class="mdeals">${w.in.length?`<div><div class="eyebrow" style="margin-bottom:2px">Signed</div><ul>${w.in.map(x=>row(x,"in")).join("")}</ul></div>`:""}${w.out.length?`<div><div class="eyebrow" style="margin-bottom:2px">Left</div><ul>${w.out.map(x=>row(x,"out")).join("")}</ul></div>`:""}</div></div>`}).join("");
+  const n=totIn-totOut;
+  return `<div class="facts" style="margin:2px 0 8px"><span>Wages across these windows: <b>+${fmtk(totIn)}</b> added, <b>−${fmtk(totOut)}</b> removed</span><span class="wchg ${n>0?"up":"down"}">${n>0?"▲ +":"▼ −"}${fmtk(Math.abs(n))}/wk</span></div>${cards}<p class="meta" style="font-size:12px">Signings, including loans in, count at their wage in their first season; departures at the last wage Capology listed for them. Loans out aren't counted.</p>`;
+}
+document.getElementById("pbody").addEventListener("click",e=>{const b=e.target.closest("[data-dv]");if(!b)return;const v=b.dataset.dv;document.querySelectorAll("#pbody [data-dv]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.dv===v));document.querySelectorAll("#pbody [data-dview]").forEach(x=>x.hidden=x.dataset.dview!==v)});
+// Players who came through United's academy (including youth signings who joined before turning pro)
+const ACADEMY=new Set(["Jonny Evans", "Darren Fletcher", "Tom Cleverley", "Danny Welbeck", "Ryan Giggs", "Michael Keane", "Tom Lawrence", "Tom Thorpe", "Tyler Blackett", "James Wilson", "Jesse Lingard", "Adnan Januzaj", "Paddy McNair", "Reece James", "Saidy Janko", "Andreas Pereira", "Marnick Vermijl", "Will Keane", "Joe Riley", "James Weir", "Regan Poole", "Donald Love", "Cameron Borthwick-Jackson", "Marcus Rashford", "Timothy Fosu-Mensah", "Axel Tuanzebe", "Scott McTominay", "Josh Harrop", "Angel Gomes", "Demetri Mitchell", "Joel Castro Pereira", "Dean Henderson", "James Garner", "Tahith Chong", "Mason Greenwood", "Brandon Williams", "Ethan Laird", "D'Mani Mellor", "Ethan Galbraith", "Di'Shon Bernard", "Largie Ramazani", "Dylan Levitt", "Teden Mengi", "Hannibal Mejbri", "Will Fish", "Anthony Elanga", "Shola Shoretire", "Charlie Savage", "Zidane Iqbal", "Alejandro Garnacho", "Charlie McNeill", "Kobbie Mainoo", "Dan Gore", "Willy Kambwala", "Omari Forson", "Ethan Wheatley", "Harry Amass", "Toby Collyer", "Tyler Fredricson", "Chido Obi", "Shea Lacey", "Jack Fletcher", "Tyler Fletcher", "Bendito Mantato", "Dermot Mee"]);
+function txHistory(n){
+  const ev=[];for(const y in SEAS)["in","out"].forEach(dir=>SEAS[y][dir].forEach(r=>{if(r.player===n)ev.push({...r,dir})}));
+  const sqp=squad.find(x=>x[2]===n), acad=ACADEMY.has(n)||(sqp&&sqp[4]==="acad");
+  if(!ev.length&&!acad)return "";
+  ev.sort((a,b)=>a.ord-b.ord);
+  const first=ALLP[n]?Math.min(...Object.keys(ALLP[n].s).map(Number)):null;
+  const acadLi=acad?`<li class="in acad"><span class="txd">Academy</span><span class="txw">Came through the United academy<small>${first!=null?`First-team debut season ${sl(first)}`:"Yet to make a first-team appearance"}</small></span></li>`:"";
+  const what=r=>{const lab=r.label||"",club=r.club;
+    if(r.dir==="in")return r.kind==="loan"?`Joined on loan from ${club}`:r.kind==="free"?`Signed on a free from ${club}`:r.kind==="swap"?`Signed from ${club} in a swap`:`Signed from ${club}`;
+    if(r.kind==="loan")return `Loaned to ${club}`;
+    if(r.kind==="loanend")return `Loan ended, returned to ${club}`;
+    if(/^Retired/.test(club))return club;
+    if(r.kind==="swap")return `Swapped to ${club}`;
+    if(/Released|Contract ended/.test(lab))return club&&club!=="—"?`Released, joined ${club}`:"Released";
+    if(r.kind==="free")return club&&club!=="—"?`Left on a free to ${club}`:"Left on a free";
+    return `Sold to ${club}`};
+  const fee=r=>{const l=r.label||(r.fee!=null?`£${r.fee}m`:"");return /^(Free|Released|Retired|Contract ended|Loan ended)$/.test(l)||/^(Swap|Loan)/.test(l)?"":l};
+  return `<h4>Transfer history</h4><ol class="txh">${acadLi}${ev.map(r=>`<li class="${r.dir}"><span class="txd">${r.d.replace(/^\d+ /,"")}</span><span class="txw">${what(r)}<small>${r.mgr}${fee(r)?` · ${fee(r)}`:""}</small></span></li>`).join("")}</ol>`;
+}
+const pname=n=>ALLP[n]?`<button class="plink2" data-career="${n}">${n}</button>`:`<b>${n}</b>`;
+let curMgr=null,backTo=null;
+function openManager(key){curMgr=key;
+  const rec=MREC.find(m=>m[1]===key), mon=MONEY.find(m=>m[0]===key), d=D[key], seas=SEAS_OF[key]||[];
+  if(!rec)return;
+  const wr=(rec[4]/rec[3]*100).toFixed(1);
+  const scorer=(s)=>{let b=-1,w=[];for(const n in ALLP){const v=ALLP[n].s[s];if(!v)continue;if(v[3]>b){b=v[3];w=[n]}else if(v[3]===b)w.push(n)}return b>0?`${w.join(" & ")} (${b})`:"–"};
+  const rows=seas.map(([s,part])=>{const r=RUNS.find(x=>x[0]===s);return `<tr><td class="ssn">${sl(s)}${part?`<small>${part}</small>`:""}</td><td><span class="pos">${r[1]}</span></td><td>${cell(r[2])}</td><td>${cell(r[3])}</td><td>${cell(r[4])}</td><td style="font-size:12.5px">${scorer(s)}</td></tr>`}).join("");
+  const ins=(d?d.in:[]).slice().sort((a,b)=>(b[3]||0)-(a[3]||0));
+  const outsM=(key==="Michael Carrick|Head coach"?outs.map(r=>[r[0]+" 2026",r[1],r[3],num(r[4]),r[4]]):(d?d.out:[])).filter(r=>r[5]!=="loan").slice().sort((a,b)=>(b[3]||0)-(a[3]||0));
+  const li=(r,dir)=>`<li><span class="dn">${pname(r[1])}<small>${r[2]==="—"?"—":/^Retired/.test(r[2])?r[2]:`${dir} ${r[2]}`}</small></span><span>${feeLbl(r).replace(/ \+.*$/,"")}</span></li>`;
+  const sumIn=sumF(d?d.in:[]), sumOut=outsM.reduce((t,r)=>t+(r[3]||0),0);
+  document.getElementById("pbody").innerHTML=`
+   <div class="phead">${avatar(rec[0],{mgr:true})}<div style="min-width:0"><div class="eyebrow">${rec[2]}${rec[9]?" · interim":""}</div><h3 id="ptitle">${rec[0]}</h3><div class="meta">${rec[7]==="–"?"No trophies":`Trophies: ${rec[7]}`}</div></div></div>
+   <div class="kpis"><div><b>${rec[3]}</b><small>Games</small></div><div><b>${wr}%</b><small>Win rate</small></div><div><b>${rec[4]}–${rec[5]}–${rec[6]}</b><small>Won–drawn–lost</small></div><div><b>${mon?`£${mon[3]-mon[4]}m`:"£0"}</b><small>Net spend</small></div></div>
+   ${mon?`<div class="facts" style="margin-top:8px"><span><b>£${mon[3]}m</b> spent</span><span><b>£${mon[4]}m</b> recouped</span><span><b>${Math.round(mon[4]/mon[3]*100)}%</b> of spend recovered</span></div>`:""}
+   ${(()=>{const sp=wageSpells().find(x=>x.key===key);const pb=sp?pBill(sp.first-1):null,pa=sp?pBill(sp.last):null;return sp?`<div class="facts" style="margin-top:4px"><span>Wage bill <b>£${Math.round(sp.before)}m</b> → <b>£${Math.round(sp.after)}m</b></span><span class="wchg ${sp.diff>0?"up":"down"}">${sp.diff>0?"▲ +":"▼ −"}£${Math.abs(sp.diff).toFixed(1)}m</span></div>${pa!=null?`<div class="facts"><span>Player wages <b>${pb!=null?`£${(pb/1000).toFixed(2)}m → `:""}£${(pa/1000).toFixed(2)}m</b> a week</span></div>`:""}`:""})()}
+   <h4>Season by season</h4>
+   <div class="tbl"><table class="runs mseas"><thead><tr><th>Season</th><th>League</th><th>FA Cup</th><th>League Cup</th><th>Europe</th><th>Top scorer</th></tr></thead><tbody>${rows}</tbody></table></div>
+   <p class="meta" style="font-size:12px">Part seasons show the whole season's outcome, including games under other managers.</p>
+   <h4>Deals in their spell</h4>
+   ${ins.length||outsM.length?`<div class="dtog" role="group" aria-label="Deals view"><button class="chip" data-dv="win" aria-pressed="true">By window</button><button class="chip" data-dv="all" aria-pressed="false">All players</button></div>
+   <div data-dview="win">${windowView(ins,outsM)}</div>
+   <div data-dview="all" hidden><div class="mdeals"><div><div class="eyebrow" style="margin-bottom:4px">Signed · £${Math.round(sumIn)}m in listed fees</div><ul>${ins.map(r=>li(r,"from")).join("")||"<li><span>No signings</span><span></span></li>"}</ul></div><div><div class="eyebrow" style="margin-bottom:4px">Sold or released · £${Math.round(sumOut)}m in listed fees</div><ul>${outsM.map(r=>li(r,"to")).join("")||"<li><span>No sales</span><span></span></li>"}</ul></div></div><p class="meta" style="font-size:12px">Major first-team deals with reported fees. Add-ons and small undisclosed fees are not included.</p></div>`:`<p class="meta">No transfers in this spell.</p>`}`;
+  dlg.classList.add("wide");
+  if(!dlg.open){if(dlg.showModal){dlg.showModal()}else dlg.setAttribute("open","")}
+  dlg.scrollTop=0;
+}
+dlg.addEventListener("close",()=>{dlg.classList.remove("wide");backTo=null});
+const _openCareer=openCareer;openCareer=function(n){dlg.classList.remove("wide");_openCareer(n);if(backTo){const m=MREC.find(x=>x[1]===backTo);document.getElementById("pbody").insertAdjacentHTML("afterbegin",`<button class="backbtn" data-back="1">← Back to ${m?m[0]:"manager"}</button>`)}};
+const mgrClick=e=>{const r=e.target.closest("[data-mgr]");if(r){lastCard=r;openManager(r.dataset.mgr)}};
+const mgrKey=e=>{if(e.key!=="Enter"&&e.key!==" ")return;const r=e.target.closest("[data-mgr]");if(r){e.preventDefault();lastCard=r;openManager(r.dataset.mgr)}};
+["mcomp","stack","timeline","wagetbl"].forEach(id=>{const el=document.getElementById(id);el.addEventListener("click",mgrClick);el.addEventListener("keydown",mgrKey)});
+
+// ---- Transfer value check ----
+let vRows=[];
+const money=(v,d=2)=>`${v<0?"−":""}£${Math.abs(v).toFixed(d).replace(/\.0+$/,"")}m`;
+function buildValue(){
+  const sales={};
+  const addSale=(n,f,to,when)=>{if(f&&(!sales[n]||f>sales[n].f))sales[n]={f,to,when}};
+  for(const k in D)D[k].out.forEach(r=>{if(r[5]!=="loan")addSale(r[1],r[3],r[2],r[0])});
+  outs.forEach(r=>addSale(r[1],num(r[4]),r[3],r[0]+" 2026"));
+  const leftFree={};for(const k in D)D[k].out.forEach(r=>{if(r[5]==="free")leftFree[r[1]]=r[0]});outs.forEach(r=>{if(/Released/.test(r[4]))leftFree[r[1]]=r[0]+" 2026"});
+  const swaps={};for(const k in D)D[k].out.forEach(r=>{if(r[5]==="swap")swaps[r[1]]=r[4]});
+  vRows=[];
+  for(const k in D)D[k].in.forEach(r=>{
+    if(!(r[3]>=15)||r[5]==="loan")return;
+    const P=ALLP[r[1]];let a=0,g=0,as=0,seas=0;if(P)for(const s in P.s){const v=P.s[s];a+=v[2];g+=v[3];as+=v[6]||0;seas++}
+    let wpaid=0;for(const y in PWAGE){if(+y>=pd(r[0]).start)wpaid+=(PWAGE[y][r[1]]||0)*52/1000}
+    const yr=pd(r[0]).start, loan=loans.find(l=>l[1]===r[1]), inSq=squad.some(p=>p[2]===r[1])||!!loan, sale=sales[r[1]];
+    const net=r[3]-(sale&&!inSq?sale.f:0);
+    vRows.push({n:r[1],fee:r[3],from:r[2],yr,mgr:SHORT[k],a,g,as,seas,inSq,loanTo:loan?loan[3]:null,swap:!inSq&&!sale?swaps[r[1]]:null,sale:inSq?null:sale,free:!inSq&&!sale?leftFree[r[1]]:null,net,ppa:a?net/a:Infinity,early:yr===LAST,wpaid,total:net+wpaid,tpa:a?(net+wpaid)/a:Infinity});
+  });
+  const judged=vRows.filter(v=>!v.early&&v.a>0&&!v.inSq&&!v.swap);
+  const best=judged.filter(v=>v.a>=50).sort((a,b)=>a.tpa-b.tpa).slice(0,5);
+  const worst=judged.slice().sort((a,b)=>b.tpa-a.tpa).slice(0,5);
+  const bestSale=vRows.filter(v=>v.sale).map(v=>({...v,diff:v.sale.f-v.fee})).sort((a,b)=>b.diff-a.diff).slice(0,5);
+  const board=(t,s,rows,val,det)=>`<div class="board"><h3>${t}</h3><div class="sub">${s}</div><ol>${rows.map((r,i)=>`<li><span class="rk">${i+1}</span><span class="who"><button data-career="${r.n}">${r.n}</button><span>${det(r)}</span></span><span class="val">${val(r)}</span></li>`).join("")}</ol></div>`;
+  document.getElementById("vboards").innerHTML=
+    board("Best value","Lowest total cost per game (fee + wages), 50+ games, players who have left",best,r=>money(r.tpa),r=>`£${r.fee}m fee + £${Math.round(r.wpaid)}m wages · ${r.a} apps`)+
+    board("Worst value","Highest total cost per game (fee + wages), players who have left",worst,r=>money(r.tpa),r=>`£${r.fee}m fee + £${Math.round(r.wpaid)}m wages · ${r.a} apps`)+
+    board("Best resale","Sold for most above what United paid",bestSale,r=>`${r.diff>=0?"+":"−"}£${Math.abs(r.diff).toFixed(1).replace(/\.0$/,"")}m`,r=>`£${r.fee}m in, £${r.sale.f}m out`);
+  renderValue();
+}
+function renderValue(){
+  const k=document.getElementById("vsort").value;
+  const rows=vRows.slice().sort((a,b)=>k==="yr"?b.yr-a.yr||b.fee-a.fee:k==="ppa"?(a.tpa-b.tpa):(b[k]-a[k]));
+  if(k==="ppa")rows.sort((a,b)=>(a.early-b.early)||(a.tpa-b.tpa));
+  document.getElementById("vtbl").innerHTML=`<thead><tr><th>Player</th><th class="num">Fee</th><th class="num">Apps</th><th class="num">Goals</th><th class="num">Seasons</th><th>What happened</th><th class="num">Net fee</th><th class="num">Wages paid</th><th class="num">Total cost</th><th class="num">Per app</th></tr></thead><tbody>${rows.map(r=>`<tr data-career="${r.n}" tabindex="0"><td><span class="pn">${r.n}</span>${r.early?'<span class="early">Too early</span>':""}<div class="kind" style="text-transform:none;font-family:var(--body);font-size:12px">${sl(r.yr)} from ${r.from} · ${r.mgr}</div></td><td class="num">£${r.fee}m</td><td class="num">${r.a}</td><td class="num">${r.g}</td><td class="num">${r.seas}</td><td class="st">${r.loanTo?`Still a United player, on loan at ${r.loanTo}`:r.inSq?"<b>In the squad</b>":r.sale?`Sold to ${r.sale.to} for <b>£${r.sale.f}m</b>`:r.swap?r.swap.replace("Swap for","Swapped for"):r.free?"Left on a free":"Left"}</td><td class="num">${money(r.net,1)}</td><td class="num">${money(r.wpaid,1)}</td><td class="num"><strong>${money(r.total,1)}</strong></td><td class="num">${r.a?money(r.tpa):"–"}</td></tr>`).join("")}</tbody>`;
+}
+document.getElementById("vsort").addEventListener("change",renderValue);
+document.getElementById("vtbl").addEventListener("click",e=>{const r=e.target.closest("[data-career]");if(r){lastCard=r;openCareer(r.dataset.career)}});
+document.getElementById("vtbl").addEventListener("keydown",e=>{if(e.key!=="Enter")return;const r=e.target.closest("[data-career]");if(r){lastCard=r;openCareer(r.dataset.career)}});
+document.getElementById("vboards").addEventListener("click",e=>{const b=e.target.closest("[data-career]");if(b){lastCard=b;openCareer(b.dataset.career)}});
+Promise.resolve().then(()=>Promise.resolve()).then(()=>Promise.resolve()).then(buildValue).then(renderAcademy);
+function acadRows(){
+  return [...ACADEMY].map(n=>{const P=ALLP[n];let a=0,g=0;const ys=P?Object.keys(P.s).map(Number):[];if(P)for(const y in P.s){a+=P.s[y][2];g+=P.s[y][3]}
+    const ev=[];for(const y in SEAS)SEAS[y].out.forEach(r=>{if(r.player===n)ev.push(r)});ev.sort((x,y)=>x.ord-y.ord);
+    const perm=ev.filter(r=>r.kind!=="loan").pop(), sq=squad.some(x=>x[2]===n), onLoan=loans.find(l=>l[1]===n);
+    const status=sq?"In the squad":onLoan?`On loan at ${onLoan[3]}`:perm?(/^Retired/.test(perm.club)?perm.club:perm.kind==="loanend"?"Loan ended":perm.fee?`Sold to ${perm.club}`:/Released|Contract ended/.test(perm.label||"")?"Released":perm.kind==="free"?`Left on a free${perm.club&&perm.club!=="—"?` to ${perm.club}`:""}`:`Sold to ${perm.club}`):"Left";
+    const fee=ev.filter(r=>r.kind!=="loan").reduce((t,r)=>t+(r.fee||0),0);const sale=ev.filter(r=>r.kind!=="loan"&&r.fee).pop();
+    return {n,a,g,ys,span:ys.length?`${sl(Math.min(...ys))}${Math.max(...ys)>Math.min(...ys)?`–${String(Math.max(...ys)+1).slice(2)}`:""}`:"–",status,fee,label:perm&&!sq?(perm.label||(perm.fee?`£${perm.fee}m`:"")):"",when:perm&&!sq?perm.d:"",mgr:perm&&!sq?perm.mgr:"",sale}});
+}
+function renderAcademy(){
+  const rows=acadRows().sort((x,y)=>y.fee-x.fee||y.a-x.a);
+  const sold=rows.filter(r=>r.fee>0), raised=sold.reduce((t,r)=>t+r.fee,0), inSq=rows.filter(r=>r.status==="In the squad").length;
+  document.getElementById("acadtot").innerHTML=`<span><b>${rows.length}</b>academy players since 2013</span><span><b>${inSq}</b>in the current squad</span><span><b>${sold.length}</b>sold for a fee</span><span><b>£${raised.toFixed(1).replace(/\.0$/,"")}m</b>raised</span>`;
+  document.getElementById("acadtbl").innerHTML=`<thead><tr><th>Player</th><th class="num">Apps</th><th class="num">Goals</th><th>What happened</th><th class="num">Fee received</th></tr></thead><tbody>${rows.map(r=>`<tr ${ALLP[r.n]?`data-career="${r.n}" tabindex="0"`:""}><td><span class="pcell">${avatar(r.n)}<span><span class="pn">${r.n}</span><div class="kind" style="text-transform:none;font-family:var(--body);font-size:12px">${r.span}</div></span></span></td><td class="num">${r.a}</td><td class="num">${r.g}</td><td class="st">${r.status==="In the squad"?"<b>In the squad</b>":r.status}${r.when?`<div class="kind" style="text-transform:none;font-family:var(--body);font-size:11.5px">${r.when.replace(/^\d+ /,"")} · ${r.mgr}</div>`:""}</td><td class="num">${r.fee?`<strong>£${r.fee}m</strong>`:r.label&&/Undisclosed/.test(r.label)?"Undisclosed":"–"}</td></tr>`).join("")}</tbody>`;
+}
+document.getElementById("acadtbl").addEventListener("click",e=>{const r=e.target.closest("[data-career]");if(r){lastCard=r;backTo=null;openCareer(r.dataset.career)}});
+function closePlayer(){if(dlg.close)dlg.close();else dlg.removeAttribute("open");lastCard?.focus()}
+document.getElementById("sheet").addEventListener("click",e=>{const b=e.target.closest("[data-p]");if(b){lastCard=b;openPlayer(b.dataset.p)}});
+document.getElementById("pclose").addEventListener("click",closePlayer);
+dlg.addEventListener("click",e=>{if(e.target===dlg)closePlayer()});
+dlg.addEventListener("close",()=>lastCard?.focus());
+document.getElementById("poschips").addEventListener("click",e=>{const s=e.target.closest("[data-s]");if(s){byWage=!byWage;renderSquad();document.getElementById("chip-sort")?.focus();return}const b=e.target.closest("[data-f]");if(!b)return;filt=b.dataset.f;renderSquad();document.getElementById("chip-"+filt)?.focus()});
+Promise.resolve().then(renderSquad);
+
+const mgrs=[
+ ["Jan 2026 – present","Michael Carrick","Head coach",true,"Took over as interim on 13 January, lifted the side to 3rd and a Champions League return, then got the job permanently on a two-year deal. This season: 13th in the league after seven games, out of the League Cup, and without a win since 10 September."],
+ ["5–13 Jan 2026","Darren Fletcher","Interim",false,"Former midfielder and under-18s coach. Held the reins for just over a week after Amorim left."],
+ ["Nov 2024 – Jan 2026","Ruben Amorim","Head coach",false,"Arrived from Sporting with a back-three system. Reached the 2025 Europa League final but finished 15th in 2024/25, the club's worst Premier League season. Left on 5 January 2026 and now coaches Milan."],
+ ["Oct – Nov 2024","Ruud van Nistelrooy","Interim",false,"Assistant who stepped up for four games between ten Hag's exit and Amorim's arrival."],
+ ["Apr 2022 – Oct 2024","Erik ten Hag","Manager",false,"Won the League Cup in 2023 and the FA Cup in 2024. Dismissed after a poor start to his third season."],
+ ["Nov 2021 – May 2022","Ralf Rangnick","Interim",false,"Six-month interim spell after Solskjær's sacking."],
+ ["Nov – Dec 2021","Michael Carrick","Caretaker",false,"First stint in charge: three games unbeaten before handing over to Rangnick."],
+ ["Dec 2018 – Nov 2021","Ole Gunnar Solskjær","Manager",false,"Club legend turned manager. Took United to 2nd in 2020/21 and the Europa League final."],
+ ["May 2016 – Dec 2018","José Mourinho","Manager",false,"Won the League Cup and Europa League in his first season and finished 2nd in 2017/18. Signed Pogba for a then-world-record fee. Sacked in December 2018."],
+ ["Jul 2014 – May 2016","Louis van Gaal","Manager",false,"Brought in Di María, Martial and Depay. Won the FA Cup in 2016, then was dismissed days later."],
+ ["Apr – May 2014","Ryan Giggs","Interim",false,"Player-coach who took charge for the last four games of 2013/14."],
+ ["Jul 2013 – Apr 2014","David Moyes","Manager",false,"Ferguson's hand-picked successor on a six-year deal. Signed Fellaini and Mata, but was sacked in April with United heading for 7th."]
+];
+// Spend per manager, £m gross. "est" = our total of reported base fees for that spell.
+let spend={}; // filled by computeMoney() from the deal lists below
+const winr={"David Moyes":"52.9%","Louis van Gaal":"52.4%","José Mourinho":"58.3%","Ole Gunnar Solskjær":"54.2%","Ralf Rangnick":"37.9%","Erik ten Hag":"54.7%","Ruben Amorim":"38.1%"};
+const key=m=>spend[m[1]+"|"+m[2]]?m[1]+"|"+m[2]:m[1];
+const fmt=v=>v>=1000?`£${(v/1000).toFixed(2)}bn`:`£${v}m`;
+function renderSpendViews(){
+document.getElementById("timeline").innerHTML=mgrs.map(m=>{
+  const s=spend[key(m)], w=winr[m[1]];
+  const chips=[];
+  if(s)chips.push(`<span class="stat money">${s[0]?(s[1]?"≈":"")+fmt(s[0])+" spent":"No signings"}</span>`);
+  else if(m[2]==="Interim"||m[2]==="Caretaker")chips.push(`<span class="stat">No transfer window</span>`);
+  if(w)chips.push(`<span class="stat">Win rate ${w}</span>`);
+  return `<div class="m${m[3]?" cur":""}"><div class="when">${m[0]}</div><div class="whorow">${avatar(m[1],{mgr:true})}<div><div class="who">${(()=>{const k=m[1]==="Michael Carrick"&&m[2]==="Head coach"?"Michael Carrick|Head coach":m[1];return (m[2]==="Caretaker"||!["David Moyes","Louis van Gaal","José Mourinho","Ole Gunnar Solskjær","Ralf Rangnick","Erik ten Hag","Ruben Amorim","Michael Carrick|Head coach"].includes(k))?m[1]:`<button class="mlink" data-mgr="${k}">${m[1]}</button>`})()}</div><div class="role">${m[2]}</div></div></div><p>${m[4]}</p><div class="stats">${chips.join("")}</div></div>`;
+}).join("");
+const order=[["David Moyes","2013–14"],["Louis van Gaal","2014–16"],["José Mourinho","2016–18"],["Ole Gunnar Solskjær","2018–21"],["Erik ten Hag","2022–24"],["Ruben Amorim","2024–26"],["Michael Carrick|Head coach","2026–"]];
+const max=Math.max(...order.map(o=>spend[o[0]][0]));
+const total=order.reduce((a,o)=>a+spend[o[0]][0],0);
+document.getElementById("bars").innerHTML=order.map(o=>{const s=spend[o[0]];return `<div class="bar" data-k="${o[0]}" role="button" tabindex="0"><div class="lbl">${o[0].split("|")[0]}<small>${o[1]}</small></div><div class="track"><div class="fill${s[1]?" est":""}" style="width:${(s[0]/max*100).toFixed(1)}%"></div></div><div class="v">${s[1]?"≈":""}£${s[0]}m</div></div>`}).join("")+`<div class="legend"><span>Sum of the reported fees for each manager’s signings listed on this page, add-ons excluded</span></div>`;
+document.getElementById("spendhead").innerHTML=`<span><b>≈${fmt(total)}</b>spent on transfers since 2013</span><span class="formnote">Interims (Giggs, Carrick 2021, Rangnick, van Nistelrooy, Fletcher) made no signings</span>`;
+}
+
+// Major first-team deals per manager. [season, player, club, fee £m (number or null), fee label, kind]
+const D={
+"David Moyes":{span:"2013–14",in:[
+ ["Sep 2013","Marouane Fellaini","Everton",27.5],
+ ["Jan 2014","Juan Mata","Chelsea",37.1]],
+out:[
+ ["Jan 2014","Fábio da Silva","Cardiff City",2],
+ ["Jan 2014","Wilfried Zaha","Cardiff City",null,"Loan","loan"]]},
+"Louis van Gaal":{span:"2014–16",in:[
+ ["Jun 2014","Ander Herrera","Athletic Club",29],
+ ["Jun 2014","Luke Shaw","Southampton",30],
+ ["Aug 2014","Marcos Rojo","Sporting CP",16],
+ ["Aug 2014","Ángel Di María","Real Madrid",59.7],
+ ["Sep 2014","Daley Blind","Ajax",13.8],
+ ["Sep 2014","Radamel Falcao","Monaco",6,"£6m loan fee","loan"],
+ ["Jun 2015","Memphis Depay","PSV",25],
+ ["Jul 2015","Matteo Darmian","Torino",12.7],
+ ["Jul 2015","Bastian Schweinsteiger","Bayern Munich",14.4],
+ ["Jul 2015","Morgan Schneiderlin","Southampton",24],
+ ["Jul 2015","Sergio Romero","Sampdoria",null,"Free","free"],
+ ["Sep 2015","Anthony Martial","Monaco",36,"£36m + add-ons"]],
+out:[
+ ["Aug 2014","Alexander Büttner","Dynamo Moscow",null,"Undisclosed"],
+ ["Jan 2015","Anderson","Internacional",null,"Undisclosed"],
+ ["Feb 2015","Darren Fletcher","West Brom",null,"Free","free"],
+ ["Jun 2015","Radamel Falcao","Monaco",null,"Loan ended","loanend"],
+ ["Jul 2015","Tom Cleverley","Everton",null,"Free","free"],
+ ["Jun 2014","Ryan Giggs","Retired, became assistant manager",null,"Retired","free"],
+ ["Jun 2014","Rio Ferdinand","QPR",null,"Free","free"],
+ ["Jun 2014","Nemanja Vidić","Inter",null,"Free","free"],
+ ["Jul 2014","Patrice Evra","Juventus",1.2],
+ ["Aug 2014","Danny Welbeck","Arsenal",16],
+ ["Aug 2014","Shinji Kagawa","Dortmund",6.3],
+ ["Aug 2014","Javier Hernández","Real Madrid",null,"Loan","loan"],
+ ["Aug 2015","Ángel Di María","PSG",44],
+ ["Jun 2015","Robin van Persie","Fenerbahçe",4.7],
+ ["Aug 2015","Jonny Evans","West Brom",6],
+ ["Aug 2015","Javier Hernández","Leverkusen",7.3],
+ ["Jul 2015","Nani","Fenerbahçe",4.5],
+ ["Aug 2015","Rafael","Lyon",2.5]]},
+"José Mourinho":{span:"2016–18",in:[
+ ["Jun 2016","Eric Bailly","Villarreal",30],
+ ["Jul 2016","Zlatan Ibrahimović","PSG",null,"Free","free"],
+ ["Jul 2016","Henrikh Mkhitaryan","Dortmund",26.3],
+ ["Aug 2016","Paul Pogba","Juventus",89.3],
+ ["Jun 2017","Victor Lindelöf","Benfica",30.7],
+ ["Jul 2017","Romelu Lukaku","Everton",75],
+ ["Jul 2017","Nemanja Matić","Chelsea",40],
+ ["Jan 2018","Alexis Sánchez","Arsenal",null,"Swap for Mkhitaryan","swap"],
+ ["Jun 2018","Fred","Shakhtar Donetsk",52],
+ ["Jun 2018","Diogo Dalot","Porto",19]],
+out:[
+ ["Aug 2016","Tyler Blackett","Reading",null,"Undisclosed"],
+ ["Aug 2016","Paddy McNair","Sunderland",null,"Undisclosed"],
+ ["Jan 2018","Guillermo Varela","Peñarol",null,"Undisclosed"],
+ ["Mar 2018","Zlatan Ibrahimović","LA Galaxy",null,"Free","free"],
+ ["Jun 2018","Michael Carrick","Retired, joined the coaching staff",null,"Retired","free"],
+ ["Jan 2017","Morgan Schneiderlin","Everton",20],
+ ["Jan 2017","Memphis Depay","Lyon",16],
+ ["Mar 2017","Bastian Schweinsteiger","Chicago Fire",null,"Free","free"],
+ ["Jul 2017","Wayne Rooney","Everton",null,"Free","free"],
+ ["Jul 2017","Adnan Januzaj","Real Sociedad",9.8],
+ ["Jan 2018","Henrikh Mkhitaryan","Arsenal",null,"Swap for Sánchez","swap"],
+ ["Jul 2018","Daley Blind","Ajax",14],
+ ["Jul 2018","Sam Johnstone","West Brom",6.5]]},
+"Ole Gunnar Solskjær":{span:"2018–21",in:[
+ ["Jun 2019","Daniel James","Swansea City",15],
+ ["Jun 2019","Aaron Wan-Bissaka","Crystal Palace",50],
+ ["Aug 2019","Harry Maguire","Leicester City",80],
+ ["Jan 2020","Bruno Fernandes","Sporting CP",47,"£47m + add-ons"],
+ ["Jan 2020","Odion Ighalo","Shanghai Shenhua",null,"Loan","loan"],
+ ["Sep 2020","Donny van de Beek","Ajax",35],
+ ["Oct 2020","Alex Telles","Porto",15.4],
+ ["Oct 2020","Edinson Cavani","PSG",null,"Free","free"],
+ ["Jan 2021","Amad Diallo","Atalanta",19,"£19m + add-ons"],
+ ["Jul 2021","Tom Heaton","Aston Villa",null,"Free","free"],
+ ["Jul 2021","Jadon Sancho","Dortmund",73],
+ ["Aug 2021","Raphaël Varane","Real Madrid",34],
+ ["Aug 2021","Cristiano Ronaldo","Juventus",12.9]],
+out:[
+ ["Jul 2019","James Wilson","Aberdeen",null,"Released","free"],
+ ["Sep 2019","Matteo Darmian","Parma",null,"Undisclosed"],
+ ["Jun 2020","Angel Gomes","Lille",null,"Released","free"],
+ ["Jun 2020","Cameron Borthwick-Jackson","—",null,"Released","free"],
+ ["Aug 2020","Alexis Sánchez","Inter",null,"Free","free"],
+ ["Jan 2021","Timothy Fosu-Mensah","Leverkusen",null,"Undisclosed"],
+ ["Jan 2021","Odion Ighalo","Shanghai Shenhua",null,"Loan ended","loanend"],
+ ["Jun 2021","Sergio Romero","—",null,"Released","free"],
+ ["Feb 2019","Marouane Fellaini","Shandong Luneng",5,"£5m (reported)"],
+ ["Jun 2019","Antonio Valencia","LDU Quito",null,"Released","free"],
+ ["Jul 2019","Ander Herrera","PSG",null,"Free","free"],
+ ["Aug 2019","Romelu Lukaku","Inter",74],
+ ["Aug 2019","Alexis Sánchez","Inter",null,"Loan","loan"],
+ ["Jan 2020","Ashley Young","Inter",1.3],
+ ["Oct 2020","Chris Smalling","Roma",15],
+ ["Jan 2021","Marcos Rojo","Boca Juniors",null,"Free","free"],
+ ["Jan 2021","Jesse Lingard","West Ham",null,"Loan","loan"],
+ ["Aug 2021","Daniel James","Leeds United",25]]},
+"Ralf Rangnick":{span:"2021–22",in:[],
+out:[
+ ["Jan 2022","Anthony Martial","Sevilla",null,"Loan","loan"],
+ ["Jan 2022","Donny van de Beek","Everton",null,"Loan","loan"],
+ ["Jan 2022","Amad Diallo","Rangers",null,"Loan","loan"]]},
+"Erik ten Hag":{span:"2022–24",in:[
+ ["Jun 2022","Tyrell Malacia","Feyenoord",13],
+ ["Jul 2022","Christian Eriksen","Brentford",null,"Free","free"],
+ ["Jul 2022","Lisandro Martínez","Ajax",57],
+ ["Aug 2022","Casemiro","Real Madrid",60],
+ ["Aug 2022","Antony","Ajax",86],
+ ["Sep 2022","Martin Dúbravka","Newcastle United",null,"Loan","loan"],
+ ["Jan 2023","Wout Weghorst","Burnley",null,"Loan","loan"],
+ ["Jan 2023","Jack Butland","Crystal Palace",null,"Loan","loan"],
+ ["Jan 2023","Marcel Sabitzer","Bayern Munich",null,"Loan","loan"],
+ ["Jul 2023","Mason Mount","Chelsea",55],
+ ["Jul 2023","André Onana","Inter",47.2],
+ ["Aug 2023","Rasmus Højlund","Atalanta",64,"£64m + add-ons"],
+ ["Jul 2023","Jonny Evans","Leicester City",null,"Free","free"],
+ ["Aug 2023","Altay Bayındır","Fenerbahçe",4.3],
+ ["Sep 2023","Sofyan Amrabat","Fiorentina",null,"Loan (reported £8.6m fee)","loan"],
+ ["Sep 2023","Sergio Reguilón","Tottenham",null,"Loan","loan"],
+ ["Jul 2024","Joshua Zirkzee","Bologna",36.5],
+ ["Jul 2024","Leny Yoro","Lille",52],
+ ["Aug 2024","Matthijs de Ligt","Bayern Munich",38],
+ ["Aug 2024","Noussair Mazraoui","Bayern Munich",15],
+ ["Aug 2024","Manuel Ugarte","PSG",50]],
+out:[
+ ["Jul 2022","Tahith Chong","Birmingham City",null,"Undisclosed"],
+ ["Sep 2022","James Garner","Everton",9,"£9m + add-ons"],
+ ["Jun 2023","Marcel Sabitzer","Bayern Munich",null,"Loan ended","loanend"],
+ ["Jun 2023","Wout Weghorst","Burnley",null,"Loan ended","loanend"],
+ ["Jun 2023","Axel Tuanzebe","Ipswich Town",null,"Released","free"],
+ ["Jul 2023","Alex Telles","Al Nassr",null,"Undisclosed"],
+ ["Aug 2023","Eric Bailly","Beşiktaş",null,"Contract ended","free"],
+ ["Jan 2024","Sergio Reguilón","Tottenham",null,"Loan ended","loanend"],
+ ["Jun 2024","Sofyan Amrabat","Fiorentina",null,"Loan ended","loanend"],
+ ["Jun 2024","Brandon Williams","—",null,"Released","free"],
+ ["Jul 2024","Willy Kambwala","Villarreal",4.7],
+ ["Jul 2024","Omari Forson","Monza",null,"Free","free"],
+ ["Aug 2024","Hannibal Mejbri","Burnley",null,"Undisclosed"],
+ ["Aug 2024","Facundo Pellistri","Panathinaikos",null,"Undisclosed"],
+ ["Aug 2024","Donny van de Beek","Girona",null,"Undisclosed"],
+ ["Jun 2022","Juan Mata","Galatasaray",null,"Released","free"],
+ ["Jun 2022","Edinson Cavani","Valencia",null,"Released","free"],
+ ["Jun 2022","Nemanja Matić","Roma",null,"Free","free"],
+ ["Jul 2022","Paul Pogba","Juventus",null,"Free","free"],
+ ["Jul 2022","Jesse Lingard","Nottingham Forest",null,"Free","free"],
+ ["Aug 2022","Andreas Pereira","Fulham",10],
+ ["Nov 2022","Cristiano Ronaldo","Al Nassr",null,"Contract ended","free"],
+ ["Jul 2023","David de Gea","—",null,"Released","free"],
+ ["Jun 2023","Phil Jones","—",null,"Released","free"],
+ ["Jun 2023","Anthony Elanga","Nottingham Forest",15],
+ ["Aug 2023","Fred","Fenerbahçe",8.7],
+ ["Aug 2023","Dean Henderson","Crystal Palace",15],
+ ["Jun 2024","Anthony Martial","—",null,"Released","free"],
+ ["Jul 2024","Raphaël Varane","Como",null,"Free","free"],
+ ["Jul 2024","Mason Greenwood","Marseille",26.6],
+ ["Aug 2024","Aaron Wan-Bissaka","West Ham",15],
+ ["Aug 2024","Scott McTominay","Napoli",25.7],
+ ["Aug 2024","Jadon Sancho","Chelsea",null,"Loan","loan"]]},
+"Ruben Amorim":{span:"2024–26",in:[
+ ["Feb 2025","Patrick Dorgu","Lecce",25],
+ ["Feb 2025","Ayden Heaven","Arsenal",1],
+ ["Jun 2025","Matheus Cunha","Wolves",62.5],
+ ["Jul 2025","Diego León","Cerro Porteño",3],
+ ["Jul 2025","Bryan Mbeumo","Brentford",65,"£65m + £6m add-ons"],
+ ["Aug 2025","Benjamin Šeško","RB Leipzig",66.3,"£66.3m + add-ons"],
+ ["Sep 2025","Senne Lammens","Royal Antwerp",18.1]],
+out:[
+ ["Feb 2025","Marcus Rashford","Aston Villa",null,"Loan","loan"],
+ ["Feb 2025","Antony","Real Betis",null,"Loan","loan"],
+ ["Jun 2025","Victor Lindelöf","—",null,"Released","free"],
+ ["Jun 2025","Christian Eriksen","—",null,"Released","free"],
+ ["Jun 2025","Jonny Evans","Retired, became loan manager",null,"Retired","free"],
+ ["Jul 2025","Marcus Rashford","Barcelona",null,"Loan","loan"],
+ ["Aug 2025","Alejandro Garnacho","Chelsea",40],
+ ["Sep 2025","Antony","Real Betis",22],
+ ["Sep 2025","Rasmus Højlund","Napoli",null,"Loan, then obligation","loan"]]},
+"Michael Carrick|Head coach":{span:"2026–",get in(){return ins.map(r=>[r[0]+" 2026",r[1],r[3],parseFloat((r[4].match(/£([\d.]+)m/)||[])[1])||null,r[4]])},
+out:[
+ ["Jun 2026","Rasmus Højlund","Napoli",38,"£38m (obligation)"],
+ ["Jun 2026","Casemiro","Inter Miami",null,"Released","free"],
+ ["Jun 2026","Jadon Sancho","—",null,"Released","free"],
+ ["Jun 2026","Tyrell Malacia","FC Cincinnati",null,"Released","free"],
+ ["Jul 2026","André Onana","Trabzonspor",null,"Loan","loan"],
+ ["Jul 2026","Tyler Fredricson","Lausanne-Sport",null,"Undisclosed"],
+ ["Aug 2026","Radek Vítek","Middlesbrough",7,"£7m + £7m add-ons"],
+ ["Aug 2026","Altay Bayındır","Celta Vigo",null,"Loan","loan"],
+ ["Aug 2026","Toby Collyer","West Brom",3,"£3m + add-ons"]]}
+};
+const mgrOrder=["Michael Carrick|Head coach","Ruben Amorim","Erik ten Hag","Ralf Rangnick","Ole Gunnar Solskjær","José Mourinho","Louis van Gaal","David Moyes"];
+let selM="Michael Carrick|Head coach";
+const feeLbl=r=>r[4]||(r[3]!=null?`£${r[3]}m`:"Undisclosed");
+const sumF=a=>a.reduce((t,r)=>t+(r[3]&&r[5]!=="loan"?r[3]:0),0);
+const dealTable=rows=>rows.length?`<div class="tbl"><table><tbody>${rows.map(r=>`<tr><td class="sea">${r[0]}</td><td><strong>${r[1]}</strong><div class="kind">${r[2]}</div></td><td class="fee">${feeLbl(r)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">No signings in this spell.</div>`;
+function renderDeals(){
+  document.getElementById("mgrchips").innerHTML=mgrOrder.map(k=>`<button class="chip" id="mc-${mgrOrder.indexOf(k)}" aria-pressed="${k===selM}" data-m="${k}">${k.split("|")[0]} <span style="opacity:.7">${D[k].span}</span></button>`).join("");
+  const d=D[selM], si=sumF(d.in), so=sumF(d.out);
+  document.getElementById("mgrdeals").innerHTML=`<p class="mgrsum"><strong>${selM.split("|")[0]}</strong>, ${d.span}: ${d.in.length} signings and ${d.out.length} departures listed. Fees shown add up to about <strong>£${Math.round(si)}m in</strong> and <strong>£${Math.round(so)}m out</strong>, a net of <strong>£${Math.round(si-so)}m</strong>.</p>
+  <div class="dealgrid"><div class="dealcol"><h3>Signed <span>${d.in.length} · £${Math.round(si)}m</span></h3>${dealTable(d.in)}</div>
+  <div class="dealcol"><h3>Sold, released &amp; loaned <span>${d.out.length} · £${Math.round(so)}m</span></h3>${dealTable(d.out)}</div></div>`;
+  document.querySelectorAll(".bar").forEach(b=>b.classList.toggle("sel",b.dataset.k===selM));
+}
+function pickM(k,focus){if(!D[k])return;selM=k;renderDeals();if(focus)document.getElementById("mc-"+mgrOrder.indexOf(k))?.focus()}
+document.getElementById("mgrchips").addEventListener("click",e=>{const b=e.target.closest("[data-m]");if(b)pickM(b.dataset.m,true)});
+document.getElementById("bars").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b){pickM(b.dataset.k);document.getElementById("mgrchips").scrollIntoView({behavior:"smooth",block:"start"})}});
+document.getElementById("bars").addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ")return;const b=e.target.closest("[data-k]");if(b){e.preventDefault();pickM(b.dataset.k)}});
+Promise.resolve().then(renderDeals);
+
+// ---- Season-by-season signings & departures ----
+const MO={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+const pd=s=>{const m=MO[(s.match(/[A-Z][a-z]{2}/)||[])[0]]??0;const y=+((s.match(/\d{4}/)||[])[0]);return {m,y,start:m>=5?y:y-1,ord:y*12+m}};
+const SHORT={"David Moyes":"Moyes","Louis van Gaal":"Van Gaal","José Mourinho":"Mourinho","Ole Gunnar Solskjær":"Solskjær","Ralf Rangnick":"Rangnick","Erik ten Hag":"Ten Hag","Ruben Amorim":"Amorim","Michael Carrick|Head coach":"Carrick"};
+const MS={2013:"David Moyes, then Ryan Giggs (interim)",2014:"Louis van Gaal",2015:"Louis van Gaal",2016:"José Mourinho",2017:"José Mourinho",2018:"José Mourinho, then Ole Gunnar Solskjær",2019:"Ole Gunnar Solskjær",2020:"Ole Gunnar Solskjær",2021:"Ole Gunnar Solskjær, then Ralf Rangnick (interim)",2022:"Erik ten Hag",2023:"Erik ten Hag",2024:"Erik ten Hag, then Ruben Amorim",2025:"Ruben Amorim, then Michael Carrick",2026:"Michael Carrick"};
+const FIRST=2013, LAST=2026;
+const SEAS={};for(let s=FIRST;s<=LAST;s++)SEAS[s]={in:[],out:[]};
+const num=l=>{const m=(l||"").match(/£([\d.]+)m/);return m?parseFloat(m[1]):null};
+const add=(dir,r,mgr)=>{const p=pd(r[0]);if(SEAS[p.start])SEAS[p.start][dir].push({d:r[0],ord:p.ord,player:r[1],club:r[2],fee:r[3],label:r[4],kind:r[5],mgr})};
+function buildSeasons(){
+for(const k in D){
+  if(k==="Michael Carrick|Head coach")continue;
+  D[k].in.forEach(r=>add("in",r,SHORT[k]));D[k].out.forEach(r=>add("out",r,SHORT[k]));
+}
+D["Michael Carrick|Head coach"].in.forEach(r=>add("in",r,"Carrick"));
+outs.forEach(r=>{const rel=/Released/.test(r[4]);add("out",[r[0]+" 2026",r[1],r[3],num(r[4]),r[4],rel?"free":undefined],"Carrick")});
+loans.forEach(r=>add("out",[r[0]+" 2026",r[1],r[3],null,"Loan","loan"],"Carrick"));
+}
+const feeSum=a=>a.reduce((t,r)=>t+(r.fee&&r.kind!=="loan"?r.fee:0),0);
+let curS=LAST;
+const sl=s=>`${s}/${String(s+1).slice(2)}`;
+function renderSeasons(scroll){
+  const bar=document.querySelector('.seasonbar[data-view="all"]');
+  const mx=Math.max(...Object.values(SEAS).map(x=>Math.max(feeSum(x.in),feeSum(x.out))),1);
+  let strip="";for(let s=FIRST;s<=LAST;s++){const fi=feeSum(SEAS[s].in),fo=feeSum(SEAS[s].out);strip+=`<button class="sn" id="sn-all-${s}" data-s="${s}" aria-pressed="${s===curS}" aria-label="${sl(s)}: £${Math.round(fi)}m spent, £${Math.round(fo)}m received"><span class="b two"><i class="bi" style="height:${Math.max(3,fi/mx*100).toFixed(0)}%"></i><i class="bo" style="height:${Math.max(3,fo/mx*100).toFixed(0)}%"></i></span>${String(s).slice(2)}/${String(s+1).slice(2)}</button>`}
+  bar.innerHTML=`<button class="step" data-step="-1" aria-label="Previous season" ${curS===FIRST?"disabled":""}>‹</button><div class="strip">${strip}</div><button class="step" data-step="1" aria-label="Next season" ${curS===LAST?"disabled":""}>›</button>`;
+  const S=SEAS[curS], fi=feeSum(S.in), fo=feeSum(S.out);
+  ["in","out"].forEach(v=>{
+    const rows=[...S[v]].sort((a,b)=>a.ord-b.ord), loansN=S.out.filter(r=>r.kind==="loan").length;
+    const tot=v==="in"
+      ?`<span><b>${rows.length}</b>signings</span><span><b>£${Math.round(fi)}m</b>spent</span>`
+      :`<span><b>${rows.length}</b>departures</span><span><b>£${Math.round(fo)}m</b>received</span>${loansN?`<span><b>${loansN}</b>loaned out</span>`:""}`;
+    const body=rows.length?`<div class="tbl"><table class="seas"><thead><tr><th>Date</th><th>Player</th><th>Fee</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="dt">${r.d.replace(/ \d{4}$/,"")}</td><td>${ALLP[r.player]?`<button class="plink2" data-career="${r.player}">${r.player}</button>`:`<strong>${r.player}</strong>`}<div class="kind">${v==="in"?"from":"to"} ${r.club}${/then/.test(MS[curS])?` · ${r.mgr}`:""}</div></td><td class="fee">${r.label||(r.fee!=null?`£${r.fee}m`:"Undisclosed")}</td></tr>`).join("")}</tbody></table></div>`
+      :`<div class="empty">No major first-team ${v==="in"?"signings":"departures"} listed for ${sl(curS)}.</div>`;
+    document.getElementById(v+"view").innerHTML=`<h3 class="thead">${v==="in"?"Signings":"Departures"}</h3><div class="totals">${tot}</div>${body}`;
+  });
+  const toArr=x=>[x.d,x.player,x.club,x.fee,x.label,x.kind];
+  const insA=[...S.in].sort((a,b)=>a.ord-b.ord).map(toArr), outA=[...S.out].sort((a,b)=>a.ord-b.ord).map(toArr);
+  document.getElementById("twin").innerHTML=(insA.length||outA.length)?windowView(insA,outA):`<div class="empty">No major first-team deals listed for ${sl(curS)}.</div>`;
+  const hd=document.getElementById("tseason");const html=`<h2 id="tseason">${sl(curS)} transfers <em>${MS[curS]}</em></h2><div class="totals tnet"><span><b>£${Math.round(fi-fo)}m</b>net spend this season</span></div>`;
+  if(hd){hd.nextElementSibling.remove();hd.outerHTML=html}else document.querySelector(".tkey").insertAdjacentHTML("afterend",html);
+  if(scroll){const el=document.getElementById(`sn-all-${curS}`);if(el&&!bar.closest("section").hidden)el.scrollIntoView({inline:"center",block:"nearest"})}
+}
+document.getElementById("ttog").addEventListener("click",e=>{const b=e.target.closest("[data-tv]");if(!b)return;const v=b.dataset.tv;document.querySelectorAll("#ttog [data-tv]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.tv===v));document.getElementById("tgrid").hidden=v!=="season";document.getElementById("twin").hidden=v!=="window"});
+const tclick=e=>{const b=e.target.closest("[data-career]");if(b){lastCard=b;backTo=null;openCareer(b.dataset.career)}};
+document.getElementById("twin").addEventListener("click",tclick);document.getElementById("tgrid").addEventListener("click",tclick);
+document.querySelectorAll(".seasonbar").forEach(bar=>{
+  bar.addEventListener("click",e=>{
+    const st=e.target.closest("[data-step]"), sn=e.target.closest("[data-s]");
+    if(st){curS=Math.min(LAST,Math.max(FIRST,curS+ +st.dataset.step));renderSeasons(true);bar.querySelector(`[data-step="${st.dataset.step}"]`)?.focus()}
+    else if(sn){curS=+sn.dataset.s;renderSeasons(true);document.getElementById(`sn-${bar.dataset.view}-${curS}`)?.focus()}
+  });
+  bar.addEventListener("keydown",e=>{if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;e.preventDefault();curS=Math.min(LAST,Math.max(FIRST,curS+(e.key==="ArrowRight"?1:-1)));renderSeasons(true);document.getElementById(`sn-${bar.dataset.view}-${curS}`)?.focus()});
+});
+Promise.resolve().then(()=>{buildSeasons();renderSeasons(false)});
+
+const ins=[
+ ["13 Jul","Andrey Santos","MF","Chelsea","£48m"],
+ ["14 Jul","Youri Tielemans","MF","Aston Villa","£35m"],
+ ["14 Jul","Karl Darlow","GK","Leeds United","Free"],
+ ["20 Jul","Tynan Thompson","FW","Tottenham","£4m + £4m add-ons"],
+ ["27 Jul","Kit Margetson","GK","Swansea City","Undisclosed"],
+ ["7 Aug","Cristian Orozco","MF","Fortaleza","Undisclosed"],
+ ["25 Aug","Carlos Baleba","MF","Brighton","£65m + £5m add-ons"]
+];
+const in25=[["Matheus Cunha","FW","Wolves","£62.5m"],["Bryan Mbeumo","FW","Brentford","£71m"],["Benjamin Šeško","FW","RB Leipzig","—"],["Senne Lammens","GK","Royal Antwerp","—"]];
+const outs=[
+ ["29 Jun","Rasmus Højlund","FW","Napoli","£38m (buy obligation)"],
+ ["30 Jun","Casemiro","MF","Inter Miami","Released"],
+ ["30 Jun","Jadon Sancho","FW","—","Released"],
+ ["30 Jun","Tyrell Malacia","DF","FC Cincinnati","Released"],
+ ["30 Jul","Tyler Fredricson","DF","Lausanne-Sport","Undisclosed"],
+ ["8 Aug","Radek Vítek","GK","Middlesbrough","£7m + £7m add-ons"],
+ ["30 Aug","Toby Collyer","MF","West Brom","£3m + £4.6m add-ons"],
+ ["7 Aug","Sonny Aljofree","DF","Rotherham","Released"]
+];
+const loans=[["3 Jul","André Onana","GK","Trabzonspor"],["7 Aug","Altay Bayındır","GK","Celta Vigo"],["24 Aug","Ethan Wheatley","FW","Lincoln City"],["31 Aug","Dan Gore","MF","Luton Town"],["2 Sep","Chido Obi","FW","Willem II"],["23 Aug","Jacob Devaney","MF","Hibernian"]];
+
+
+const tabs=[...document.querySelectorAll("#tabs button")];
+function show(t){
+  if(t==="in"||t==="out")t="transfers";
+  if(!document.getElementById(t)||!tabs.some(b=>b.dataset.t===t))t="squad";
+  tabs.forEach(b=>{const on=b.dataset.t===t;b.setAttribute("aria-selected",on);document.getElementById(b.dataset.t).hidden=!on});
+}
+tabs.forEach(b=>b.addEventListener("click",()=>show(b.dataset.t)));
+show((location.hash||"").slice(1));
+const RIV={"arsenal":{"n":"Arsenal","m":["Arsène Wenger","Unai Emery","Freddie Ljungberg (interim)","Mikel Arteta"],"d":[[2013,0,"Aug 2013","Gervinho","Roma",8,0,0],[2013,1,"Sep 2013","Mesut Özil","Real Madrid",42.5,0,0],[2014,1,"Jul 2014","Alexis Sánchez","Barcelona",35,0,0],[2014,1,"Jul 2014","Calum Chambers","Southampton",16,0,0],[2014,0,"Aug 2014","Thomas Vermaelen","Barcelona",15,0,0],[2014,1,"Sep 2014","Danny Welbeck","Manchester United",16,0,0],[2014,1,"Jan 2015","Gabriel Paulista","Villarreal",11.2,0,1],[2015,1,"Jun 2015","Petr Čech","Chelsea",10,0,0],[2015,1,"Jan 2016","Mohamed Elneny","Basel",7.4,0,1],[2016,1,"Jun 2016","Granit Xhaka","Borussia Mönchengladbach",30,0,0],[2016,1,"Aug 2016","Lucas Pérez","Deportivo La Coruña",17.1,0,0],[2016,1,"Aug 2016","Shkodran Mustafi","Valencia",35,0,0],[2016,0,"Aug 2016","Serge Gnabry","Werder Bremen",5,0,0],[2017,1,"Jul 2017","Alexandre Lacazette","Lyon",46.5,0,0],[2017,0,"Jul 2017","Wojciech Szczęsny","Juventus",10,0,0],[2017,0,"Aug 2017","Kieran Gibbs","West Bromwich Albion",5,0,0],[2017,0,"Aug 2017","Alex Oxlade-Chamberlain","Liverpool",35,0,0],[2017,1,"Jan 2018","Pierre-Emerick Aubameyang","Borussia Dortmund",56,0,1],[2017,0,"Jan 2018","Francis Coquelin","Valencia",12,0,1],[2017,0,"Jan 2018","Theo Walcott","Everton",20,0,1],[2017,0,"Jan 2018","Olivier Giroud","Chelsea",18,0,1],[2018,1,"Jul 2018","Bernd Leno","Bayer Leverkusen",22.5,1,0],[2018,1,"Jul 2018","Sokratis Papastathopoulos","Borussia Dortmund",14.4,1,0],[2018,1,"Jul 2018","Lucas Torreira","Sampdoria",27,1,0],[2018,1,"Jul 2018","Matteo Guendouzi","Lorient",8,1,0],[2019,1,"Jul 2019","Gabriel Martinelli","Ituano",6,1,0],[2019,1,"Jul 2019","William Saliba","Saint-Étienne",27,1,0],[2019,1,"Aug 2019","Nicolas Pépé","Lille",72,1,0],[2019,1,"Aug 2019","Kieran Tierney","Celtic",25,1,0],[2019,1,"Aug 2019","David Luiz","Chelsea",8,1,0],[2019,0,"Aug 2019","Alex Iwobi","Everton",28,1,0],[2020,1,"Aug 2020","Pablo Marí","Flamengo",7,3,0],[2020,1,"Sep 2020","Gabriel Magalhães","Lille",23,3,0],[2020,0,"Sep 2020","Emiliano Martínez","Aston Villa",17,3,0],[2020,1,"Oct 2020","Thomas Partey","Atlético Madrid",45,3,0],[2021,1,"Jul 2021","Nuno Tavares","Benfica",8,3,0],[2021,1,"Jul 2021","Albert Sambi Lokonga","Anderlecht",17.2,3,0],[2021,1,"Jul 2021","Ben White","Brighton & Hove Albion",50,3,0],[2021,1,"Aug 2021","Martin Ødegaard","Real Madrid",34,3,0],[2021,1,"Aug 2021","Aaron Ramsdale","Sheffield United",30,3,0],[2021,1,"Aug 2021","Takehiro Tomiyasu","Bologna",16,3,0],[2021,0,"Aug 2021","Joe Willock","Newcastle United",20,3,0],[2022,1,"Jun 2022","Fábio Vieira","Porto",34,3,0],[2022,1,"Jun 2022","Matt Turner","New England Revolution",5.3,3,0],[2022,1,"Jul 2022","Gabriel Jesus","Manchester City",45,3,0],[2022,1,"Jul 2022","Oleksandr Zinchenko","Manchester City",30,3,0],[2022,0,"Jul 2022","Matteo Guendouzi","Marseille",9.4,3,0],[2022,0,"Aug 2022","Bernd Leno","Fulham",8,3,0],[2022,0,"Aug 2022","Lucas Torreira","Galatasaray",5.1,3,0],[2022,1,"Jan 2023","Leandro Trossard","Brighton & Hove Albion",27,3,1],[2022,1,"Jan 2023","Jakub Kiwior","Spezia",21,3,1],[2022,1,"Jan 2023","Jorginho","Chelsea",12,3,1],[2023,1,"Jun 2023","Kai Havertz","Chelsea",62,3,0],[2023,0,"Jun 2023","Pablo Marí","Monza",6,3,0],[2023,1,"Jul 2023","Jurriën Timber","Ajax",34.3,3,0],[2023,1,"Jul 2023","Declan Rice","West Ham United",100,3,0],[2023,0,"Jul 2023","Granit Xhaka","Bayer Leverkusen",21.4,3,0],[2023,0,"Aug 2023","Auston Trusty","Sheffield United",5,3,0],[2023,0,"Aug 2023","Matt Turner","Nottingham Forest",10,3,0],[2023,0,"Aug 2023","Folarin Balogun","Monaco",25.8,3,0],[2024,1,"Jul 2024","David Raya","Brentford",27,3,0],[2024,1,"Jul 2024","Riccardo Calafiori","Bologna",33.6,3,0],[2024,1,"Aug 2024","Mikel Merino","Real Sociedad",27.4,3,0],[2024,0,"Aug 2024","Emile Smith Rowe","Fulham",27,3,0],[2024,0,"Aug 2024","Aaron Ramsdale","Southampton",18,3,0],[2024,0,"Aug 2024","Eddie Nketiah","Crystal Palace",25,3,0],[2025,0,"Jun 2025","Nuno Tavares","Lazio",7.6,3,0],[2025,1,"Jul 2025","Kepa Arrizabalaga","Chelsea",5,3,0],[2025,1,"Jul 2025","Martín Zubimendi","Real Sociedad",55.8,3,0],[2025,1,"Jul 2025","Christian Nørgaard","Brentford",10,3,0],[2025,1,"Jul 2025","Noni Madueke","Chelsea",48.5,3,0],[2025,1,"Jul 2025","Cristhian Mosquera","Valencia",13,3,0],[2025,1,"Jul 2025","Viktor Gyökeres","Sporting CP",55,3,0],[2025,1,"Aug 2025","Eberechi Eze","Crystal Palace",60,3,0],[2026,1,"Jul 2026","Bruno Guimarães","Newcastle United",75,3,0],[2026,1,"Jul 2026","Christos Tzolis","Club Brugge",34,3,0],[2026,1,"Jul 2026","Piero Hincapié","Bayer Leverkusen",34.5,3,0],[2026,0,"Jul 2026","Christian Nørgaard","Everton",7,3,0],[2026,0,"Jul 2026","Jakub Kiwior","Porto",14.7,3,0]]},"city":{"n":"Man City","m":["Manuel Pellegrini","Pep Guardiola","Enzo Maresca"],"d":[[2013,1,"Jun 2013","Fernandinho","Shakhtar Donetsk",30,0,0],[2013,1,"Jun 2013","Jesús Navas","Sevilla",14.9,0,0],[2013,0,"Jun 2013","Carlos Tevez","Juventus",12,0,0],[2013,1,"Jul 2013","Álvaro Negredo","Sevilla",20,0,0],[2013,1,"Jul 2013","Stevan Jovetić","Fiorentina",22,0,0],[2014,1,"Jun 2014","Fernando","Porto",12,0,0],[2014,1,"Aug 2014","Eliaquim Mangala","Porto",41.9,0,0],[2014,0,"Aug 2014","Jack Rodwell","Sunderland",10,0,0],[2014,0,"Aug 2014","Javi García","Zenit Saint Petersburg",13,0,0],[2014,1,"Jan 2015","Wilfried Bony","Swansea City",25,0,1],[2015,1,"Jul 2015","Raheem Sterling","Liverpool",44,0,0],[2015,1,"Jul 2015","Fabian Delph","Aston Villa",8,0,0],[2015,1,"Jul 2015","Patrick Roberts","Fulham",12,0,0],[2015,0,"Jul 2015","Matija Nastasić","Schalke 04",8.3,0,0],[2015,0,"Jul 2015","Álvaro Negredo","Valencia",22,0,0],[2015,1,"Aug 2015","Nicolás Otamendi","Valencia",28.4,0,0],[2015,1,"Aug 2015","Kevin De Bruyne","VfL Wolfsburg",55,0,0],[2015,0,"Aug 2015","Marcos Lopes","Monaco",9,0,0],[2016,1,"Jun 2016","İlkay Gündoğan","Borussia Dortmund",20,1,0],[2016,1,"Jul 2016","Nolito","Celta Vigo",13.8,1,0],[2016,0,"Jul 2016","Edin Džeko","Roma",10.8,1,0],[2016,1,"Aug 2016","Leroy Sané","Schalke 04",37,1,0],[2016,1,"Aug 2016","John Stones","Everton",47.5,1,0],[2016,1,"Aug 2016","Claudio Bravo","Barcelona",15.4,1,0],[2016,1,"Jan 2017","Gabriel Jesus","Palmeiras",27,1,1],[2016,0,"Jan 2017","Stevan Jovetić","Inter Milan",12.2,1,1],[2017,1,"Jul 2017","Bernardo Silva","Monaco",43,1,0],[2017,1,"Jul 2017","Ederson","Benfica",34.9,1,0],[2017,1,"Jul 2017","Kyle Walker","Tottenham Hotspur",45,1,0],[2017,1,"Jul 2017","Danilo","Real Madrid",26.5,1,0],[2017,1,"Jul 2017","Benjamin Mendy","Monaco",49.3,1,0],[2017,1,"Jul 2017","Douglas Luiz","Vasco da Gama",10.2,1,0],[2017,0,"Jul 2017","Nolito","Sevilla",7.65,1,0],[2017,0,"Jul 2017","Aleksandar Kolarov","Roma",5.25,1,0],[2017,0,"Jul 2017","Enes Ünal","Villarreal",11.9,1,0],[2017,0,"Jul 2017","Aaron Mooy","Huddersfield Town",8,1,0],[2017,0,"Aug 2017","Kelechi Iheanacho","Leicester City",25,1,0],[2017,0,"Aug 2017","Wilfried Bony","Swansea City",12,1,0],[2017,0,"Aug 2017","Jadon Sancho","Borussia Dortmund",8,1,0],[2017,1,"Jan 2018","Aymeric Laporte","Athletic Bilbao",57,1,1],[2018,0,"Jun 2018","Angeliño","PSV Eindhoven",5,1,0],[2018,1,"Jul 2018","Riyad Mahrez","Leicester City",60,1,0],[2018,0,"Jul 2018","Pablo Maffeo","VfB Stuttgart",9,1,0],[2018,0,"Jul 2018","Angus Gunn","Southampton",13.5,1,0],[2018,0,"Aug 2018","Jason Denayer","Lyon",5.8,1,0],[2018,0,"Jan 2019","Brahim Díaz","Real Madrid",15.5,1,1],[2019,1,"Jul 2019","Angeliño","PSV Eindhoven",5.35,1,0],[2019,1,"Jul 2019","Rodri","Atlético Madrid",62.8,1,0],[2019,1,"Jul 2019","Zack Steffen","Columbus Crew",7,1,0],[2019,0,"Jul 2019","Fabian Delph","Everton",10,1,0],[2019,0,"Jul 2019","Douglas Luiz","Aston Villa",15,1,0],[2019,1,"Aug 2019","João Cancelo","Juventus",60,1,0],[2019,0,"Aug 2019","Danilo","Juventus",34.1,1,0],[2020,0,"Jul 2020","Leroy Sané","Bayern Munich",54.8,1,0],[2020,1,"Aug 2020","Ferran Torres","Valencia",20.75,1,0],[2020,1,"Aug 2020","Nathan Aké","Bournemouth",40,1,0],[2020,1,"Sep 2020","Rúben Dias","Benfica",62.1,1,0],[2020,0,"Sep 2020","Nicolás Otamendi","Benfica",13.7,1,0],[2020,0,"Feb 2021","Angeliño","RB Leipzig",16.3,1,1],[2021,1,"Aug 2021","Jack Grealish","Aston Villa",100,1,0],[2021,1,"Jan 2022","Julián Álvarez","River Plate",14.1,1,1],[2021,0,"Jan 2022","Ferran Torres","Barcelona",55.6,1,1],[2022,1,"Jul 2022","Erling Haaland","Borussia Dortmund",51.2,1,0],[2022,1,"Jul 2022","Kalvin Phillips","Leeds United",42,1,0],[2022,0,"Jul 2022","Gabriel Jesus","Arsenal",45,1,0],[2022,0,"Jul 2022","Raheem Sterling","Chelsea",47.5,1,0],[2022,0,"Jul 2022","Oleksandr Zinchenko","Arsenal",30,1,0],[2022,1,"Aug 2022","Sergio Gómez","Anderlecht",11,1,0],[2022,1,"Sep 2022","Manuel Akanji","Borussia Dortmund",15,1,0],[2022,1,"Jan 2023","Máximo Perrone","Vélez Sarsfield",8.2,1,1],[2023,1,"Jun 2023","Mateo Kovačić","Chelsea",25,1,0],[2023,0,"Jul 2023","Riyad Mahrez","Al-Ahli",30,1,0],[2023,1,"Aug 2023","Joško Gvardiol","RB Leipzig",77.5,1,0],[2023,1,"Aug 2023","Jérémy Doku","Rennes",55.5,1,0],[2023,0,"Aug 2023","Aymeric Laporte","Al Nassr",23.6,1,0],[2023,1,"Sep 2023","Matheus Nunes","Wolverhampton Wanderers",53,1,0],[2023,0,"Sep 2023","Cole Palmer","Chelsea",42.5,1,0],[2023,1,"Jan 2024","Claudio Echeverri","River Plate",12.5,1,1],[2024,1,"Jul 2024","Savinho","Troyes",21,1,0],[2024,0,"Jul 2024","Taylor Harwood-Bellis","Southampton",20,1,0],[2024,0,"Jul 2024","Sergio Gómez","Real Sociedad",8.4,1,0],[2024,0,"Jul 2024","Liam Delap","Ipswich Town",15,1,0],[2024,0,"Aug 2024","Julián Álvarez","Atlético Madrid",81.5,1,0],[2024,0,"Aug 2024","João Cancelo","Al-Hilal",21,1,0],[2024,1,"Jan 2025","Abdukodir Khusanov","Lens",33.6,1,1],[2024,1,"Jan 2025","Vitor Reis","Palmeiras",29.6,1,1],[2024,1,"Jan 2025","Omar Marmoush","Eintracht Frankfurt",59,1,1],[2024,1,"Jan 2025","Juma Bah","Real Valladolid",5.1,1,1],[2024,1,"Feb 2025","Nico González","Porto",50,1,1],[2025,1,"Jun 2025","Rayan Aït-Nouri","Wolverhampton Wanderers",31.8,1,0],[2025,1,"Jun 2025","Rayan Cherki","Lyon",34,1,0],[2025,1,"Jun 2025","Tijjani Reijnders","AC Milan",46.3,1,0],[2025,1,"Jul 2025","Sverre Nypan","Rosenborg",12.5,1,0],[2025,1,"Jul 2025","James Trafford","Burnley",31,1,0],[2025,0,"Jul 2025","Yan Couto","Borussia Dortmund",25.2,1,0],[2025,0,"Jul 2025","Kyle Walker","Burnley",5,1,0],[2025,0,"Jul 2025","Máximo Perrone","Como",13,1,0],[2025,0,"Aug 2025","James McAtee","Nottingham Forest",30,1,0],[2025,1,"Sep 2025","Gianluigi Donnarumma","Paris Saint-Germain",26,1,0],[2025,0,"Sep 2025","Ederson","Fenerbahçe",12,1,0],[2025,1,"Jan 2026","Antoine Semenyo","Bournemouth",64,1,1],[2025,1,"Jan 2026","Marc Guéhi","Crystal Palace",20,1,1],[2025,0,"Jan 2026","Oscar Bobb","Fulham",27,1,1],[2026,1,"Jul 2026","Elliot Anderson","Nottingham Forest",116,2,0],[2026,1,"Jul 2026","Ayyoub Bouaddi","Lille",81.7,2,0],[2026,1,"Jul 2026","Allan","Palmeiras",32.3,2,0],[2026,1,"Jul 2026","Matis Deturbe","Troyes",21.5,2,0],[2026,1,"Jul 2026","Jeremy Monga","Leicester City",10,2,0],[2026,0,"Jul 2026","Rodri","Barcelona",65.4,2,0],[2026,0,"Jul 2026","Tijjani Reijnders","Al-Qadsiah",52,2,0],[2026,0,"Jul 2026","Nico González","Newcastle United",48,2,0],[2026,0,"Jul 2026","James Trafford","Leeds United",40,2,0],[2026,0,"Jul 2026","Manuel Akanji","Inter Milan",12.9,2,0],[2026,0,"Jul 2026","Nathan Aké","Fenerbahçe",7,2,0],[2026,1,"Aug 2026","Iliman Ndiaye","Everton",60,2,0],[2026,0,"Aug 2026","Sávio","Tottenham Hotspur",75,2,0],[2026,1,"Sep 2026","Enzo Fernández","Chelsea",125,2,0]]},"spurs":{"n":"Spurs","m":["André Villas-Boas","Tim Sherwood","Mauricio Pochettino","José Mourinho","Ryan Mason (interim)","Nuno Espírito Santo","Antonio Conte","Cristian Stellini (interim)","Ryan Mason (interim)","Ange Postecoglou","Thomas Frank","Igor Tudor (interim)","Roberto De Zerbi"],"d":[[2013,1,"Jul 2013","Paulinho","Corinthians",17,0,0],[2013,1,"Jul 2013","Nacer Chadli","Twente",7,0,0],[2013,0,"Jul 2013","Steven Caulker","Cardiff City",9,0,0],[2013,1,"Aug 2013","Roberto Soldado","Valencia",26,0,0],[2013,1,"Aug 2013","Étienne Capoue","Toulouse",9,0,0],[2013,1,"Aug 2013","Vlad Chiricheș","Steaua București",8.5,0,0],[2013,1,"Aug 2013","Christian Eriksen","Ajax",11.5,0,0],[2013,1,"Aug 2013","Erik Lamela","Roma",30,0,0],[2013,0,"Aug 2013","Clint Dempsey","Seattle Sounders FC",6,0,0],[2013,0,"Aug 2013","Tom Huddlestone","Hull City",5,0,0],[2013,0,"Sep 2013","Gareth Bale","Real Madrid",85.3,0,0],[2013,0,"Feb 2014","Jermain Defoe","Toronto FC",6,1,1],[2014,0,"Jun 2014","Jake Livermore","Hull City",8,2,0],[2014,1,"Aug 2014","Federico Fazio","Sevilla",8,2,0],[2014,0,"Aug 2014","Michael Dawson","Hull City",6,2,0],[2014,0,"Sep 2014","Sandro","Queens Park Rangers",10,2,0],[2014,0,"Jan 2015","Kyle Naughton","Swansea City",5,2,1],[2014,1,"Feb 2015","Dele Alli","Milton Keynes Dons",5,2,1],[2015,0,"Jun 2015","Paulinho","Guangzhou Evergrande",9.9,2,0],[2015,1,"Jul 2015","Toby Alderweireld","Atlético Madrid",11.4,2,0],[2015,0,"Jul 2015","Étienne Capoue","Watford",6.3,2,0],[2015,0,"Jul 2015","Benjamin Stambouli","Paris Saint-Germain",6,2,0],[2015,1,"Aug 2015","Clinton N'Jie","Lyon",8.3,2,0],[2015,1,"Aug 2015","Son Heung-min","Bayer Leverkusen",22,2,0],[2015,0,"Aug 2015","Roberto Soldado","Villarreal",10,2,0],[2015,0,"Jan 2016","Andros Townsend","Newcastle United",12,2,1],[2016,1,"Jun 2016","Victor Wanyama","Southampton",11,2,0],[2016,1,"Jul 2016","Vincent Janssen","AZ",17,2,0],[2016,1,"Aug 2016","Georges-Kévin Nkoudou","Marseille",9.4,2,0],[2016,1,"Aug 2016","Moussa Sissoko","Newcastle United",30,2,0],[2016,0,"Aug 2016","Alex Pritchard","Norwich City",8,2,0],[2016,0,"Aug 2016","DeAndre Yedlin","Newcastle United",5,2,0],[2016,0,"Aug 2016","Nacer Chadli","West Bromwich Albion",13,2,0],[2016,0,"Aug 2016","Ryan Mason","Hull City",13,2,0],[2016,0,"Feb 2017","Nabil Bentaleb","Schalke 04",16,2,1],[2017,0,"Jul 2017","Kyle Walker","Manchester City",50,2,0],[2017,0,"Jul 2017","Clinton N'Jie","Marseille",6,2,0],[2017,1,"Aug 2017","Davinson Sánchez","Ajax",42,2,0],[2017,1,"Aug 2017","Juan Foyth","Estudiantes",10,2,0],[2017,1,"Aug 2017","Serge Aurier","Paris Saint-Germain",23,2,0],[2017,1,"Aug 2017","Fernando Llorente","Swansea City",12,2,0],[2017,0,"Aug 2017","Kevin Wimmer","Stoke City",18,2,0],[2017,1,"Jan 2018","Lucas Moura","Paris Saint-Germain",25,2,1],[2018,0,"Jan 2019","Mousa Dembélé","Guangzhou R&F",11,2,1],[2019,1,"Jul 2019","Jack Clarke","Leeds United",10,2,0],[2019,1,"Jul 2019","Tanguy Ndombele","Lyon",55,2,0],[2019,0,"Jul 2019","Kieran Trippier","Atlético Madrid",20,2,0],[2019,0,"Jul 2019","Vincent Janssen","Monterrey",6.3,2,0],[2019,1,"Aug 2019","Ryan Sessegnon","Fulham",25,2,0],[2019,1,"Jan 2020","Steven Bergwijn","PSV Eindhoven",27,3,1],[2019,0,"Jan 2020","Christian Eriksen","Inter Milan",16.9,3,1],[2020,1,"Aug 2020","Pierre-Emile Højbjerg","Southampton",15,3,0],[2020,1,"Aug 2020","Matt Doherty","Wolverhampton Wanderers",13.4,3,0],[2020,0,"Aug 2020","Kyle Walker-Peters","Southampton",12,3,0],[2020,1,"Sep 2020","Sergio Reguilón","Real Madrid",25,3,0],[2020,1,"Oct 2020","Joe Rodon","Swansea City",11,3,0],[2021,1,"Jul 2021","Bryan Gil","Sevilla",21.6,5,0],[2021,0,"Jul 2021","Toby Alderweireld","Al-Duhail",13,5,0],[2021,1,"Aug 2021","Emerson Royal","Barcelona",25.8,5,0],[2021,1,"Jan 2022","Rodrigo Bentancur","Juventus",15.9,6,1],[2022,1,"Jun 2022","Yves Bissouma","Brighton & Hove Albion",25,6,0],[2022,0,"Jun 2022","Cameron Carter-Vickers","Celtic",6,6,0],[2022,1,"Jul 2022","Richarlison","Everton",60,6,0],[2022,1,"Jul 2022","Djed Spence","Middlesbrough",12.5,6,0],[2022,0,"Jul 2022","Steven Bergwijn","Ajax",26.4,6,0],[2022,1,"Aug 2022","Destiny Udogie","Udinese",15,6,0],[2022,1,"Aug 2022","Cristian Romero","Atalanta",42.5,6,0],[2023,1,"Jun 2023","Guglielmo Vicario","Empoli",17.2,9,0],[2023,1,"Jun 2023","Dejan Kulusevski","Juventus",25.8,9,0],[2023,1,"Jun 2023","James Maddison","Leicester City",40,9,0],[2023,1,"Jul 2023","Pedro Porro","Sporting CP",40,9,0],[2023,1,"Aug 2023","Micky van de Ven","VfL Wolfsburg",34.6,9,0],[2023,0,"Aug 2023","Harry Kane","Bayern Munich",86.4,9,0],[2023,1,"Sep 2023","Brennan Johnson","Nottingham Forest",47.5,9,0],[2023,1,"Jan 2024","Radu Drăgușin","Genoa",26.7,9,1],[2024,1,"Jul 2024","Lucas Bergvall","Djurgården",8.5,9,0],[2024,1,"Jul 2024","Archie Gray","Leeds United",40,9,0],[2024,0,"Jul 2024","Joe Rodon","Leeds United",10,9,0],[2024,1,"Aug 2024","Dominic Solanke","Bournemouth",65,9,0],[2024,1,"Aug 2024","Wilson Odobert","Burnley",25,9,0],[2024,0,"Aug 2024","Emerson Royal","AC Milan",12.8,9,0],[2024,0,"Aug 2024","Oliver Skipp","Leicester City",20,9,0],[2024,0,"Aug 2024","Giovani Lo Celso","Real Betis",8.4,9,0],[2024,1,"Jan 2025","Antonín Kinský","Slavia Prague",12.5,9,1],[2025,1,"Jun 2025","Kevin Danso","Lens",21,10,0],[2025,1,"Jun 2025","Mathys Tel","Bayern Munich",30,10,0],[2025,0,"Jun 2025","Pierre-Emile Højbjerg","Marseille",17,10,0],[2025,1,"Jul 2025","Luka Vušković","Hajduk Split",12,10,0],[2025,1,"Jul 2025","Kōta Takai","Kawasaki Frontale",5,10,0],[2025,1,"Jul 2025","Mohammed Kudus","West Ham United",55,10,0],[2025,1,"Aug 2025","Xavi Simons","RB Leipzig",51.8,10,0],[2025,0,"Aug 2025","Son Heung-min","Los Angeles FC",20,10,0],[2025,0,"Sep 2025","Bryan Gil","Girona",8.6,10,0],[2025,1,"Jan 2026","Conor Gallagher","Atlético Madrid",35,10,1],[2025,1,"Jan 2026","Souza","Santos",13,10,1],[2025,0,"Jan 2026","Brennan Johnson","Crystal Palace",35,10,1],[2026,1,"Jun 2026","Jan Paul van Hecke","Brighton & Hove Albion",52,12,0],[2026,1,"Jul 2026","Mateus Fernandes","West Ham United",85,12,0],[2026,1,"Jul 2026","Sandro Tonali","Newcastle United",92.5,12,0],[2026,0,"Jul 2026","Alejo Véliz","Bahia",7.8,12,0],[2026,0,"Jul 2026","Luka Vušković","Brighton & Hove Albion",46,12,0],[2026,0,"Jul 2026","Will Lankshear","Middlesbrough",10,12,0],[2026,1,"Aug 2026","Sávio","Manchester City",75,12,0],[2026,0,"Aug 2026","Manor Solomon","West Ham United",5,12,0],[2026,0,"Aug 2026","Ashley Phillips","Middlesbrough",7,12,0],[2026,0,"Aug 2026","Cristian Romero","Atlético Madrid",34.2,12,0],[2026,0,"Aug 2026","Djed Spence","Inter Milan",30,12,0],[2026,1,"Sep 2026","Tosin Adarabioyo","Chelsea",7,12,0]]},"liverpool":{"n":"Liverpool","m":["Brendan Rodgers","Jürgen Klopp","Arne Slot","Andoni Iraola"],"d":[[2013,1,"Jun 2013","Luis Alberto","Sevilla",6.8,0,0],[2013,1,"Jun 2013","Iago Aspas","Celta Vigo",7,0,0],[2013,1,"Jun 2013","Simon Mignolet","Sunderland",9,0,0],[2013,0,"Jun 2013","Andy Carroll","West Ham United",15.5,0,0],[2013,0,"Jul 2013","Jonjo Shelvey","Swansea City",5,0,0],[2013,0,"Aug 2013","Stewart Downing","West Ham United",5,0,0],[2013,1,"Sep 2013","Tiago Ilori","Sporting CP",7,0,0],[2013,1,"Sep 2013","Mamadou Sakho","Paris Saint-Germain",15,0,0],[2014,1,"Jul 2014","Adam Lallana","Southampton",25,0,0],[2014,1,"Jul 2014","Emre Can","Bayer Leverkusen",10,0,0],[2014,1,"Jul 2014","Lazar Marković","Benfica",20,0,0],[2014,1,"Jul 2014","Dejan Lovren","Southampton",20,0,0],[2014,1,"Jul 2014","Divock Origi","Lille",10,0,0],[2014,0,"Jul 2014","Luis Suárez","Barcelona",75,0,0],[2014,1,"Aug 2014","Alberto Moreno","Sevilla",12,0,0],[2014,1,"Aug 2014","Mario Balotelli","AC Milan",16,0,0],[2015,1,"Jul 2015","Danny Ings","Burnley",6.5,0,0],[2015,1,"Jul 2015","Roberto Firmino","Hoffenheim",21.3,0,0],[2015,1,"Jul 2015","Nathaniel Clyne","Southampton",10,0,0],[2015,1,"Jul 2015","Christian Benteke","Aston Villa",32.5,0,0],[2015,0,"Jul 2015","Iago Aspas","Celta Vigo",5,0,0],[2015,0,"Jul 2015","Raheem Sterling","Manchester City",44,0,0],[2015,0,"Aug 2015","Fabio Borini","Sunderland",8,0,0],[2015,1,"Jan 2016","Marko Grujić","Red Star Belgrade",5.1,1,1],[2016,1,"Jul 2016","Sadio Mané","Southampton",36,1,0],[2016,1,"Jul 2016","Georginio Wijnaldum","Newcastle United",23,1,0],[2016,0,"Jul 2016","Martin Škrtel","Fenerbahçe",5.5,1,0],[2016,0,"Jul 2016","Jordon Ibe","Bournemouth",15,1,0],[2016,0,"Jul 2016","Joe Allen","Stoke City",11,1,0],[2016,0,"Aug 2016","Christian Benteke","Crystal Palace",27,1,0],[2017,1,"Jul 2017","Mohamed Salah","Roma",43.9,1,0],[2017,1,"Jul 2017","Andy Robertson","Hull City",10,1,0],[2017,0,"Jul 2017","Lucas Leiva","Lazio",5,1,0],[2017,1,"Aug 2017","Alex Oxlade-Chamberlain","Arsenal",40,1,0],[2017,0,"Aug 2017","Mamadou Sakho","Crystal Palace",24,1,0],[2017,1,"Jan 2018","Virgil van Dijk","Southampton",75,1,1],[2017,0,"Jan 2018","Philippe Coutinho","Barcelona",105,1,1],[2018,1,"Jul 2018","Naby Keïta","RB Leipzig",52.75,1,0],[2018,1,"Jul 2018","Fabinho","Monaco",39,1,0],[2018,1,"Jul 2018","Xherdan Shaqiri","Stoke City",13.5,1,0],[2018,1,"Jul 2018","Alisson Becker","Roma",55.5,1,0],[2018,0,"Jul 2018","Danny Ward","Leicester City",12.5,1,0],[2018,0,"Jan 2019","Dominic Solanke","Bournemouth",19,1,1],[2019,0,"Jul 2019","Rafael Camacho","Sporting CP",5,1,0],[2019,0,"Jul 2019","Danny Ings","Southampton",18,1,0],[2019,0,"Aug 2019","Simon Mignolet","Club Brugge",6.4,1,0],[2019,0,"Sep 2019","Ryan Kent","Rangers",6.5,1,0],[2019,1,"Jan 2020","Takumi Minamino","Red Bull Salzburg",7.25,1,1],[2020,0,"Jul 2020","Dejan Lovren","Zenit Saint Petersburg",10.9,1,0],[2020,1,"Aug 2020","Kostas Tsimikas","Olympiacos",11.75,1,0],[2020,1,"Sep 2020","Thiago Alcântara","Bayern Munich",20,1,0],[2020,1,"Sep 2020","Diogo Jota","Wolverhampton Wanderers",41,1,0],[2020,0,"Sep 2020","Ki-Jana Hoever","Wolverhampton Wanderers",9,1,0],[2020,0,"Oct 2020","Rhian Brewster","Sheffield United",18,1,0],[2021,1,"Jul 2021","Ibrahima Konaté","RB Leipzig",36,1,0],[2021,0,"Jul 2021","Marko Grujić","Porto",10.5,1,0],[2021,0,"Jul 2021","Taiwo Awoniyi","Union Berlin",7.85,1,0],[2021,0,"Jul 2021","Harry Wilson","Fulham",12,1,0],[2021,0,"Aug 2021","Xherdan Shaqiri","Lyon",9.5,1,0],[2021,1,"Jan 2022","Luis Díaz","Porto",47,1,1],[2022,1,"Jul 2022","Darwin Núñez","Benfica",64,1,0],[2022,1,"Jul 2022","Fábio Carvalho","Fulham",5,1,0],[2022,0,"Jul 2022","Sadio Mané","Bayern Munich",27.5,1,0],[2022,0,"Jul 2022","Takumi Minamino","Monaco",13,1,0],[2022,0,"Jul 2022","Neco Williams","Nottingham Forest",16,1,0],[2022,1,"Jan 2023","Cody Gakpo","PSV Eindhoven",37,1,1],[2023,1,"Jul 2023","Alexis Mac Allister","Brighton & Hove Albion",35,1,0],[2023,1,"Jul 2023","Dominik Szoboszlai","RB Leipzig",60,1,0],[2023,0,"Jul 2023","Jordan Henderson","Al-Ettifaq",12,1,0],[2023,0,"Jul 2023","Fabinho","Al-Ittihad",40,1,0],[2023,1,"Aug 2023","Wataru Endo","VfB Stuttgart",16.2,1,0],[2023,1,"Sep 2023","Ryan Gravenberch","Bayern Munich",34.2,1,0],[2024,1,"Aug 2024","Federico Chiesa","Juventus",10,2,0],[2024,1,"Aug 2024","Giorgi Mamardashvili","Valencia",25,2,0],[2024,0,"Aug 2024","Fábio Carvalho","Brentford",20,2,0],[2024,0,"Aug 2024","Sepp van den Berg","Brentford",20,2,0],[2024,0,"Aug 2024","Bobby Clark","Red Bull Salzburg",10,2,0],[2025,1,"Jun 2025","Jeremie Frimpong","Bayer Leverkusen",29.5,2,0],[2025,1,"Jun 2025","Florian Wirtz","Bayer Leverkusen",100,2,0],[2025,1,"Jun 2025","Milos Kerkez","Bournemouth",40,2,0],[2025,0,"Jun 2025","Trent Alexander-Arnold","Real Madrid",8.4,2,0],[2025,0,"Jun 2025","Caoimhín Kelleher","Brentford",12.5,2,0],[2025,1,"Jul 2025","Hugo Ekitike","Eintracht Frankfurt",69,2,0],[2025,0,"Jul 2025","Jarell Quansah","Bayer Leverkusen",30,2,0],[2025,0,"Jul 2025","Luis Díaz","Bayern Munich",60,2,0],[2025,1,"Aug 2025","Giovanni Leoni","Parma",26,2,0],[2025,0,"Aug 2025","Tyler Morton","Lyon",10,2,0],[2025,0,"Aug 2025","Darwin Núñez","Al-Hilal",46.2,2,0],[2025,0,"Aug 2025","Ben Doak","Bournemouth",20,2,0],[2025,1,"Sep 2025","Alexander Isak","Newcastle United",125,2,0],[2025,1,"Feb 2026","Jérémy Jacquet","Rennes",55,2,1],[2026,1,"Jul 2026","Víctor Muñoz","Osasuna",34.5,3,0],[2026,1,"Aug 2026","Bradley Barcola","Paris Saint-Germain",106,3,0],[2026,0,"Aug 2026","Curtis Jones","Inter Milan",25.7,3,0],[2026,1,"Sep 2026","Lucca Brughmans","Genk",28.3,3,0]]},"chelsea":{"n":"Chelsea","m":["José Mourinho","Guus Hiddink (interim)","Antonio Conte","Maurizio Sarri","Frank Lampard","Thomas Tuchel","Graham Potter","Frank Lampard (interim)","Mauricio Pochettino","Enzo Maresca","Calum McFarlane (caretaker)","Liam Rosenior","Calum McFarlane (interim)","Xabi Alonso"],"d":[[2013,1,"Jul 2013","André Schürrle","Bayer Leverkusen",18.7,0,0],[2013,1,"Jul 2013","Marco van Ginkel","Vitesse",8,0,0],[2013,1,"Aug 2013","Willian","Anzhi Makhachkala",30,0,0],[2013,1,"Jan 2014","Nemanja Matić","Benfica",21,0,1],[2013,1,"Jan 2014","Mohamed Salah","Basel",11,0,1],[2013,1,"Jan 2014","Kurt Zouma","Saint-Étienne",12.5,0,1],[2013,0,"Jan 2014","Kevin De Bruyne","VfL Wolfsburg",16.5,0,1],[2013,0,"Jan 2014","Juan Mata","Manchester United",37.1,0,1],[2014,1,"Jun 2014","Cesc Fàbregas","Barcelona",27,0,0],[2014,0,"Jun 2014","David Luiz","Paris Saint-Germain",50,0,0],[2014,1,"Jul 2014","Diego Costa","Atlético Madrid",32,0,0],[2014,1,"Jul 2014","Filipe Luís","Atlético Madrid",15.8,0,0],[2014,0,"Jul 2014","Romelu Lukaku","Everton",28,0,0],[2014,1,"Aug 2014","Loïc Rémy","Queens Park Rangers",10.5,0,0],[2014,1,"Feb 2015","Juan Cuadrado","Fiorentina",23.3,0,1],[2014,0,"Feb 2015","André Schürrle","VfL Wolfsburg",22,0,1],[2014,0,"Feb 2015","Ryan Bertrand","Southampton",10,0,1],[2015,1,"Jul 2015","Asmir Begović","Stoke City",8,0,0],[2015,0,"Jul 2015","Thorgan Hazard","Borussia Mönchengladbach",5.85,0,0],[2015,0,"Jul 2015","Petr Čech","Arsenal",10,0,0],[2015,0,"Jul 2015","Filipe Luís","Atlético Madrid",11.1,0,0],[2015,1,"Aug 2015","Baba Rahman","Augsburg",14,0,0],[2015,1,"Aug 2015","Pedro","Barcelona",21.4,0,0],[2015,1,"Aug 2015","Kenedy","Fluminense",6.3,0,0],[2015,0,"Aug 2015","Oriol Romeu","Southampton",5,0,0],[2015,0,"Jan 2016","Ramires","Jiangsu Suning",25,1,1],[2016,1,"Jul 2016","Michy Batshuayi","Marseille",33.2,2,0],[2016,1,"Jul 2016","N'Golo Kanté","Leicester City",32,2,0],[2016,1,"Aug 2016","Marcos Alonso","Fiorentina",23,2,0],[2016,1,"Aug 2016","David Luiz","Paris Saint-Germain",30,2,0],[2016,0,"Aug 2016","Mohamed Salah","Roma",14.5,2,0],[2016,0,"Aug 2016","Papy Djilobodji","Sunderland",8,2,0],[2016,0,"Dec 2016","Oscar","Shanghai SIPG",60,2,1],[2016,0,"Jan 2017","Patrick Bamford","Middlesbrough",6,2,1],[2017,0,"Jun 2017","Juan Cuadrado","Juventus",17.3,2,0],[2017,0,"Jun 2017","Christian Atsu","Newcastle United",6.2,2,0],[2017,0,"Jun 2017","Asmir Begović","Bournemouth",10,2,0],[2017,0,"Jun 2017","Bertrand Traoré","Lyon",8.8,2,0],[2017,0,"Jun 2017","Nathan Aké","Bournemouth",20,2,0],[2017,1,"Jul 2017","Antonio Rüdiger","Roma",29,2,0],[2017,1,"Jul 2017","Álvaro Morata","Real Madrid",58,2,0],[2017,1,"Jul 2017","Tiémoué Bakayoko","Monaco",40,2,0],[2017,0,"Jul 2017","Nathaniel Chalobah","Watford",5.5,2,0],[2017,0,"Jul 2017","Nemanja Matić","Manchester United",40,2,0],[2017,1,"Aug 2017","Davide Zappacosta","Torino",23,2,0],[2017,1,"Aug 2017","Danny Drinkwater","Leicester City",35,2,0],[2017,0,"Sep 2017","Diego Costa","Atlético Madrid",57,2,0],[2017,1,"Jan 2018","Ross Barkley","Everton",15,2,1],[2017,1,"Jan 2018","Emerson Palmieri","Roma",17,2,1],[2017,1,"Jan 2018","Olivier Giroud","Arsenal",18,2,1],[2018,1,"Jul 2018","Jorginho","Napoli",51.3,3,0],[2018,1,"Aug 2018","Kepa Arrizabalaga","Athletic Bilbao",72,3,0],[2018,0,"Aug 2018","Thibaut Courtois","Real Madrid",31.5,3,0],[2018,1,"Jan 2019","Christian Pulisic","Borussia Dortmund",57.6,3,1],[2018,0,"Jan 2019","Cesc Fàbregas","Monaco",8.1,3,1],[2019,1,"Jul 2019","Mateo Kovačić","Real Madrid",40.5,4,0],[2019,0,"Jul 2019","Eden Hazard","Real Madrid",103.5,4,0],[2019,0,"Jul 2019","Ola Aina","Torino",8.8,4,0],[2019,0,"Jul 2019","Victorien Angban","Metz",5.4,4,0],[2019,0,"Jul 2019","Tomáš Kalas","Bristol City",8.1,4,0],[2019,0,"Aug 2019","David Luiz","Arsenal",8,4,0],[2019,0,"Jan 2020","Michael Hector","Fulham",5.3,4,1],[2020,1,"Jul 2020","Hakim Ziyech","Ajax",36,4,0],[2020,1,"Jul 2020","Timo Werner","RB Leipzig",47.7,4,0],[2020,1,"Aug 2020","Ben Chilwell","Leicester City",45.2,4,0],[2020,1,"Sep 2020","Kai Havertz","Bayer Leverkusen",72,4,0],[2020,1,"Sep 2020","Édouard Mendy","Rennes",21.6,4,0],[2020,0,"Sep 2020","Mario Pašalić","Atalanta",13.5,4,0],[2021,0,"Jul 2021","Marc Guéhi","Crystal Palace",21,5,0],[2021,0,"Jul 2021","Fikayo Tomori","AC Milan",26.8,5,0],[2021,1,"Aug 2021","Romelu Lukaku","Inter Milan",97.5,5,0],[2021,0,"Aug 2021","Tammy Abraham","Roma",34,5,0],[2021,0,"Aug 2021","Kurt Zouma","West Ham United",29.8,5,0],[2022,1,"Jul 2022","Raheem Sterling","Manchester City",47.5,5,0],[2022,1,"Jul 2022","Kalidou Koulibaly","Napoli",33,5,0],[2022,1,"Aug 2022","Gabriel Slonina","Chicago Fire",8.1,5,0],[2022,1,"Aug 2022","Carney Chukwuemeka","Aston Villa",20,5,0],[2022,1,"Aug 2022","Marc Cucurella","Brighton & Hove Albion",60,5,0],[2022,1,"Aug 2022","Cesare Casadei","Inter Milan",16.8,5,0],[2022,1,"Aug 2022","Wesley Fofana","Leicester City",75,5,0],[2022,0,"Aug 2022","Timo Werner","RB Leipzig",25.3,5,0],[2022,0,"Aug 2022","Emerson Palmieri","West Ham United",15,5,0],[2022,1,"Sep 2022","Pierre-Emerick Aubameyang","Barcelona",10.3,5,0],[2022,0,"Sep 2022","Billy Gilmour","Brighton & Hove Albion",10,5,0],[2022,1,"Jan 2023","Benoît Badiashile","Monaco",35,6,1],[2022,1,"Jan 2023","David Datro Fofana","Molde",10,6,1],[2022,1,"Jan 2023","Andrey Santos","Vasco da Gama",18,6,1],[2022,1,"Jan 2023","Mykhailo Mudryk","Shakhtar Donetsk",62,6,1],[2022,1,"Jan 2023","Noni Madueke","PSV Eindhoven",29,6,1],[2022,1,"Jan 2023","Malo Gusto","Lyon",26.3,6,1],[2022,1,"Jan 2023","Enzo Fernández","Benfica",106.8,6,1],[2022,0,"Jan 2023","Jorginho","Arsenal",12,6,1],[2023,0,"Jun 2023","Kalidou Koulibaly","Al-Hilal",17,8,0],[2023,0,"Jun 2023","Mateo Kovačić","Manchester City",25,8,0],[2023,0,"Jun 2023","Édouard Mendy","Al-Ahli",16,8,0],[2023,0,"Jun 2023","Kai Havertz","Arsenal",65,8,0],[2023,0,"Jun 2023","Ruben Loftus-Cheek","AC Milan",15,8,0],[2023,1,"Jul 2023","Nicolas Jackson","Villarreal",32,8,0],[2023,1,"Jul 2023","Christopher Nkunku","RB Leipzig",52,8,0],[2023,1,"Jul 2023","Ângelo Gabriel","Santos",13,8,0],[2023,0,"Jul 2023","Mason Mount","Manchester United",55,8,0],[2023,0,"Jul 2023","Christian Pulisic","AC Milan",17.1,8,0],[2023,0,"Jul 2023","Ethan Ampadu","Leeds United",7,8,0],[2023,1,"Aug 2023","Lesley Ugochukwu","Rennes",23.2,8,0],[2023,1,"Aug 2023","Axel Disasi","Monaco",38.8,8,0],[2023,1,"Aug 2023","Robert Sánchez","Brighton & Hove Albion",25,8,0],[2023,1,"Aug 2023","Moisés Caicedo","Brighton & Hove Albion",100,8,0],[2023,1,"Aug 2023","Roméo Lavia","Southampton",53,8,0],[2023,1,"Aug 2023","Deivid Washington","Santos",13.7,8,0],[2023,1,"Aug 2023","Đorđe Petrović","New England Revolution",12.5,8,0],[2023,1,"Sep 2023","Cole Palmer","Manchester City",40,8,0],[2023,0,"Sep 2023","Callum Hudson-Odoi","Nottingham Forest",5,8,0],[2024,1,"Jun 2024","Omari Kellyman","Aston Villa",19,9,0],[2024,0,"Jun 2024","Ian Maatsen","Aston Villa",37.5,9,0],[2024,0,"Jun 2024","Omari Hutchinson","Ipswich Town",20,9,0],[2024,1,"Jul 2024","Marc Guiu","Barcelona",5,9,0],[2024,1,"Jul 2024","Kiernan Dewsbury-Hall","Leicester City",30,9,0],[2024,1,"Jul 2024","Renato Veiga","Basel",11.8,9,0],[2024,1,"Jul 2024","Caleb Wiley","Atlanta United",8.5,9,0],[2024,1,"Jul 2024","Filip Jörgensen","Villarreal",20.7,9,0],[2024,0,"Jul 2024","Lewis Hall","Newcastle United",28,9,0],[2024,1,"Aug 2024","Aarón Anselmino","Boca Juniors",15.6,9,0],[2024,1,"Aug 2024","Pedro Neto","Wolverhampton Wanderers",51.3,9,0],[2024,1,"Aug 2024","João Félix","Atlético Madrid",44.5,9,0],[2024,0,"Aug 2024","Conor Gallagher","Atlético Madrid",36,9,0],[2024,0,"Aug 2024","Romelu Lukaku","Napoli",25.2,9,0],[2024,0,"Sep 2024","Ângelo Gabriel","Al Nassr",19.4,9,0],[2024,1,"Feb 2025","Mathis Amougou","Saint-Étienne",12.5,9,1],[2024,0,"Feb 2025","Cesare Casadei","Torino",12.5,9,1],[2025,1,"Jun 2025","Mike Penders","Genk",17,9,0],[2025,1,"Jun 2025","Dário Essugo","Sporting CP",18,9,0],[2025,1,"Jun 2025","Liam Delap","Ipswich Town",30,9,0],[2025,1,"Jun 2025","Mamadou Sarr","Strasbourg",11.8,9,0],[2025,1,"Jul 2025","Kendry Páez","Independiente del Valle",17.2,9,0],[2025,1,"Jul 2025","João Pedro","Brighton & Hove Albion",55,9,0],[2025,1,"Jul 2025","Jamie Gittens","Borussia Dortmund",48.5,9,0],[2025,0,"Jul 2025","Kepa Arrizabalaga","Arsenal",5,9,0],[2025,0,"Jul 2025","Bashir Humphreys","Burnley",14,9,0],[2025,0,"Jul 2025","Mathis Amougou","Strasbourg",12,9,0],[2025,0,"Jul 2025","Đorđe Petrović","Bournemouth",25,9,0],[2025,0,"Jul 2025","Noni Madueke","Arsenal",48.5,9,0],[2025,0,"Jul 2025","João Félix","Al Nassr",26.2,9,0],[2025,1,"Aug 2025","Jorrel Hato","Ajax",35.5,9,0],[2025,1,"Aug 2025","Estêvão","Palmeiras",29,9,0],[2025,1,"Aug 2025","Alejandro Garnacho","Manchester United",40,9,0],[2025,0,"Aug 2025","Kiernan Dewsbury-Hall","Everton",25,9,0],[2025,0,"Aug 2025","Lesley Ugochukwu","Burnley",23.2,9,0],[2025,0,"Aug 2025","Armando Broja","Burnley",20,9,0],[2025,0,"Aug 2025","Renato Veiga","Villarreal",26,9,0],[2025,0,"Aug 2025","Carney Chukwuemeka","Borussia Dortmund",24,9,0],[2025,0,"Aug 2025","Christopher Nkunku","AC Milan",32,9,0],[2025,1,"Sep 2025","Ishé Samuels-Smith","Strasbourg",6.5,9,0],[2026,1,"Jul 2026","Marco Palestra","Atalanta",43,13,0],[2026,1,"Jul 2026","Emmanuel Emegha","Strasbourg",22,13,0],[2026,1,"Jul 2026","Geovany Quenda","Sporting CP",40,13,0],[2026,1,"Jul 2026","Morgan Rogers","Aston Villa",117,13,0],[2026,1,"Jul 2026","Maxence Lacroix","Crystal Palace",52,13,0],[2026,0,"Jul 2026","Marc Cucurella","Real Madrid",47.5,13,0],[2026,0,"Jul 2026","Tyrique George","Everton",18,13,0],[2026,0,"Jul 2026","Andrey Santos","Manchester United",48,13,0],[2026,1,"Aug 2026","Danny Welbeck","Brighton & Hove Albion",5,13,0],[2026,1,"Aug 2026","Valentín Barco","Strasbourg",34,13,0],[2026,1,"Aug 2026","Pep Chavarría","Rayo Vallecano",16.3,13,0],[2026,1,"Aug 2026","Emiliano Martínez","Aston Villa",7.5,13,0],[2026,0,"Aug 2026","Trevoh Chalobah","Como",25.7,13,0],[2026,0,"Aug 2026","Liam Delap","Nottingham Forest",45,13,0],[2026,0,"Aug 2026","Nicolas Jackson","Aston Villa",47.5,13,0],[2026,0,"Sep 2026","Tosin Adarabioyo","Tottenham Hotspur",10,13,0],[2026,0,"Sep 2026","Enzo Fernández","Manchester City",125,13,0],[2026,0,"Sep 2026","Marc Guiu","RB Leipzig",14.6,13,0]]}};
+const RORD=["arsenal","city","chelsea","liverpool","spurs"];
+let rClub="arsenal",rS=2026,rMgr=null;
+const rFee=v=>`£${(Math.round(v*10)/10).toString()}m`;
+const rSum=(a,dir)=>a.reduce((t,r)=>t+(r[1]===dir?r[5]:0),0);
+const rShort=n=>n.replace(/ \((interim|caretaker)\)/,"*");
+function rRows(rows,dir,showSeason){
+  const L=rows.filter(r=>r[1]===dir), C=RIV[rClub];
+  if(!L.length)return `<div class="empty">No ${dir?"signings":"sales"} of £5m or more.</div>`;
+  return `<div class="tbl"><table class="seas"><thead><tr><th>Date</th><th>Player</th><th>Fee</th></tr></thead><tbody>${L.map(r=>`<tr><td class="dt">${showSeason?r[2]:r[2].slice(0,3)}</td><td><strong>${r[3]}</strong><div class="kind">${dir?"from":"to"} <span class="clb">${r[4]}</span> · <span class="rmg">${rShort(C.m[r[6]])}</span></div></td><td class="fee">${rFee(r[5])}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function renderRivals(scroll){
+  const C=RIV[rClub], D=C.d;
+  document.getElementById("rclubs").innerHTML=RORD.map(k=>`<button class="chip" data-rc="${k}" aria-pressed="${k===rClub}">${RIV[k].n}</button>`).join("");
+  const si=rSum(D,1), so=rSum(D,0);
+  document.getElementById("rtot").innerHTML=`<span><b>${D.filter(r=>r[1]).length}</b>signings</span><span><b>£${Math.round(si)}m</b>spent</span><span><b>£${Math.round(so)}m</b>received</span><span><b>£${Math.round(si-so)}m</b>net spend</span>`;
+  // managers
+  const MM=C.m.map((n,i)=>{const a=D.filter(r=>r[6]===i);return {i,n,a,sp:rSum(a,1),rc:rSum(a,0)}}).filter(x=>x.a.length);
+  const mx=Math.max(...MM.map(x=>Math.max(x.sp,x.rc)),1);
+  document.getElementById("rstack").innerHTML=MM.map(x=>{const net=x.sp-x.rc, yrs=[...new Set(x.a.map(r=>r[0]))];const span=yrs.length>1?`${sl(yrs[0])} – ${sl(yrs[yrs.length-1])}`:sl(yrs[0]);
+    return `<div class="srow" data-rm="${x.i}" role="button" tabindex="0" aria-pressed="${rMgr===x.i}"${rMgr===x.i?' style="outline:2px solid var(--red);outline-offset:2px;border-radius:6px"':""}><div class="lbl">${x.n}<small>${span}</small></div><div><div class="sbar" style="width:${(Math.max(x.sp,x.rc)/mx*100).toFixed(1)}%">${x.sp>=x.rc?`<span class="rec" style="width:${(x.rc/Math.max(x.sp,0.01)*100).toFixed(1)}%"></span><span class="net" style="width:${(net/Math.max(x.sp,0.01)*100).toFixed(1)}%"></span>`:`<span class="rec" style="width:100%"></span>`}</div><div class="snums"><span>In <b>${x.a.filter(r=>r[1]).length}</b></span><span>Out <b>${x.a.filter(r=>!r[1]).length}</b></span><span>Spent <b>£${Math.round(x.sp)}m</b></span><span>Recouped <b>£${Math.round(x.rc)}m</b></span><span>Net <b>£${Math.round(net)}m</b></span></div></div></div>`}).join("")+
+    `<div class="skey"><span><i style="background:var(--gold)"></i>Recouped from sales</span><span><i style="background:var(--red)"></i>Net spend</span><span>Whole bar = total spent</span></div>`;
+  // season strip
+  const yrs=[];for(let s=2013;s<=2026;s++)yrs.push(s);
+  const smx=Math.max(...yrs.map(s=>{const a=D.filter(r=>r[0]===s);return Math.max(rSum(a,1),rSum(a,0))}),1);
+  const strip=yrs.map(s=>{const a=D.filter(r=>r[0]===s),fi=rSum(a,1),fo=rSum(a,0);return `<button class="sn" data-rs="${s}" aria-pressed="${!rMgr&&rMgr!==0&&s===rS}" aria-label="${sl(s)}: £${Math.round(fi)}m spent, £${Math.round(fo)}m received"><span class="b two"><i class="bi" style="height:${Math.max(3,fi/smx*100).toFixed(0)}%"></i><i class="bo" style="height:${Math.max(3,fo/smx*100).toFixed(0)}%"></i></span>${String(s).slice(2)}/${String(s+1).slice(2)}</button>`}).join("");
+  document.getElementById("rbar").innerHTML=`<h2 style="margin-top:24px">Season by season <em>tap a season</em></h2><div class="seasonbar" data-view="riv"><button class="step" data-rstep="-1" aria-label="Previous season" ${rS===2013?"disabled":""}>‹</button><div class="strip">${strip}</div><button class="step" data-rstep="1" aria-label="Next season" ${rS===2026?"disabled":""}>›</button></div>`;
+  const byM=rMgr!=null, rows=byM?D.filter(r=>r[6]===rMgr):D.filter(r=>r[0]===rS);
+  const fi=rSum(rows,1), fo=rSum(rows,0);
+  const mgrsS=[...new Set(rows.map(r=>C.m[r[6]]))].map(rShort).join(", then ");
+  document.getElementById("rhead").innerHTML=`<h2>${byM?`${C.n} under ${C.m[rMgr]}`:`${C.n} ${sl(rS)}`} <em>${byM?`all seasons · <button class="plink2" id="rclear">back to season view</button>`:(mgrsS||"no major deals")}</em></h2><div class="totals tnet"><span><b>£${Math.round(fi)}m</b>spent</span><span><b>£${Math.round(fo)}m</b>received</span><span><b>£${Math.round(fi-fo)}m</b>net spend</span></div>`;
+  document.getElementById("rin").innerHTML=`<h3 class="thead">Signings</h3><div class="totals"><span><b>${rows.filter(r=>r[1]).length}</b>in</span></div>${rRows(rows,1,byM)}`;
+  document.getElementById("rout").innerHTML=`<h3 class="thead">Sales</h3><div class="totals"><span><b>${rows.filter(r=>!r[1]).length}</b>out</span></div>${rRows(rows,0,byM)}`;
+  if(scroll){const el=document.querySelector(`#rbar [data-rs="${rS}"]`);if(el&&!document.getElementById("rivals").hidden)el.scrollIntoView({inline:"center",block:"nearest"})}
+  renderRComp();
+}
+function renderRComp(){
+  const clubs=RORD.map(k=>{const D=RIV[k].d;return [RIV[k].n,D.filter(r=>r[1]).length,rSum(D,1),D.filter(r=>!r[1]).length,rSum(D,0),RIV[k].m.filter((_,i)=>D.some(r=>r[6]===i)).length]});
+  try{let n=0,sp=0,no=0,rc=0;Object.values(SEAS).forEach(x=>{x.in.forEach(r=>{if(r.kind!=="loan"&&r.fee>=5){n++;sp+=r.fee}});x.out.forEach(r=>{if(r.kind!=="loan"&&r.fee>=5){no++;rc+=r.fee}})});clubs.push(["Man Utd",n,sp,no,rc,null])}catch(e){}
+  clubs.sort((a,b)=>(b[2]-b[4])-(a[2]-a[4]));
+  document.getElementById("rcomp").innerHTML=`<thead><tr><th>Club</th><th>Signed</th><th>Spent</th><th>Sold</th><th>Received</th><th>Net spend</th></tr></thead><tbody>${clubs.map(c=>`<tr${c[0]==="Man Utd"?' style="font-weight:600"':""}><td>${c[0]}</td><td>${c[1]}</td><td>£${Math.round(c[2])}m</td><td>${c[3]}</td><td>£${Math.round(c[4])}m</td><td><b>£${Math.round(c[2]-c[4])}m</b></td></tr>`).join("")}</tbody>`;
+}
+(()=>{const S=document.getElementById("rivals");
+  S.addEventListener("click",e=>{
+    const c=e.target.closest("[data-rc]"),m=e.target.closest("[data-rm]"),s=e.target.closest("[data-rs]"),st=e.target.closest("[data-rstep]");
+    if(c){rClub=c.dataset.rc;rMgr=null;renderRivals(true)}
+    else if(m){const i=+m.dataset.rm;rMgr=rMgr===i?null:i;renderRivals(false);document.getElementById("rhead").scrollIntoView({block:"start",behavior:"smooth"})}
+    else if(e.target.id==="rclear"){rMgr=null;renderRivals(true)}
+    else if(s){rS=+s.dataset.rs;rMgr=null;renderRivals(true)}
+    else if(st){rS=Math.min(2026,Math.max(2013,rS+ +st.dataset.rstep));rMgr=null;renderRivals(true)}
+  });
+  S.addEventListener("keydown",e=>{const m=e.target.closest("[data-rm]");if(m&&(e.key==="Enter"||e.key===" ")){e.preventDefault();m.click()}});
+})();
+Promise.resolve().then(()=>Promise.resolve()).then(()=>renderRivals(false));
+document.querySelector('[data-t="rivals"]').addEventListener("click",()=>setTimeout(()=>{const el=document.querySelector(`#rbar [data-rs="${rS}"]`);if(el)el.scrollIntoView({inline:"center",block:"nearest"})},0));
+</script>
+
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
+</body>
+</html>
