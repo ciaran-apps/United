@@ -320,6 +320,8 @@ table.mini tr.tot td{font-weight:600;background:var(--bg)}
 .av{position:relative;flex:0 0 auto;display:inline-grid;place-items:center;width:var(--s,44px);height:var(--s,44px);border-radius:50%;background:var(--red-soft);color:var(--red);font-family:var(--display);font-weight:800;font-size:calc(var(--s,44px)*.4);letter-spacing:.02em;line-height:1;border:2px solid color-mix(in srgb,var(--red) 35%,transparent);box-sizing:border-box;overflow:visible}
 .av.mgr{background:var(--gold-soft);color:var(--gold);border-color:color-mix(in srgb,var(--gold) 45%,transparent)}
 .av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.av img.plph{position:absolute;inset:0;object-position:50% 12%}
+.av.hasph{color:transparent}
 .av .no{position:absolute;right:-6px;bottom:-4px;min-width:20px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:10px;background:var(--red);color:#fff;font-size:12px;display:grid;place-items:center;border:2px solid var(--paper)}
 .p{grid-template-columns:56px 1fr!important}
 .p .avwrap{display:grid;place-items:center}
@@ -559,7 +561,12 @@ const PHOTOS={};
 const slug=n=>n.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const plUrl=n=>PLID[n]?`https://www.premierleague.com/en/players/${PLID[n]}/${slug(n)}/overview`:null;
 const initials=n=>{const w=n.split("|")[0].replace(/\(.*?\)/g,"").trim().split(/\s+/);return (w.length===1?w[0].slice(0,2):w[0][0]+w[w.length-1][0]).toUpperCase()};
-function avatar(n,o={}){const ph=PHOTOS[n.split("|")[0]];const sz=o.size?` style="--s:${o.size}px"`:"";return `<span class="av${o.mgr?" mgr":""}"${sz} aria-hidden="true">${ph?`<img src="${ph.src}" alt="">`:initials(n)}${o.num!=null?`<span class="no">${o.num}</span>`:""}</span>`}
+// Premier League photo server (same as FFAuction): try each address in turn, fall back to initials
+const plPhotos=c=>[`https://resources.premierleague.com/premierleague25/photos/players/110x140/${c}.png`,`https://resources.premierleague.com/premierleague26/photos/players/110x140/${c}.png`,`https://resources.premierleague.com/premierleague/photos/players/110x140/p${c}.png`];
+window.avFail=img=>{const a=(img.dataset.alts||"").split("|").filter(Boolean);const nx=a.shift();if(nx){img.dataset.alts=a.join("|");img.src=nx}else img.remove()};
+function avatar(n,o={}){const nm=n.split("|")[0],ph=PHOTOS[nm];const sz=o.size?` style="--s:${o.size}px"`:"";
+  let img="";if(ph)img=`<img src="${ph.src}" alt="">`;else if(!o.mgr&&PLID[nm]){const u=plPhotos(PLID[nm]);img=`<img class="plph" src="${u[0]}" data-alts="${u.slice(1).join("|")}" alt="" loading="lazy" onload="this.parentNode.classList.add('hasph')" onerror="avFail(this)">`}
+  return `<span class="av${o.mgr?" mgr":""}"${sz} aria-hidden="true">${ph?"":initials(n)}${img}${o.num!=null?`<span class="no">${o.num}</span>`:""}</span>`}
 let filt="ALL";
 const chips=[["ALL","All"],["GK","Keepers"],["DF","Defence"],["MF","Midfield"],["FW","Attack"],["new","New this summer"]];
 function renderSquad(){
