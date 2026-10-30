@@ -234,6 +234,13 @@ table.vtbl td.st b{color:var(--ink);font-weight:600}
 .early{font:500 10.5px var(--mono);text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px;margin-left:6px}
 table.scorers{min-width:0}
 table.scorers td{vertical-align:middle}
+table.scorers{table-layout:fixed}
+table.scorers th:first-child{width:28%}
+.sc{display:flex;align-items:center;gap:6px}
+.sc .gl{margin-left:0;min-width:1.3em;text-align:right;font-size:19px}
+.scw{display:grid;gap:1px;min-width:0}
+.scw .plink{font-size:14px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+@media (max-width:620px){table.scorers td,table.scorers th{padding:7px 6px}table.scorers td:first-child,table.scorers th:first-child{padding-left:10px}.scw .plink{font-size:13px}table.scorers .ssn{font-size:15px}table.scorers .ssn small{font-size:10.5px}}
 .plink{font:600 14px var(--body);color:var(--ink);background:none;border:0;padding:0;cursor:pointer;text-align:left}
 .plink:hover{color:var(--red);text-decoration:underline}
 .plink:focus-visible{outline:2px solid var(--red);outline-offset:2px}
@@ -770,9 +777,10 @@ function renderBoards(){
 }
 function renderScorers(){
   const lead=(s,i)=>{let best=-1,who=[];for(const n in ALLP){const v=ALLP[n].s[s];if(!v)continue;if(v[i]>best){best=v[i];who=[n]}else if(v[i]===best)who.push(n)}return {best,who}};
-  const fmt=(o)=>o.best>0?`${o.who.map(n=>`<button class="plink" data-career="${n}">${n}</button>`).join(" &amp; ")}<span class="gl">${o.best}</span>`:"–";
+  const sur=n=>{const w=n.split(" ");return w.length>1?w.slice(w.length>2&&/^(de|van|da|dos|di|ten)$/i.test(w[w.length-2])?-2:-1).join(" "):n};
+  const fmt=(o)=>o.best>0?`<div class="sc"><span class="gl">${o.best}</span><span class="scw">${o.who.map(n=>`<button class="plink" data-career="${n}" title="${n}">${sur(n)}</button>`).join("")}</span></div>`:"–";
   let rows="";for(let s=LAST;s>=FIRST;s--){const pl=lead(s,1),all=lead(s,3);rows+=`<tr><td class="ssn">${sl(s)}${s===LAST?"<small>so far</small>":`<small>${MGR[s]}</small>`}</td><td>${fmt(pl)}</td><td>${fmt(all)}</td></tr>`}
-  document.getElementById("scorers").innerHTML=`<thead><tr><th>Season</th><th>Premier League</th><th>All competitions</th></tr></thead><tbody>${rows}</tbody>`;
+  document.getElementById("scorers").innerHTML=`<thead><tr><th>Season</th><th>Prem League</th><th>All comps</th></tr></thead><tbody>${rows}</tbody>`;
 }
 Promise.resolve().then(()=>Promise.resolve()).then(renderScorers);
 document.getElementById("scorers").addEventListener("click",e=>{const b=e.target.closest("[data-career]");if(b){lastCard=b;openCareer(b.dataset.career)}});
