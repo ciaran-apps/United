@@ -368,6 +368,7 @@ table.wtbl tbody tr{cursor:pointer}
 .foot{margin-top:28px;font-size:12px;color:var(--muted);max-width:70ch}
 
 /* Compact header and sticky tabs */
+.status{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 nav{position:sticky;top:0;z-index:20;background:var(--bg);padding-top:env(safe-area-inset-top,0px);scrollbar-width:none}
 nav::-webkit-scrollbar{display:none}
 section{scroll-margin-top:60px}
@@ -377,9 +378,8 @@ section{scroll-margin-top:60px}
   .eyebrow{font-size:10.5px;letter-spacing:.04em}
   header>.eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   h1{font-size:27px;line-height:1}
-  .status{grid-template-columns:repeat(4,minmax(0,1fr))}
   .status div{padding:6px 7px}
-  .status small{display:block;font-size:10.5px;line-height:1.2;min-height:2.4em}
+  .status small{display:block;font-size:11px;line-height:1.2}
   .status b{font-size:19px}
   header .form{gap:4px}
   header .r{width:21px;height:21px;font-size:12px;border-radius:3px}
@@ -413,12 +413,9 @@ section{scroll-margin-top:60px}
 <div class="wrap">
 <header>
   <div class="eyebrow">Old Trafford · 2026/27 · updated 26 Oct 2026</div>
-  <h1>Manchester United <span>squad &amp; transfers</span></h1>
   <div class="status">
-    <div><small>Head coach</small><b>Carrick</b></div>
     <div><small>Premier League</small><b>16th</b></div>
     <div><small>Champions League phase</small><b>22nd</b></div>
-    <div><small>Winless run, all comps</small><b>8</b></div>
   </div>
   <div>
     <div class="eyebrow" style="margin-bottom:6px">Last 8 · oldest to newest</div>
