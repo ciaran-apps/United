@@ -50,6 +50,7 @@ nav button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
 nav button:focus-visible,.chip:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 section{padding-top:18px}
 .rmg{color:var(--ink);font-weight:600}
+.flag{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-size:.95em;font-weight:400;vertical-align:-.05em;line-height:1}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .chip{font:500 13px var(--body);border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
@@ -588,6 +589,10 @@ const squad=[
  [9,"FW","Marcus Rashford","England","acad"],[10,"FW","Matheus Cunha","Brazil"],[11,"FW","Joshua Zirkzee","Netherlands"],[16,"FW","Amad Diallo","Ivory Coast"],
  [19,"FW","Bryan Mbeumo","Cameroon"],[27,"FW","Tynan Thompson","England","new"],[30,"FW","Benjamin Šeško","Slovenia"],[31,"FW","Shea Lacey","England","acad"]
 ];
+const FLAG_ISO={"Belgium": "BE", "Portugal": "PT", "Morocco": "MA", "Netherlands": "NL", "Argentina": "AR", "Denmark": "DK", "France": "FR", "Brazil": "BR", "Cameroon": "CM", "Uruguay": "UY", "Ivory Coast": "CI", "Slovenia": "SI", "N. Ireland": "GB"};
+const SUBFLAG={"England":"gbeng","Scotland":"gbsct","Wales":"gbwls"};
+const flag=c=>{if(SUBFLAG[c])return "\u{1F3F4}"+[...SUBFLAG[c]].map(ch=>String.fromCodePoint(0xE0000+ch.charCodeAt(0))).join("")+"\u{E007F}";const k=FLAG_ISO[c];return k?[...k].map(ch=>String.fromCodePoint(0x1F1E6+ch.charCodeAt(0)-65)).join(""):""};
+const flagEl=c=>{const f=flag(c);return f?`<span class="flag" title="${c}" aria-label="${c}">${f}</span>`:""};
 const groups={GK:"Goalkeepers",DF:"Defenders",MF:"Midfielders",FW:"Forwards"};
 // Premier League player codes (FPL Core Insights, 2026/27) for profile links
 const PLID={"Karl Darlow":59735,"Dermot Mee":461537,"Youri Tielemans":166989,"Carlos Baleba":535301,"Andrey Santos":532605,"Senne Lammens":465247,"Tom Heaton":21205,"Patrick Dorgu":596777,"Matthijs de Ligt":209365,"Diogo Dalot":216051,"Harry Maguire":95658,"Lisandro Martínez":221820,"Leny Yoro":550864,"Ayden Heaven":606745,"Noussair Mazraoui":230001,"Luke Shaw":106760,"Harry Amass":577974,"Bruno Fernandes":141746,"Bryan Mbeumo":446008,"Matheus Cunha":430871,"Marcus Rashford":176297,"Mason Mount":184341,"Amad Diallo":493250,"Kobbie Mainoo":516895,"Manuel Ugarte":232112,"Jack Fletcher":547037,"Shea Lacey":576628,"Tyler Fletcher":519913,"Benjamin Šeško":485711,"Joshua Zirkzee":458249};
@@ -609,7 +614,7 @@ function renderSquad(){
   const keep=p=>filt==="ALL"||filt===p[1]||(filt==="new"&&p[4]==="new");
   const card=p=>{const w=wages[p[2]];const wl=w&&w[0]?`<div class="wage"><b>£${w[0]}k</b>/wk</div>`:`<div class="wage none">£0/wk · not listed</div>`;
     const t=tot26(p[2]);
-    return `<button class="p" data-p="${p[2]}" aria-haspopup="dialog"><div class="avwrap">${avatar(p[2],{num:p[0],size:46})}</div><div style="min-width:0"><div class="nm">${p[2]}${p[4]==="new"?'<span class="tag new">New</span>':p[4]==="acad"?'<span class="tag acad">Academy</span>':""}</div><div class="meta">${p[3]} · ${t.a} apps${t.g?`, ${t.g} goal${t.g>1?"s":""}`:""}</div>${wl}</div></button>`};
+    return `<button class="p" data-p="${p[2]}" aria-haspopup="dialog"><div class="avwrap">${avatar(p[2],{num:p[0],size:46})}</div><div style="min-width:0"><div class="nm">${p[2]} ${flagEl(p[3])}${p[4]==="new"?'<span class="tag new">New</span>':p[4]==="acad"?'<span class="tag acad">Academy</span>':""}</div><div class="meta">${t.a} apps${t.g?`, ${t.g} goal${t.g>1?"s":""}`:""}</div>${wl}</div></button>`};
   let html="";
   if(byWage){
     const ps=squad.filter(keep).sort((a,b)=>((wages[b[2]]||[0])[0])-((wages[a[2]]||[0])[0]));
@@ -651,7 +656,7 @@ function openPlayer(n){
   const rows=COMPS.map(([k,lab])=>{const a=s[k];return `<tr><td>${lab}</td><td class="num">${a?a[0]:0}${a&&a[0]-a[1]?` <span class="sub">(${a[0]-a[1]} sub)</span>`:""}</td><td class="num">${g[k]||0}</td></tr>`}).join("");
   const isGK=p[1]==="GK";
   document.getElementById("pbody").innerHTML=`
-   <div class="phead">${avatar(n,{num:p[0]})}<div style="min-width:0"><div class="eyebrow">${groups[p[1]].replace(/s$/,"")} · ${p[3]}</div><h3 id="ptitle">${n}</h3>${w?`<div class="meta">${w[0]?`Wage £${w[0]}k a week`:"Wage not listed (£0)"}</div>`:""}</div></div>
+   <div class="phead">${avatar(n,{num:p[0]})}<div style="min-width:0"><div class="eyebrow">${groups[p[1]].replace(/s$/,"")} · ${p[3]}</div><h3 id="ptitle">${n} ${flagEl(p[3])}</h3>${w?`<div class="meta">${w[0]?`Wage £${w[0]}k a week`:"Wage not listed (£0)"}</div>`:""}</div></div>
    <div class="kpis"><div><b>${t.a}</b><small>Apps</small></div><div><b>${t.st}</b><small>Starts</small></div><div><b>${t.g}</b><small>Goals</small></div><div><b>${px?px[0]:"–"}</b><small>PL assists</small></div></div>
    <h4>2026/27 by competition</h4>
    <div class="tbl"><table class="mini"><thead><tr><th>Competition</th><th class="num">Apps</th><th class="num">Goals</th></tr></thead><tbody>${rows}<tr class="tot"><td>Total</td><td class="num">${t.a}</td><td class="num">${t.g}</td></tr></tbody></table></div>
