@@ -603,10 +603,9 @@ function avatar(n,o={}){const nm=n.split("|")[0],ph=PHOTOS[nm];const sz=o.size?`
   let img="";if(ph)img=`<img src="${ph.src}" alt="">`;else if(!o.mgr&&PLID[nm]){const u=plPhotos(PLID[nm]);img=`<img class="plph" src="${u[0]}" data-alts="${u.slice(1).join("|")}" alt="" loading="lazy" onload="this.parentNode.classList.add('hasph')" onerror="avFail(this)">`}
   return `<span class="av${o.mgr?" mgr":""}"${sz} aria-hidden="true">${ph?"":initials(n)}${img}${o.num!=null?`<span class="no">${o.num}</span>`:""}</span>`}
 let filt="ALL";
-const chips=[["ALL","All"],["GK","Keepers"],["DF","Defence"],["MF","Midfield"],["FW","Attack"],["new","New this summer"]];
+const chips=[["ALL","All"],["GK","GK"],["DF","DEF"],["MF","MID"],["FW","FWD"]];
 function renderSquad(){
   document.getElementById("poschips").innerHTML=chips.map(c=>`<button class="chip" id="chip-${c[0]}" aria-pressed="${filt===c[0]}" data-f="${c[0]}">${c[1]}</button>`).join("");
-  document.getElementById("poschips").innerHTML+=`<button class="chip" id="chip-sort" aria-pressed="${byWage}" data-s="1">Sort by wage</button>`;
   const keep=p=>filt==="ALL"||filt===p[1]||(filt==="new"&&p[4]==="new");
   const card=p=>{const w=wages[p[2]];const wl=w&&w[0]?`<div class="wage"><b>£${w[0]}k</b>/wk</div>`:`<div class="wage none">£0/wk · not listed</div>`;
     const t=tot26(p[2]);
