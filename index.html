@@ -999,7 +999,7 @@ function txHistory(n){
   const ev=[];for(const y in SEAS)["in","out"].forEach(dir=>SEAS[y][dir].forEach(r=>{if(r.player===n)ev.push({...r,dir})}));
   const sqp=squad.find(x=>x[2]===n), acad=ACADEMY.has(n)||(sqp&&sqp[4]==="acad");
   if(!ev.length&&!acad)return "";
-  ev.sort((a,b)=>a.ord-b.ord);
+  ev.sort((a,b)=>a.ord-b.ord||dayOf(a.d)-dayOf(b.d));
   const first=ALLP[n]?Math.min(...Object.keys(ALLP[n].s).map(Number)):null;
   const acadLi=acad?`<li class="in acad"><span class="txd">Academy</span><span class="txw">Came through the United academy<small>${first!=null?`First-team debut season ${sl(first)}`:"Yet to make a first-team appearance"}</small></span></li>`:"";
   const what=r=>{const lab=r.label||"",club=r.club;
@@ -1014,7 +1014,12 @@ function txHistory(n){
   const fee=r=>{const l=r.label||(r.fee!=null?`£${r.fee}m`:"");return /^(Free|Released|Retired|Contract ended|Loan ended)$/.test(l)||/^(Swap|Loan)/.test(l)?"":l};
   return `<h4>Transfer history</h4><ol class="txh">${acadLi}${ev.map(r=>`<li class="${r.dir}"><span class="txd">${r.d.replace(/^\d+ /,"")}</span><span class="txw">${what(r)}<small>${r.mgr}${fee(r)?` · ${fee(r)}`:""}</small></span></li>`).join("")}</ol>`;
 }
-const pname=n=>ALLP[n]?`<button class="plink2" data-career="${n}">${n}</button>`:`<b>${n}</b>`;
+// Surname-only display for deal lists; initials added where two players share a surname
+const surOf=n=>{const w=n.trim().split(/\s+/);if(w.length<2)return n;const i=w.findIndex((x,j)=>j>0&&j<w.length-1&&/^(de|van|da|dos|di|ten|der|del)$/i.test(x));return w.slice(i>0?i:w.length-1).join(" ")};
+let SURDUP=null;
+const sname=n=>{if(!SURDUP){const m={};const add=x=>{if(!x||typeof x!=="string")return;const s=surOf(x);(m[s]=m[s]||new Set()).add(x)};Object.keys(ALLP).forEach(add);try{Object.values(D).forEach(d=>{d.in.forEach(r=>add(r[1]));d.out.forEach(r=>add(r[1]))})}catch(e){}try{Object.values(RIV).forEach(c=>c.d.forEach(r=>add(r[3])))}catch(e){}SURDUP=new Set(Object.keys(m).filter(s=>m[s].size>1))}
+  const s=surOf(n);return SURDUP.has(s)&&s!==n?`${n.trim()[0]}. ${s}`:s};
+const pname=n=>ALLP[n]?`<button class="plink2" data-career="${n}" title="${n}">${sname(n)}</button>`:`<b title="${n}">${sname(n)}</b>`;
 let curMgr=null,backTo=null;
 function openManager(key){curMgr=key;
   const rec=MREC.find(m=>m[1]===key), mon=MONEY.find(m=>m[0]===key), d=D[key], seas=SEAS_OF[key]||[];
@@ -1341,7 +1346,7 @@ let selM="Michael Carrick|Head coach";
 const feeLbl=r=>r[4]||(r[3]!=null?`£${r[3]}m`:"Undisclosed");
 const sumF=a=>a.reduce((t,r)=>t+(r[3]&&r[5]!=="loan"?r[3]:0),0);
 const dealOrd=s=>{const p=pd(s);const d=+((s.match(/^(\d{1,2}) /)||[])[1]||0);return (isNaN(p.ord)?9e9:p.ord)*40+d};
-const dealTable=rows=>rows.length?`<div class="tbl"><table><tbody>${rows.slice().sort((a,b)=>dealOrd(b[0])-dealOrd(a[0])).map(r=>`<tr><td class="sea">${r[0]}</td><td><strong>${r[1]}</strong><div class="kind">${r[2]}</div></td><td class="fee">${feeLbl(r)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">No signings in this spell.</div>`;
+const dealTable=rows=>rows.length?`<div class="tbl"><table><tbody>${rows.slice().sort((a,b)=>dealOrd(b[0])-dealOrd(a[0])).map(r=>`<tr><td class="sea">${r[0]}</td><td><strong title="${r[1]}">${sname(r[1])}</strong><div class="kind">${r[2]}</div></td><td class="fee">${feeLbl(r)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="empty">No signings in this spell.</div>`;
 function renderDeals(){
   document.getElementById("mgrchips").innerHTML=mgrOrder.map(k=>`<button class="chip" id="mc-${mgrOrder.indexOf(k)}" aria-pressed="${k===selM}" data-m="${k}">${k.split("|")[0]} <span style="opacity:.7">${D[k].span}</span></button>`).join("");
   const d=D[selM], si=sumF(d.in), so=sumF(d.out);
@@ -1374,6 +1379,7 @@ D["Michael Carrick|Head coach"].in.forEach(r=>add("in",r,"Carrick"));
 outs.forEach(r=>{const rel=/Released/.test(r[4]);add("out",[r[0]+" 2026",r[1],r[3],num(r[4]),r[4],rel?"free":undefined],"Carrick")});
 loans.forEach(r=>add("out",[r[0]+" 2026",r[1],r[3],null,"Loan","loan"],"Carrick"));
 }
+const dayOf=s=>+((String(s).match(/^(\d{1,2}) /)||[])[1]||0);
 const feeSum=a=>a.reduce((t,r)=>t+(r.fee&&r.kind!=="loan"?r.fee:0),0);
 let curS=LAST;
 const sl=s=>`${s}/${String(s+1).slice(2)}`;
@@ -1384,16 +1390,16 @@ function renderSeasons(scroll){
   bar.innerHTML=`<button class="step" data-step="-1" aria-label="Previous season" ${curS===FIRST?"disabled":""}>‹</button><div class="strip">${strip}</div><button class="step" data-step="1" aria-label="Next season" ${curS===LAST?"disabled":""}>›</button>`;
   const S=SEAS[curS], fi=feeSum(S.in), fo=feeSum(S.out);
   ["in","out"].forEach(v=>{
-    const rows=[...S[v]].sort((a,b)=>a.ord-b.ord), loansN=S.out.filter(r=>r.kind==="loan").length;
+    const rows=[...S[v]].sort((a,b)=>a.ord-b.ord||dayOf(a.d)-dayOf(b.d)), loansN=S.out.filter(r=>r.kind==="loan").length;
     const tot=v==="in"
       ?`<span><b>${rows.length}</b>signings</span><span><b>£${Math.round(fi)}m</b>spent</span>`
       :`<span><b>${rows.length}</b>departures</span><span><b>£${Math.round(fo)}m</b>received</span>${loansN?`<span><b>${loansN}</b>loaned out</span>`:""}`;
-    const body=rows.length?`<div class="tbl"><table class="seas"><thead><tr><th>Date</th><th>Player</th><th>Fee</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="dt">${r.d.replace(/ \d{4}$/,"")}</td><td>${ALLP[r.player]?`<button class="plink2" data-career="${r.player}">${r.player}</button>`:`<strong>${r.player}</strong>`}<div class="kind">${v==="in"?"from":"to"} ${r.club}${/then/.test(MS[curS])?` · ${r.mgr}`:""}</div></td><td class="fee">${r.label||(r.fee!=null?`£${r.fee}m`:"Undisclosed")}</td></tr>`).join("")}</tbody></table></div>`
+    const body=rows.length?`<div class="tbl"><table class="seas"><thead><tr><th>Date</th><th>Player</th><th>Fee</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="dt">${r.d.replace(/ \d{4}$/,"")}</td><td>${ALLP[r.player]?`<button class="plink2" data-career="${r.player}" title="${r.player}">${sname(r.player)}</button>`:`<strong title="${r.player}">${sname(r.player)}</strong>`}<div class="kind">${r.club==="—"?"no club yet":`${v==="in"?"from":"to"} ${r.club}`}${/then/.test(MS[curS])?` · ${r.mgr}`:""}</div></td><td class="fee">${r.label||(r.fee!=null?`£${r.fee}m`:"Undisclosed")}</td></tr>`).join("")}</tbody></table></div>`
       :`<div class="empty">No major first-team ${v==="in"?"signings":"departures"} listed for ${sl(curS)}.</div>`;
     document.getElementById(v+"view").innerHTML=`<h3 class="thead">${v==="in"?"Signings":"Departures"}</h3><div class="totals">${tot}</div>${body}`;
   });
   const toArr=x=>[x.d,x.player,x.club,x.fee,x.label,x.kind];
-  const insA=[...S.in].sort((a,b)=>a.ord-b.ord).map(toArr), outA=[...S.out].sort((a,b)=>a.ord-b.ord).map(toArr);
+  const insA=[...S.in].sort((a,b)=>a.ord-b.ord||dayOf(a.d)-dayOf(b.d)).map(toArr), outA=[...S.out].sort((a,b)=>a.ord-b.ord||dayOf(a.d)-dayOf(b.d)).map(toArr);
   document.getElementById("twin").innerHTML=(insA.length||outA.length)?windowView(insA,outA):`<div class="empty">No major first-team deals listed for ${sl(curS)}.</div>`;
   const hd=document.getElementById("tseason");const html=`<h2 id="tseason">${sl(curS)} transfers <em>${MS[curS]}</em></h2><div class="totals tnet"><span><b>£${Math.round(fi-fo)}m</b>net spend this season</span></div>`;
   if(hd){hd.nextElementSibling.remove();hd.outerHTML=html}else document.querySelector(".tkey").insertAdjacentHTML("afterend",html);
@@ -1455,7 +1461,7 @@ const rShort=n=>n.replace(/ \((interim|caretaker)\)/,"*");
 function rRows(rows,dir,showSeason){
   const L=rows.filter(r=>r[1]===dir), C=RIV[rClub];
   if(!L.length)return `<div class="empty">No ${dir?"signings":"sales"} of £5m or more.</div>`;
-  return `<div class="tbl"><table class="seas"><thead><tr><th>Date</th><th>Player</th><th>Fee</th></tr></thead><tbody>${L.map(r=>`<tr><td class="dt">${showSeason?r[2]:r[2].slice(0,3)}</td><td><strong>${r[3]}</strong><div class="kind">${dir?"from":"to"} <span class="clb">${r[4]}</span> · <span class="rmg">${rShort(C.m[r[6]])}</span></div></td><td class="fee">${rFee(r[5])}</td></tr>`).join("")}</tbody></table></div>`;
+  return `<div class="tbl"><table class="seas"><thead><tr><th>Date</th><th>Player</th><th>Fee</th></tr></thead><tbody>${L.map(r=>`<tr><td class="dt">${showSeason?r[2]:r[2].slice(0,3)}</td><td><strong title="${r[3]}">${sname(r[3])}</strong><div class="kind">${dir?"from":"to"} <span class="clb">${r[4]}</span> · <span class="rmg">${rShort(C.m[r[6]])}</span></div></td><td class="fee">${rFee(r[5])}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function renderRivals(scroll){
   const C=RIV[rClub], D=C.d;
