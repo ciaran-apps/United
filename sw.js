@@ -1,6 +1,6 @@
 // Minimal service worker: makes the app installable and gives basic offline support.
 // The page is fetched network-first so you always get the latest version when online.
-const CACHE_NAME = 'united-v13';
+const CACHE_NAME = 'united-v14';
 const APP_SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (event) => {

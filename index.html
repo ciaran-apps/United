@@ -375,6 +375,20 @@ table.wtbl tbody tr{cursor:pointer}
 .srcs ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted);display:grid;gap:4px}
 .foot{margin-top:28px;font-size:12px;color:var(--muted);max-width:70ch}
 
+
+.board .bk{display:none}
+.bhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;width:100%;background:none;border:0;padding:0;margin:0 0 8px;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.bhead .sub{display:block;margin:2px 0 0}
+.board.shut .bhead{margin-bottom:0}
+.board.shut{padding-bottom:12px}
+.chev{flex:0 0 auto;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font:600 18px var(--body);color:var(--muted);line-height:1}
+.bhead:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.bsize{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
+.bsize .chip{padding:3px 10px;font-size:12px}
+.bctl{grid-column:1/-1;display:flex;justify-content:flex-end;margin-bottom:-6px}
+.bctl .chip{font-size:12.5px;padding:4px 11px}
+.board li{padding:6px 4px;border-bottom:1px solid var(--line);border-radius:0}
+.board li:last-child{border-bottom:0}
 /* Compact header and sticky tabs */
 .status{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 nav{position:sticky;top:0;z-index:20;background:var(--bg);padding-top:env(safe-area-inset-top,0px);scrollbar-width:none}
@@ -750,11 +764,11 @@ Promise.resolve().then(()=>renderPlayers(false));
 function renderBoards(){
   const deals=(dir)=>{const out=[];for(const k in D){const list=D[k][dir];list.forEach(r=>{if(r[3]&&r[5]!=="loan"&&r[5]!=="swap")out.push({n:r[1],v:r[3],d:`${dir==="in"?"from":"to"} ${r[2]} · ${r[0].replace(/^\d+ /,"")} · ${SHORT[k]}`})})}
     if(dir==="out")outs.forEach(r=>{const f=num(r[4]);if(f&&!out.some(o=>o.n===r[1]&&o.d.includes("2026")))out.push({n:r[1],v:f,d:`to ${r[3]} · ${r[0].replace(/^\d+ /,"")} 2026 · Carrick`})});
-    const seen=new Set();return out.sort((a,b)=>b.v-a.v).filter(o=>{const key=o.n+o.v;if(seen.has(key))return false;seen.add(key);return true}).slice(0,10)};
+    const seen=new Set();return out.sort((a,b)=>b.v-a.v).filter(o=>{const key=o.n+o.v;if(seen.has(key))return false;seen.add(key);return true}).slice(0,50)};
   const career=Object.entries(ALLP).map(([n,P])=>{let a=0,g=0,lg=0,y=0,r=0,as=0,ys=Object.keys(P.s).map(Number);for(const s in P.s){const v=P.s[s];a+=v[2];g+=v[3];lg+=v[1];y+=v[4]||0;r+=v[5]||0;as+=v[6]||0}return {n,a,g,lg,y,r,as,gi:g+as,pos:P.pos,span:`${sl(Math.min(...ys))}${ys.length>1?`–${Math.max(...ys)===2026?"now":String(Math.max(...ys)+1).slice(2)}`:""}`}});
   const singles=[];Object.entries(ALLP).forEach(([n,P])=>{for(const s in P.s)singles.push({n,s:+s,a:P.s[s][2],g:P.s[s][3],as:P.s[s][6]??0})});
   const astNote=AST_SEASONS.length<14?` · ${AST_SEASONS.length} of 14 seasons so far`:"";
-  const top=(arr,key,fmt,det)=>arr.slice().sort((a,b)=>b[key]-a[key]||a.n.localeCompare(b.n)).slice(0,10).map(o=>({n:o.n,v:o[key],f:fmt(o),d:det(o)}));
+  const top=(arr,key,fmt,det)=>arr.slice().sort((a,b)=>b[key]-a[key]||a.n.localeCompare(b.n)).slice(0,50).map(o=>({n:o.n,v:o[key],f:fmt(o),d:det(o)}));
   const B=[
    ["Record signings","Biggest reported base fees paid",deals("in").map(o=>({...o,f:`£${o.v}m`}))],
    ["Biggest sales","Largest reported fees received",deals("out").map(o=>({...o,f:`£${o.v}m`}))],
@@ -762,19 +776,35 @@ function renderBoards(){
    ["Most goals","All competitions, 2013/14 to now",top(career,"g",o=>o.g,o=>`${o.a} apps · ${o.span}`)],
    ["Most assists",`All competitions${astNote}`,top(career,"as",o=>o.as,o=>`${o.a} apps · ${o.span}`)],
    ["Most goal involvements",`Goals plus assists${astNote}`,top(career,"gi",o=>o.gi,o=>`${o.g} goals, ${o.as} assists`)],
-   ["Best season for assists",`Most assists in one season${astNote}`,singles.slice().sort((a,b)=>b.as-a.as||b.g-a.g).slice(0,10).map(o=>({n:o.n,v:o.as,f:o.as,d:`${sl(o.s)} · ${o.g} goals`}))],
+   ["Best season for assists",`Most assists in one season${astNote}`,singles.slice().sort((a,b)=>b.as-a.as||b.g-a.g).slice(0,50).map(o=>({n:o.n,v:o.as,f:o.as,d:`${sl(o.s)} · ${o.g} goals`}))],
    ["Most Premier League goals","League only",top(career,"lg",o=>o.lg,o=>`${o.g} in all comps`)],
    ["Best goals per game","Minimum 50 appearances",top(career.filter(o=>o.a>=50).map(o=>({...o,gpg:o.g/o.a})),"gpg",o=>o.gpg.toFixed(2),o=>`${o.g} goals in ${o.a}`)],
-   ["Best single season","Most goals in one season, all comps",singles.sort((a,b)=>b.g-a.g||a.a-b.a).slice(0,10).map(o=>({n:o.n,v:o.g,f:o.g,d:`${sl(o.s)} · ${o.a} apps`}))],
-   ["Most games in a season","Appearances in one season",singles.slice().sort((a,b)=>b.a-a.a||b.g-a.g).slice(0,10).map(o=>({n:o.n,v:o.a,f:o.a,d:`${sl(o.s)} · ${o.g} goals`}))],
+   ["Best single season","Most goals in one season, all comps",singles.sort((a,b)=>b.g-a.g||a.a-b.a).slice(0,50).map(o=>({n:o.n,v:o.g,f:o.g,d:`${sl(o.s)} · ${o.a} apps`}))],
+   ["Most games in a season","Appearances in one season",singles.slice().sort((a,b)=>b.a-a.a||b.g-a.g).slice(0,50).map(o=>({n:o.n,v:o.a,f:o.a,d:`${sl(o.s)} · ${o.g} goals`}))],
    ["Most yellow cards","2013/14 to 2025/26",top(career,"y",o=>o.y,o=>`${o.r?`plus ${o.r} red${o.r>1?"s":""} · `:""}${o.a} apps`)],
-   ["Most earned at United","Weekly wage × 52, every season since 2013/14",Object.entries(Object.entries(PWAGE).reduce((acc,[y,d])=>{for(const n in d)acc[n]=(acc[n]||0)+d[n]*52/1000;return acc},{})).map(([n,v])=>({n,v,f:`£${v.toFixed(0)}m`,d:`${Object.keys(PWAGE).filter(y=>PWAGE[y][n]).length} seasons`})).sort((a,b)=>b.v-a.v).slice(0,10)],
-   ["Biggest academy sales","Academy graduates sold for a fee",acadRows().filter(r=>r.fee>0).sort((a,b)=>b.fee-a.fee).slice(0,10).map(r=>({n:r.n,v:r.fee,f:`£${r.fee}m`,d:`to ${r.sale.club} · ${r.sale.d.replace(/^\d+ /,"")}`}))],
-   ["Highest-paid seasons","Weekly wage in a single season",Object.entries(PWAGE).flatMap(([y,d])=>Object.entries(d).map(([n,w])=>({n,v:w,f:`£${Math.round(w)}k`,d:`${sl(+y)}`}))).sort((a,b)=>b.v-a.v).slice(0,10)],
-   ["Highest weekly wages","Current squad",Object.entries(wages).map(([n,w])=>({n,v:w[0],f:`£${w[0]}k`,d:(squad.find(p=>p[2]===n)||[])[3]||""})).sort((a,b)=>b.v-a.v).slice(0,10)]
+   ["Most earned at United","Weekly wage × 52, every season since 2013/14",Object.entries(Object.entries(PWAGE).reduce((acc,[y,d])=>{for(const n in d)acc[n]=(acc[n]||0)+d[n]*52/1000;return acc},{})).map(([n,v])=>({n,v,f:`£${v.toFixed(0)}m`,d:`${Object.keys(PWAGE).filter(y=>PWAGE[y][n]).length} seasons`})).sort((a,b)=>b.v-a.v).slice(0,50)],
+   ["Biggest academy sales","Academy graduates sold for a fee",acadRows().filter(r=>r.fee>0).sort((a,b)=>b.fee-a.fee).slice(0,50).map(r=>({n:r.n,v:r.fee,f:`£${r.fee}m`,d:`to ${r.sale.club} · ${r.sale.d.replace(/^\d+ /,"")}`}))],
+   ["Highest-paid seasons","Weekly wage in a single season",Object.entries(PWAGE).flatMap(([y,d])=>Object.entries(d).map(([n,w])=>({n,v:w,f:`£${Math.round(w)}k`,d:`${sl(+y)}`}))).sort((a,b)=>b.v-a.v).slice(0,50)],
+   ["Highest weekly wages","Current squad",Object.entries(wages).map(([n,w])=>({n,v:w[0],f:`£${w[0]}k`,d:(squad.find(p=>p[2]===n)||[])[3]||""})).sort((a,b)=>b.v-a.v).slice(0,50)]
   ];
-  document.getElementById("boards").innerHTML=B.map(([t,s,rows])=>{const mx=Math.max(...rows.map(r=>+r.v),0.0001);return `<div class="board"><h3>${t}</h3><div class="sub">${s}</div><ol>${rows.map((r,i)=>`<li><span class="rk">${i+1}</span><span class="who">${ALLP[r.n]?`<button data-career="${r.n}">${r.n}</button>`:`<strong style="font-size:14px">${r.n}</strong>`}<span>${r.d}</span></span><span class="val">${r.f}</span><span class="bk"><i style="width:${(r.v/mx*100).toFixed(0)}%"></i></span></li>`).join("")}</ol></div>`}).join("");
+  BOARDS=B;drawBoards();
 }
+let BOARDS=[];
+const BSIZES=[5,10,25,50];
+let BST={};try{BST=JSON.parse(localStorage.getItem("boardState")||"{}")}catch(e){}
+const bsave=()=>{try{localStorage.setItem("boardState",JSON.stringify(BST))}catch(e){}};
+function boardHTML(i){const [t,s,rows]=BOARDS[i];const st=BST[t]||{};const open=st.open!==false, n=st.n||5;
+  const sizes=BSIZES.filter((z,j)=>j===0||rows.length>BSIZES[j-1]);
+  return `<div class="board${open?"":" shut"}" data-b="${i}"><button class="bhead" data-btog aria-expanded="${open}"><span><h3>${t}</h3><span class="sub">${s}</span></span><span class="chev" aria-hidden="true">${open?"−":"+"}</span></button>${open?`<ol>${rows.slice(0,n).map((r,k)=>`<li><span class="rk">${k+1}</span><span class="who">${ALLP[r.n]?`<button data-career="${r.n}">${r.n}</button>`:`<strong style="font-size:14px">${r.n}</strong>`}<span>${r.d}</span></span><span class="val">${r.f}</span></li>`).join("")}</ol>${sizes.length>1?`<div class="bsize" role="group" aria-label="List length">${sizes.map(z=>`<button class="chip" data-bn="${z}" aria-pressed="${z===n}">Top ${z}</button>`).join("")}</div>`:""}`:""}</div>`}
+function drawBoards(){const all=BOARDS.every(b=>(BST[b[0]]||{}).open===false);
+  document.getElementById("boards").innerHTML=`<div class="bctl"><button class="chip" data-ball="${all?"open":"shut"}">${all?"Expand all":"Collapse all"}</button></div>`+BOARDS.map((_,i)=>boardHTML(i)).join("")}
+document.getElementById("boards").addEventListener("click",e=>{
+  const all=e.target.closest("[data-ball]");if(all){const o=all.dataset.ball==="open";BOARDS.forEach(b=>{BST[b[0]]={...(BST[b[0]]||{}),open:o}});bsave();drawBoards();return}
+  const bd=e.target.closest("[data-b]");if(!bd)return;const t=BOARDS[+bd.dataset.b][0];
+  if(e.target.closest("[data-btog]")){BST[t]={...(BST[t]||{}),open:(BST[t]||{}).open===false};bsave();bd.outerHTML=boardHTML(+bd.dataset.b);drawCtl();return}
+  const z=e.target.closest("[data-bn]");if(z){BST[t]={...(BST[t]||{}),n:+z.dataset.bn};bsave();bd.outerHTML=boardHTML(+bd.dataset.b)}
+});
+function drawCtl(){const all=BOARDS.every(b=>(BST[b[0]]||{}).open===false);const c=document.querySelector("#boards [data-ball]");if(c){c.dataset.ball=all?"open":"shut";c.textContent=all?"Expand all":"Collapse all"}}
 function renderScorers(){
   const lead=(s,i)=>{let best=-1,who=[];for(const n in ALLP){const v=ALLP[n].s[s];if(!v)continue;if(v[i]>best){best=v[i];who=[n]}else if(v[i]===best)who.push(n)}return {best,who}};
   const sur=n=>{const w=n.split(" ");return w.length>1?w.slice(w.length>2&&/^(de|van|da|dos|di|ten)$/i.test(w[w.length-2])?-2:-1).join(" "):n};
