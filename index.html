@@ -349,6 +349,7 @@ table.ptbl .pcell{display:flex;align-items:center;gap:8px}
 table.ptbl .av{--s:26px;border-width:1px}
 table.mcomp .mcell{display:flex;align-items:center;gap:10px}
 table.mcomp .av{--s:34px}
+@media (max-width:620px){table.mcomp .av{--s:26px}table.mcomp .mcell{gap:7px}table.mcomp td,table.mcomp th{padding:7px 8px}#mcomp .mn{font-size:14px}}
 .m .whorow{display:flex;align-items:center;gap:10px}
 .m .av{--s:40px}
 .tkey{display:flex;gap:14px;font-size:12px;color:var(--muted);margin:2px 0 4px}
@@ -884,10 +885,12 @@ const MREC=[
  ["Ruben Amorim","Ruben Amorim","Nov 2024 – Jan 2026",63,24,18,21,"–","15th"],
  ["Michael Carrick","Michael Carrick|Head coach","Jan 2026 – now",29,14,7,8,"–","3rd"]];
 const CARE=[["Ryan Giggs",4,2,1,1],["Michael Carrick (2021)",3,2,1,0],["Ruud van Nistelrooy",4,3,1,0],["Darren Fletcher",2,0,1,1]];
+const msur=n=>{const w=n.split(" ");const i=w.findIndex((x,j)=>j>0&&/^(van|ten|de)$/i.test(x));const s=i>0?w.slice(i).join(" "):w[w.length-1];return s[0].toUpperCase()+s.slice(1)};
+const myrs=s=>{const y=s.match(/\d{4}/g)||[];if(/now/.test(s))return `${y[0]}–now`;return y.length>1&&y[0]!==y[1]?`${y[0]}–${y[1].slice(2)}`:(y[0]||s)};
 function renderMgrComp(){
   const best=Math.max(...MREC.map(m=>m[4]/m[3]));
-  document.getElementById("mcomp").innerHTML=`<thead><tr><th>Manager</th><th class="num">Games</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th>Win rate</th><th class="num">Spend</th><th class="num">Spend per win</th><th>Best league finish</th><th>Trophies</th></tr></thead><tbody>${MREC.map(m=>{const wr=m[4]/m[3]*100,sp=(spend[m[1]]||[0])[0];return `<tr class="${m[9]?"int":""}" data-mgr="${m[1]}" tabindex="0"><td class="mn"><span class="mcell">${avatar(m[0],{mgr:true})}<span>${m[0]}<small>${m[2]}${m[9]?" · interim":""}</small></span></span></td><td class="num">${m[3]}</td><td class="num">${m[4]}</td><td class="num">${m[5]}</td><td class="num">${m[6]}</td><td><span class="wbar"><i><b style="width:${(wr/(best*100)*100).toFixed(0)}%"></b></i><span class="num">${wr.toFixed(1)}%</span></span></td><td class="num">${sp?`${(spend[m[1]]||[])[1]?"≈":""}£${sp}m`:"£0"}</td><td class="num">${sp?`£${(sp/m[4]).toFixed(1)}m`:"–"}</td><td>${m[8]}</td><td style="white-space:normal;min-width:150px">${m[7]}</td></tr>`}).join("")}</tbody>`;
-  document.getElementById("mcompnote").textContent=`Caretakers: ${CARE.map(c=>`${c[0]} ${c[2]}W ${c[3]}D ${c[4]}L`).join(" · ")}. Win rates count every competitive game; Carrick's include this season to 21 Oct. Spend is gross transfer spend during each spell.`;
+  document.getElementById("mcomp").innerHTML=`<thead><tr><th>Manager</th><th class="num">Games</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th>Win rate</th><th class="num">Spend</th><th class="num">Spend per win</th><th>Best league finish</th><th>Trophies</th></tr></thead><tbody>${MREC.map(m=>{const wr=m[4]/m[3]*100,sp=(spend[m[1]]||[0])[0];return `<tr class="${m[9]?"int":""}" data-mgr="${m[1]}" tabindex="0"><td class="mn"><span class="mcell">${avatar(m[0],{mgr:true})}<span>${msur(m[0])}<small>${myrs(m[2])}${m[9]?" · int.":""}</small></span></span></td><td class="num">${m[3]}</td><td class="num">${m[4]}</td><td class="num">${m[5]}</td><td class="num">${m[6]}</td><td><span class="wbar"><i><b style="width:${(wr/(best*100)*100).toFixed(0)}%"></b></i><span class="num">${wr.toFixed(1)}%</span></span></td><td class="num">${sp?`${(spend[m[1]]||[])[1]?"≈":""}£${sp}m`:"£0"}</td><td class="num">${sp?`£${(sp/m[4]).toFixed(1)}m`:"–"}</td><td>${m[8]}</td><td style="white-space:normal;min-width:150px">${m[7]}</td></tr>`}).join("")}</tbody>`;
+  document.getElementById("mcompnote").textContent=`Caretakers: ${CARE.map(c=>`${c[0]} ${c[2]}W ${c[3]}D ${c[4]}L`).join(" · ")}. Win rates count every competitive game; Carrick's include this season so far. Spend is gross transfer spend during each spell.`;
   // League position chart
   const W=700,H=300,L=34,R=26,T=52,B=46,yr=RUNS.map(r=>r[0]),n=yr.length;
   const X=i=>L+i*(W-L-R)/(n-1), Y=p=>T+(p-1)*(H-T-B)/15;
