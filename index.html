@@ -395,6 +395,11 @@ table.wtbl tbody tr{cursor:pointer}
 .bctl .chip{font-size:12.5px;padding:4px 11px}
 .board li{padding:6px 4px;border-bottom:1px solid var(--line);border-radius:0}
 .board li:last-child{border-bottom:0}
+.subtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0 4px;margin-bottom:2px}
+.subtabs::-webkit-scrollbar{display:none}
+.subtabs .chip{flex:0 0 auto}
+.msub[hidden]{display:none!important}
+.msub>h2:first-child{margin-top:10px}
 /* Compact header and sticky tabs */
 .status{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 nav{position:sticky;top:0;z-index:20;background:var(--bg);padding-top:env(safe-area-inset-top,0px);scrollbar-width:none}
@@ -532,27 +537,38 @@ section{scroll-margin-top:60px}
 </section>
 
 <section id="managers" role="tabpanel" hidden>
+  <div class="subtabs" id="msubs" role="tablist" aria-label="Manager views"><button class="chip" data-ms="overview" aria-pressed="true">Overview</button><button class="chip" data-ms="money" aria-pressed="false">Transfers</button><button class="chip" data-ms="wages" aria-pressed="false">Wages</button><button class="chip" data-ms="deals" aria-pressed="false">Deals</button><button class="chip" data-ms="history" aria-pressed="false">History</button></div>
+  <div class="msub" data-msv="overview">
   <h2>Managers compared <em>competitive games, all competitions</em></h2>
   <p class="mhint">Tap a manager for their season-by-season record, deals and money in and out.</p>
   <div class="tbl" style="margin-bottom:6px"><table class="mcomp" id="mcomp"></table></div>
   <p class="meta" style="font-size:12px;margin:0 0 22px" id="mcompnote"></p>
+  <h2>League finish by season <em>shaded by the manager who finished each season</em></h2>
+  <div class="chartwrap" id="poschart"></div>
+  </div>
+  <div class="msub" data-msv="money" hidden>
   <h2>Spent vs recouped <em>transfer fees per manager, £m</em></h2>
   <div class="stack" id="stack"></div>
+  <h2>Transfer spend since Ferguson <em>gross, per manager</em></h2>
+  <div class="spendhead" id="spendhead"></div>
+  <div class="bars" id="bars"></div>
+  </div>
+  <div class="msub" data-msv="wages" hidden>
   <h2>Wage bill by season <em>club accounts, year to 30 June, £m</em></h2>
   <div class="chartwrap" id="wagechart"></div>
   <div class="tbl" style="margin-bottom:6px"><table class="mcomp wtbl" id="wagetbl"></table></div>
   <p class="meta" style="font-size:12px;margin:0 0 22px">Red is total staff costs from the club's accounts, which include non-playing staff and bonuses. Gold is the first-team squad's weekly wages from Capology. Each season counts for the manager who finished it.</p>
-  <h2>League finish by season <em>shaded by the manager who finished each season</em></h2>
-  <div class="chartwrap" id="poschart"></div>
-  <h2>Transfer spend since Ferguson <em>gross, per manager</em></h2>
-  <div class="spendhead" id="spendhead"></div>
-  <div class="bars" id="bars"></div>
+  </div>
+  <div class="msub" data-msv="deals" hidden>
   <h2>Deals by manager <em>tap a name</em></h2>
   <p class="mhint">Summer departures count for the manager in charge of that transfer window, even when the previous manager picked the squad.</p>
   <div class="chips" id="mgrchips"></div>
   <div id="mgrdeals"></div>
+  </div>
+  <div class="msub" data-msv="history" hidden>
   <h2>Every manager since 2013 <em>newest first</em></h2>
   <div class="timeline" id="timeline"></div>
+  </div>
 </section>
 
 <section id="transfers" role="tabpanel" hidden>
@@ -1475,6 +1491,11 @@ function renderRComp(){
 })();
 Promise.resolve().then(()=>Promise.resolve()).then(()=>renderRivals(false));
 document.querySelector('[data-t="rivals"]').addEventListener("click",()=>setTimeout(()=>{const el=document.querySelector(`#rbar [data-rs="${rS}"]`);if(el)el.scrollIntoView({inline:"center",block:"nearest"})},0));
+
+(()=>{const bar=document.getElementById("msubs");let cur="overview";try{cur=localStorage.getItem("mgrSub")||"overview"}catch(e){}
+  const set=v=>{if(!bar.querySelector(`[data-ms="${v}"]`))v="overview";bar.querySelectorAll("[data-ms]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ms===v));document.querySelectorAll("#managers .msub").forEach(d=>d.hidden=d.dataset.msv!==v);try{localStorage.setItem("mgrSub",v)}catch(e){}};
+  set(cur);bar.addEventListener("click",e=>{const b=e.target.closest("[data-ms]");if(!b)return;set(b.dataset.ms);const n=document.getElementById("tabs");const top=n.getBoundingClientRect().top+scrollY;if(scrollY>top)scrollTo({top})});
+})();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
 </body>
