@@ -399,6 +399,13 @@ table.wtbl tbody tr{cursor:pointer}
 .subtabs::-webkit-scrollbar{display:none}
 .subtabs .chip{flex:0 0 auto}
 .msub[hidden]{display:none!important}
+#stack .sbg{cursor:pointer}
+#stack .sbg:hover .wbarr,#stack .sbg:focus .wbarr{opacity:.8}
+#stack .chartwrap svg{min-width:0;max-width:620px;margin:0 auto}
+table.mtx{min-width:0}
+table.mtx tr.tot td{font-weight:700;background:var(--bg);cursor:default}
+#stack .chartwrap text{font-size:10px}#stack .chartwrap .lbl{font-size:12px}#stack .chartwrap .mlab{font-size:11px}
+@media (max-width:620px){table.mtx td,table.mtx th{padding:7px 7px}}
 .msub>h2:first-child{margin-top:10px}
 /* Compact header and sticky tabs */
 .status{grid-template-columns:repeat(2,minmax(0,1fr))!important}
@@ -548,10 +555,8 @@ section{scroll-margin-top:60px}
   </div>
   <div class="msub" data-msv="money" hidden>
   <h2>Spent vs recouped <em>transfer fees per manager, £m</em></h2>
-  <div class="stack" id="stack"></div>
-  <h2>Transfer spend since Ferguson <em>gross, per manager</em></h2>
-  <div class="spendhead" id="spendhead"></div>
-  <div class="bars" id="bars"></div>
+  <div id="stack"></div>
+  <div hidden><div class="spendhead" id="spendhead"></div><div class="bars" id="bars"></div></div>
   </div>
   <div class="msub" data-msv="wages" hidden>
   <h2>Wage bill by season <em>club accounts, year to 30 June, £m</em></h2>
@@ -953,9 +958,14 @@ function computeMoney(){
 }
 const SEAS_OF={"David Moyes":[[2013]],"Louis van Gaal":[[2014],[2015]],"José Mourinho":[[2016],[2017],[2018,"until Dec"]],"Ole Gunnar Solskjær":[[2018,"from Dec"],[2019],[2020],[2021,"until Nov"]],"Ralf Rangnick":[[2021,"from Dec"]],"Erik ten Hag":[[2022],[2023],[2024,"until Oct"]],"Ruben Amorim":[[2024,"from Nov"],[2025,"until Jan"]],"Michael Carrick|Head coach":[[2025,"from Jan"],[2026,"so far"]]};
 function renderStack(){
-  const max=Math.max(...MONEY.map(m=>m[3]));
-  document.getElementById("stack").innerHTML=MONEY.map(m=>{const net=m[3]-m[4];return `<div class="srow" data-mgr="${m[0]}" role="button" tabindex="0"><div class="lbl">${m[1]}<small>${m[2]}</small></div><div><div class="sbar" style="width:${(m[3]/max*100).toFixed(1)}%"><span class="rec" style="width:${(m[4]/m[3]*100).toFixed(1)}%" title="Recouped £${m[4]}m"></span><span class="net" style="width:${(net/m[3]*100).toFixed(1)}%" title="Net spend £${net}m"></span></div><div class="snums"><span>Spent <b>£${m[3]}m</b></span><span>Recouped <b>£${m[4]}m</b></span><span>Net <b>£${net}m</b></span><span>${Math.round(m[4]/m[3]*100)}% back</span></div></div></div>`}).join("")+
-  `<div class="skey"><span><i style="background:var(--gold)"></i>Recouped from sales</span><span><i style="background:var(--red)"></i>Net spend</span><span>Whole bar = total spent</span></div>`;
+  const W=440,H=280,L=40,R=4,T=24,B=40,n=MONEY.length,mx=Math.ceil(Math.max(...MONEY.map(m=>m[3]))/100)*100;
+  const bw=(W-L-R)/n, Y=v=>T+(H-T-B)*(1-v/mx);
+  const grid=[0,mx/4,mx/2,mx*3/4,mx].map(v=>`<line class="grid" x1="${L}" x2="${W-R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}"/><text x="${L-6}" y="${(Y(v)+4).toFixed(1)}" text-anchor="end">£${v}m</text>`).join("");
+  const bars=MONEY.map((m,i)=>{const x=L+i*bw+bw*0.18,w=bw*0.64,net=m[3]-m[4];return `<g class="sbg" data-mgr="${m[0]}" role="button" tabindex="0" aria-label="${m[1]}: spent £${m[3]}m, recouped £${m[4]}m, net £${net}m"><rect class="hit" x="${(L+i*bw).toFixed(1)}" y="${T}" width="${bw.toFixed(1)}" height="${H-T-B+B}" fill="transparent"/><rect class="wbarp" x="${x.toFixed(1)}" y="${Y(m[4]).toFixed(1)}" width="${w.toFixed(1)}" height="${(Y(0)-Y(m[4])).toFixed(1)}"/><rect class="wbarr" x="${x.toFixed(1)}" y="${Y(m[3]).toFixed(1)}" width="${w.toFixed(1)}" height="${(Y(m[4])-Y(m[3])).toFixed(1)}"/><text class="lbl" x="${(x+w/2).toFixed(1)}" y="${(Y(m[3])-7).toFixed(1)}" text-anchor="middle">£${m[3]}m</text><text class="mlab" x="${(x+w/2).toFixed(1)}" y="${H-B+18}" text-anchor="middle">${m[1]}</text><text x="${(x+w/2).toFixed(1)}" y="${H-B+32}" text-anchor="middle">${m[2]}</text></g>`}).join("");
+  const tot=MONEY.reduce((a,m)=>[a[0]+m[3],a[1]+m[4]],[0,0]);
+  document.getElementById("stack").innerHTML=`<div class="chartwrap" style="margin-bottom:10px"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Transfer spend per manager, split into money recouped and net spend">${grid}${bars}</svg><div class="skey" style="padding:2px 6px"><span><i style="background:var(--gold)"></i>Recouped from sales</span><span><i style="background:var(--red)"></i>Net spend</span><span>Whole bar = total spent</span></div></div>
+  <div class="tbl"><table class="mcomp mtx"><thead><tr><th>Manager</th><th class="num">Spent</th><th class="num">Recouped</th><th class="num">Net</th><th class="num">Back</th></tr></thead><tbody>${MONEY.map(m=>`<tr data-mgr="${m[0]}" tabindex="0"><td class="mn">${m[1]}<small>${m[2]}</small></td><td class="num">£${m[3]}m</td><td class="num">£${m[4]}m</td><td class="num"><b>£${m[3]-m[4]}m</b></td><td class="num">${m[3]?Math.round(m[4]/m[3]*100):0}%</td></tr>`).join("")}<tr class="tot"><td class="mn">All since 2013</td><td class="num">£${(tot[0]/1000).toFixed(2)}bn</td><td class="num">£${tot[1]}m</td><td class="num"><b>£${((tot[0]-tot[1])/1000).toFixed(2)}bn</b></td><td class="num">${Math.round(tot[1]/tot[0]*100)}%</td></tr></tbody></table></div>
+  <p class="meta" style="font-size:12px;margin:6px 0 0">Reported base fees for the deals listed on this page, add-ons excluded. Interims (Giggs, Carrick 2021, Rangnick, van Nistelrooy, Fletcher) made no signings. Tap a manager for their full record.</p>`;
 }
 Promise.resolve().then(()=>{computeMoney();renderSpendViews();renderMgrComp();renderStack();renderWages()});
 // Transfer windows: Jun–Oct = summer of that year; Nov–Dec and Jan–May = the January window of that season
