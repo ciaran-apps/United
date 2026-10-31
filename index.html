@@ -50,6 +50,8 @@ nav button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
 nav button:focus-visible,.chip:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 section{padding-top:18px}
 .rmg{color:var(--ink);font-weight:600}
+.ctr{color:var(--muted);font-weight:400}
+.ctr.soon{color:var(--red);font-weight:600}
 .cds{display:inline-flex;gap:7px;justify-content:flex-end;white-space:nowrap}
 .cd{display:inline-block;width:8px;height:11px;border-radius:1.5px;margin-right:3px;vertical-align:-1px}
 .cd.y{background:#f2c200}.cd.r{background:#d7192d}
@@ -579,6 +581,9 @@ section{scroll-margin-top:60px}
     <div><h3>Player wages</h3><ul>
       <li>All player wages, current and past, are Capology estimates from screenshots of every season from 2013/14 to 2026/27. Each season was checked against Capology's total. A player Capology doesn't list counts as £0.</li>
       <li>One manual correction: Jadon Sancho is set to £250k a week for every season at the club (2021/22 to 2025/26). Capology shows less for his loan years because the loan clubs paid part of it.</li></ul></div>
+    <div><h3>Contracts</h3><ul>
+      <li>Contract end dates for the current squad are from Capology (checked 31 Oct 2026). All run to 30 June of the year shown. Red means the contract ends within a year.</li>
+      <li>Tynan Thompson isn't listed on Capology yet, so he has no date.</li></ul></div>
     <div><h3>Wage bill</h3><ul>
       <li>Total staff costs from United's annual accounts (year to 30 June): 2015/16, 2018/19, 2019/20 and 2020/21 to 2025/26 checked against published reports; earlier years from the club's accounts as widely reported.</li></ul></div>
     <div><h3>Managers</h3><ul>
@@ -618,6 +623,9 @@ const SUBFLAG={"England":"gbeng","Scotland":"gbsct","Wales":"gbwls"};
 const flag=c=>{if(SUBFLAG[c])return "\u{1F3F4}"+[...SUBFLAG[c]].map(ch=>String.fromCodePoint(0xE0000+ch.charCodeAt(0))).join("")+"\u{E007F}";const k=FLAG_ISO[c];return k?[...k].map(ch=>String.fromCodePoint(0x1F1E6+ch.charCodeAt(0)-65)).join(""):""};
 const flagEl=c=>{const f=flag(c);return f?`<span class="flag" title="${c}" aria-label="${c}">${f}</span>`:""};
 const cardsHTML=(y,r)=>y==null?"–":(!y&&!r)?"0":`<span class="cds">${y?`<span title="${y} yellow card${y>1?"s":""}"><i class="cd y"></i>${y}</span>`:""}${r?`<span title="${r} red card${r>1?"s":""}"><i class="cd r"></i>${r}</span>`:""}</span>`;
+// Contract end (30 June of the year) — Capology, screenshot 31 Oct 2026
+const CONTRACT={"Bruno Fernandes":2027,"Marcus Rashford":2028,"Youri Tielemans":2031,"Matheus Cunha":2030,"Benjamin Šeško":2030,"Matthijs de Ligt":2029,"Harry Maguire":2027,"Bryan Mbeumo":2030,"Kobbie Mainoo":2031,"Carlos Baleba":2031,"Mason Mount":2028,"Luke Shaw":2027,"Noussair Mazraoui":2028,"Amad Diallo":2030,"Lisandro Martínez":2027,"Manuel Ugarte":2029,"Leny Yoro":2029,"Andrey Santos":2031,"Joshua Zirkzee":2029,"Diogo Dalot":2028,"Senne Lammens":2030,"Patrick Dorgu":2030,"Tom Heaton":2027,"Ayden Heaven":2029,"Karl Darlow":2028,"Shea Lacey":2029,"Tyler Fletcher":2027,"Harry Amass":2027,"Dermot Mee":2028,"Jack Fletcher":2027};
+const ctLeft=y=>{const now=new Date(),end=new Date(y,5,30);const m=Math.max(0,Math.round((end-now)/2629800000));return m<12?`${m} month${m===1?"":"s"} left`:`${Math.floor(m/12)} yr${m>=24?"s":""}${m%12?` ${m%12} mo`:""} left`};
 const groups={GK:"Goalkeepers",DF:"Defenders",MF:"Midfielders",FW:"Forwards"};
 // Premier League player codes (FPL Core Insights, 2026/27) for profile links
 const PLID={"Karl Darlow":59735,"Dermot Mee":461537,"Youri Tielemans":166989,"Carlos Baleba":535301,"Andrey Santos":532605,"Senne Lammens":465247,"Tom Heaton":21205,"Patrick Dorgu":596777,"Matthijs de Ligt":209365,"Diogo Dalot":216051,"Harry Maguire":95658,"Lisandro Martínez":221820,"Leny Yoro":550864,"Ayden Heaven":606745,"Noussair Mazraoui":230001,"Luke Shaw":106760,"Harry Amass":577974,"Bruno Fernandes":141746,"Bryan Mbeumo":446008,"Matheus Cunha":430871,"Marcus Rashford":176297,"Mason Mount":184341,"Amad Diallo":493250,"Kobbie Mainoo":516895,"Manuel Ugarte":232112,"Jack Fletcher":547037,"Shea Lacey":576628,"Tyler Fletcher":519913,"Benjamin Šeško":485711,"Joshua Zirkzee":458249};
@@ -639,7 +647,7 @@ const chips=[["ALL","All"],["GK","GK"],["DF","DEF"],["MF","MID"],["FW","FWD"]];
 function renderSquad(){
   document.getElementById("poschips").innerHTML=chips.map(c=>`<button class="chip" id="chip-${c[0]}" aria-pressed="${filt===c[0]}" data-f="${c[0]}">${c[1]}</button>`).join("");
   const keep=p=>filt==="ALL"||filt===p[1]||(filt==="new"&&p[4]==="new");
-  const card=p=>{const w=wages[p[2]];const wl=w&&w[0]?`<div class="wage"><b>£${w[0]}k</b>/wk</div>`:`<div class="wage none">£0/wk · not listed</div>`;
+  const card=p=>{const w=wages[p[2]];const cy=CONTRACT[p[2]];const ct=cy?`<span class="ctr${cy<=new Date().getFullYear()+1&&new Date(cy,5,30)-new Date()<31557600000?" soon":""}" title="Contract until 30 Jun ${cy}"> · to ${cy}</span>`:"";const wl=w&&w[0]?`<div class="wage"><b>£${w[0]}k</b>/wk${ct}</div>`:`<div class="wage none">£0/wk · not listed${ct}</div>`;
     const t=tot26(p[2]);
     return `<button class="p" data-p="${p[2]}" aria-haspopup="dialog"><div class="avwrap">${avatar(p[2],{num:p[0],size:46})}</div><div style="min-width:0"><div class="nm">${p[2]} ${flagEl(p[3])}${p[4]==="new"?'<span class="tag new">New</span>':p[4]==="acad"?'<span class="tag acad">Academy</span>':""}</div><div class="meta">${t.a} apps${t.g?`, ${t.g} goal${t.g>1?"s":""}`:""}</div>${wl}</div></button>`};
   let html="";
@@ -682,7 +690,7 @@ function openPlayer(n){
   const rows=COMPS.map(([k,lab])=>{const a=s[k];return `<tr><td>${lab}</td><td class="num">${a?a[0]:0}${a&&a[0]-a[1]?` <span class="sub">(${a[0]-a[1]} sub)</span>`:""}</td><td class="num">${g[k]||0}</td></tr>`}).join("");
   const isGK=p[1]==="GK";
   document.getElementById("pbody").innerHTML=`
-   <div class="phead">${avatar(n,{num:p[0]})}<div style="min-width:0"><div class="eyebrow">${groups[p[1]].replace(/s$/,"")} · ${p[3]}</div><h3 id="ptitle">${n} ${flagEl(p[3])}</h3>${w?`<div class="meta">${w[0]?`Wage £${w[0]}k a week`:"Wage not listed (£0)"}</div>`:""}</div></div>
+   <div class="phead">${avatar(n,{num:p[0]})}<div style="min-width:0"><div class="eyebrow">${groups[p[1]].replace(/s$/,"")} · ${p[3]}</div><h3 id="ptitle">${n} ${flagEl(p[3])}</h3>${w?`<div class="meta">${w[0]?`Wage £${w[0]}k a week`:"Wage not listed (£0)"}</div>`:""}${CONTRACT[n]?`<div class="meta">Contract until 30 Jun ${CONTRACT[n]} · ${ctLeft(CONTRACT[n])}</div>`:""}</div></div>
    <div class="kpis"><div><b>${t.a}</b><small>Apps</small></div><div><b>${t.st}</b><small>Starts</small></div><div><b>${t.g}</b><small>Goals</small></div><div><b>${px?px[0]:"–"}</b><small>PL assists</small></div></div>
    <h4>2026/27 by competition</h4>
    <div class="tbl"><table class="mini"><thead><tr><th>Competition</th><th class="num">Apps</th><th class="num">Goals</th></tr></thead><tbody>${rows}<tr class="tot"><td>Total</td><td class="num">${t.a}</td><td class="num">${t.g}</td></tr></tbody></table></div>
