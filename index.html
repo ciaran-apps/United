@@ -399,6 +399,8 @@ table.wtbl tbody tr{cursor:pointer}
 .subtabs::-webkit-scrollbar{display:none}
 .subtabs .chip{flex:0 0 auto}
 .msub[hidden]{display:none!important}
+table.ptbl .pn{white-space:nowrap}
+@media (max-width:620px){table.ptbl td,table.ptbl th{padding:6px 8px}table.ptbl td{vertical-align:middle}table.ptbl .tag.acad{font-size:9px;padding:0 4px;margin-left:4px;letter-spacing:.03em}table.ptbl .pcell{gap:7px}}
 #stack .sbg{cursor:pointer}
 #stack .sbg:hover .wbarr,#stack .sbg:focus .wbarr{opacity:.8}
 #stack .chartwrap svg{min-width:0;max-width:620px;margin:0 auto}
@@ -780,7 +782,7 @@ function renderPlayers(scroll){
   const title=q?`Search results <em>every season, 2013/14 – 2026/27</em>`:M==="all"?`Every player, 2013/14 – 2026/27`:`${sl(M)} <em>${MS[M]}</em>`;
   document.getElementById("pview").innerHTML=`<h2>${title}</h2><div class="totals"><span><b>${rows.length}</b>${q?"matching ":""}players</span><span><b>${top}</b>goals between them</span>${M===2026?`<span class="formnote">To 25 Oct</span>`:""}${M!=="all"&&PWAGE[M]?`<span><b>£${(Object.values(PWAGE[M]).reduce((a,b)=>a+b,0)/1000).toFixed(2)}m</b>a week in player wages</span>`:M!=="all"?`<span class="formnote">No wage data for this season yet</span>`:""}${M==="all"&&AST_SEASONS.length<14?`<span class="formnote">Assists cover ${AST_SEASONS.length} of 14 seasons</span>`:AST_PARTIAL.includes(M)?`<span class="formnote">Assists: only the top 6 providers are known this season</span>`:!AST_SEASONS.includes(M)?`<span class="formnote">No assist data for this season yet</span>`:""}</div>
    ${rows.length?`<div class="tbl"><table class="ptbl"><thead><tr>${cols.map(([k,l])=>`<th class="${k==="n"?"":"num"}"><button data-sort="${k}" ${pSort===k?`aria-sort="${k==="n"?"ascending":"descending"}"`:""}>${l}${pSort===k?(k==="n"?" ↑":" ↓"):""}</button></th>`).join("")}</tr></thead><tbody>
-   ${rows.map(r=>`<tr data-career="${r.n}" tabindex="0"><td><span class="pcell">${avatar(r.n)}<span><span class="pn">${r.n}</span><span class="pp">${r.pos}</span>${ACADEMY.has(r.n)?`<span class="tag acad">Academy</span>`:""}</span></span></td>${M==="all"?`<td class="num">${r.seas}</td>`:""}<td class="num ${pSort==="a"?"hl":""}">${r.a}</td><td class="num ${pSort==="g"?"hl":""}">${r.g}</td><td class="num ${pSort==="as"?"hl":""}">${r.as??"–"}</td><td class="num ${pSort==="gi"?"hl":""}">${r.gi??"–"}</td><td class="num">${r.la}</td><td class="num">${r.lg}</td><td class="num">${r.y??"–"}</td><td class="num">${r.r??"–"}</td>${M!=="all"&&PWAGE[M]?`<td class="num ${pSort==="w"?"hl":""}">${r.w!=null?(r.w?`£${r.w>=1?Math.round(r.w):r.w}k`:"£0"):"–"}</td>`:""}</tr>`).join("")}</tbody></table></div>`
+   ${rows.map(r=>`<tr data-career="${r.n}" tabindex="0"><td><span class="pcell">${avatar(r.n)}<span><span class="pn" title="${r.n}">${sname(r.n)}</span><span class="pp">${r.pos}</span>${ACADEMY.has(r.n)?`<span class="tag acad">Academy</span>`:""}</span></span></td>${M==="all"?`<td class="num">${r.seas}</td>`:""}<td class="num ${pSort==="a"?"hl":""}">${r.a}</td><td class="num ${pSort==="g"?"hl":""}">${r.g}</td><td class="num ${pSort==="as"?"hl":""}">${r.as??"–"}</td><td class="num ${pSort==="gi"?"hl":""}">${r.gi??"–"}</td><td class="num">${r.la}</td><td class="num">${r.lg}</td><td class="num">${r.y??"–"}</td><td class="num">${r.r??"–"}</td>${M!=="all"&&PWAGE[M]?`<td class="num ${pSort==="w"?"hl":""}">${r.w!=null?(r.w?`£${r.w>=1?Math.round(r.w):r.w}k`:"£0"):"–"}</td>`:""}</tr>`).join("")}</tbody></table></div>`
    :`<div class="empty">No one called "${pQ}" played for United ${M==="all"?"between 2013/14 and now":`in ${sl(M)}`}. Check the spelling, or try a surname only.</div>`}`;
   if(scroll)document.getElementById("ps-"+pS)?.scrollIntoView({inline:"center",block:"nearest"});
 }
@@ -1017,7 +1019,7 @@ function txHistory(n){
 // Surname-only display for deal lists; initials added where two players share a surname
 const surOf=n=>{const w=n.trim().split(/\s+/);if(w.length<2)return n;const i=w.findIndex((x,j)=>j>0&&j<w.length-1&&/^(de|van|da|dos|di|ten|der|del)$/i.test(x));return w.slice(i>0?i:w.length-1).join(" ")};
 let SURDUP=null;
-const sname=n=>{if(!SURDUP){const m={};const add=x=>{if(!x||typeof x!=="string")return;const s=surOf(x);(m[s]=m[s]||new Set()).add(x)};Object.keys(ALLP).forEach(add);try{Object.values(D).forEach(d=>{d.in.forEach(r=>add(r[1]));d.out.forEach(r=>add(r[1]))})}catch(e){}try{Object.values(RIV).forEach(c=>c.d.forEach(r=>add(r[3])))}catch(e){}SURDUP=new Set(Object.keys(m).filter(s=>m[s].size>1))}
+const sname=n=>{if(!SURDUP){const m={};const add=x=>{if(!x||typeof x!=="string")return;const s=surOf(x);(m[s]=m[s]||new Set()).add(x)};Object.keys(ALLP).forEach(add);try{Object.values(D).forEach(d=>{d.in.forEach(r=>add(r[1]));d.out.forEach(r=>add(r[1]))})}catch(e){}SURDUP=new Set(Object.keys(m).filter(s=>m[s].size>1))}
   const s=surOf(n);return SURDUP.has(s)&&s!==n?`${n.trim()[0]}. ${s}`:s};
 const pname=n=>ALLP[n]?`<button class="plink2" data-career="${n}" title="${n}">${sname(n)}</button>`:`<b title="${n}">${sname(n)}</b>`;
 let curMgr=null,backTo=null;
