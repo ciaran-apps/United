@@ -409,6 +409,20 @@ table.mtx tr.tot td{font-weight:700;background:var(--bg);cursor:default}
 #stack .chartwrap text{font-size:10px}#stack .chartwrap .lbl{font-size:12px}#stack .chartwrap .mlab{font-size:11px}
 @media (max-width:620px){table.mtx td,table.mtx th{padding:7px 7px}}
 .msub>h2:first-child{margin-top:10px}
+.pitch{position:relative;aspect-ratio:5/7.4;max-width:560px;margin:0 auto;border-radius:10px;overflow:hidden;background:repeating-linear-gradient(180deg,#2f7d3a 0 10%,#2a7134 10% 20%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+.pitch .ln{position:absolute;border:2px solid rgba(255,255,255,.5);pointer-events:none}
+.pitch .half{left:0;right:0;top:50%;height:0;border-width:2px 0 0}
+.pitch .circ{left:50%;top:50%;width:26%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%)}
+.pitch .box{left:22%;right:22%;height:15%}
+.pitch .box.t{top:-2px}.pitch .box.b{bottom:-2px}
+.pitch .six{left:37%;right:37%;height:6%}
+.pitch .six.t{top:-2px}.pitch .six.b{bottom:-2px}
+.slot{position:absolute;transform:translate(-50%,-22px);display:flex;flex-direction:column;align-items:center;width:27%;text-align:center;line-height:1.15;background:none;border:0;padding:0;color:#fff;font:inherit;cursor:pointer}
+.slot .av{--s:42px;border-color:rgba(255,255,255,.85);background:#fff;margin-bottom:3px;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.slot .st{font:700 12.5px var(--display);letter-spacing:.03em;text-transform:uppercase;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.slot .bk2{font:600 10.5px var(--display);letter-spacing:.03em;text-transform:uppercase;color:#ffd84a;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.slot .ps{font:600 9px var(--mono);color:rgba(255,255,255,.75);letter-spacing:.06em}
+@media (min-width:621px){.slot .st{font-size:15px}.slot .bk2{font-size:12.5px}.slot .av{--s:52px}}
 /* Compact header and sticky tabs */
 .status{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 nav{position:sticky;top:0;z-index:20;background:var(--bg);padding-top:env(safe-area-inset-top,0px);scrollbar-width:none}
@@ -479,9 +493,17 @@ section{scroll-margin-top:60px}
 </nav>
 
 <section id="squad" role="tabpanel">
+  <div class="subtabs" id="sqsubs" role="tablist" aria-label="Squad views"><button class="chip" data-sq="list" aria-pressed="true">Squad list</button><button class="chip" data-sq="depth" aria-pressed="false">Depth chart</button></div>
+  <div data-sqv="list">
   <div class="totals" id="wagebill"></div>
   <div class="chips" id="poschips"></div>
   <div id="sheet"></div>
+  </div>
+  <div data-sqv="depth" hidden>
+  <div class="chips" id="fmchips" role="group" aria-label="Formation"></div>
+  <div class="pitch" id="pitch"></div>
+  <p class="meta" style="font-size:12px;margin:8px 0 0">White = first choice, then backups in order. Based on this season's selections; tap a player for their profile.</p>
+  </div>
 </section>
 
 <dialog id="pdlg" aria-labelledby="ptitle">
@@ -1514,6 +1536,41 @@ document.querySelector('[data-t="rivals"]').addEventListener("click",()=>setTime
   const set=v=>{if(!bar.querySelector(`[data-ms="${v}"]`))v="overview";bar.querySelectorAll("[data-ms]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ms===v));document.querySelectorAll("#managers .msub").forEach(d=>d.hidden=d.dataset.msv!==v);try{localStorage.setItem("mgrSub",v)}catch(e){}};
   set(cur);bar.addEventListener("click",e=>{const b=e.target.closest("[data-ms]");if(!b)return;set(b.dataset.ms);const n=document.getElementById("tabs");const top=n.getBoundingClientRect().top+scrollY;if(scrollY>top)scrollTo({top})});
 })();
+
+// ---- Depth chart ----
+const DEPTH={GK:["Senne Lammens","Karl Darlow","Tom Heaton","Dermot Mee"],
+ LB:["Luke Shaw","Patrick Dorgu","Harry Amass"],RB:["Diogo Dalot","Noussair Mazraoui"],
+ LWB:["Patrick Dorgu","Luke Shaw","Harry Amass"],RWB:["Diogo Dalot","Noussair Mazraoui","Amad Diallo"],
+ LCB:["Lisandro Martínez","Matthijs de Ligt","Ayden Heaven"],RCB:["Harry Maguire","Leny Yoro","Matthijs de Ligt"],CB:["Harry Maguire","Matthijs de Ligt","Leny Yoro"],
+ DM:["Andrey Santos","Manuel Ugarte","Carlos Baleba"],CM:["Youri Tielemans","Andrey Santos","Kobbie Mainoo","Carlos Baleba"],AM:["Bruno Fernandes","Mason Mount","Jack Fletcher"],
+ LW:["Matheus Cunha","Marcus Rashford","Amad Diallo"],RW:["Bryan Mbeumo","Amad Diallo","Shea Lacey"],
+ LM:["Matheus Cunha","Marcus Rashford","Patrick Dorgu"],RM:["Bryan Mbeumo","Amad Diallo","Shea Lacey"],
+ ST:["Benjamin Šeško","Joshua Zirkzee","Tynan Thompson"],ST2:["Matheus Cunha","Joshua Zirkzee","Marcus Rashford"]};
+const FORMS={
+ "4-3-3":[["ST",50,9],["LW",17,17],["RW",83,17],["AM",50,37],["CM",23,39],["DM",77,39],["LB",13,61],["LCB",37,67],["RCB",63,67],["RB",87,61],["GK",50,84]],
+ "4-2-3-1":[["ST",50,8],["LW",15,27],["AM",50,30],["RW",85,27],["CM",31,46],["DM",69,46],["LB",13,64],["LCB",37,69],["RCB",63,69],["RB",87,64],["GK",50,84]],
+ "4-4-2":[["ST",30,9],["ST2",70,9],["LM",13,36],["AM",37,39],["CM",63,39],["RM",87,36],["LB",13,63],["LCB",37,69],["RCB",63,69],["RB",87,63],["GK",50,84]],
+ "3-4-3":[["ST",50,8],["LW",17,17],["RW",83,17],["LWB",12,38],["CM",37,41],["DM",63,41],["RWB",88,38],["LCB",20,67],["CB",50,70],["RCB",80,67],["GK",50,84]],
+ "3-5-2":[["ST",30,9],["ST2",70,9],["AM",50,30],["LWB",12,40],["CM",31,45],["DM",69,45],["RWB",88,40],["LCB",20,67],["CB",50,70],["RCB",80,67],["GK",50,84]]};
+const POOL={LCB:["Matthijs de Ligt","Ayden Heaven","Leny Yoro","Noussair Mazraoui"],CB:["Matthijs de Ligt","Leny Yoro","Ayden Heaven","Noussair Mazraoui"],RCB:["Leny Yoro","Matthijs de Ligt","Ayden Heaven","Noussair Mazraoui"],DM:["Kobbie Mainoo","Carlos Baleba","Tyler Fletcher"],CM:["Carlos Baleba","Mason Mount","Tyler Fletcher","Jack Fletcher"],AM:["Youri Tielemans","Mason Mount","Jack Fletcher","Shea Lacey"],ST2:["Tynan Thompson","Marcus Rashford"],LW:["Shea Lacey","Tynan Thompson"],RW:["Tynan Thompson","Shea Lacey"]};
+const POSLAB={GK:"GK",LB:"LB",RB:"RB",LWB:"LWB",RWB:"RWB",LCB:"CB",RCB:"CB",CB:"CB",DM:"DM",CM:"CM",AM:"AM",LW:"LW",RW:"RW",LM:"LM",RM:"RM",ST:"ST",ST2:"ST"};
+let FORM="4-3-3";try{FORM=localStorage.getItem("formation")||FORM}catch(e){}
+function renderDepth(){
+  if(!FORMS[FORM])FORM="4-3-3";
+  document.getElementById("fmchips").innerHTML=Object.keys(FORMS).map(f=>`<button class="chip" data-fm="${f}" aria-pressed="${f===FORM}">${f}</button>`).join("");
+  const inSquad=new Set(squad.map(p=>p[2])),slots=FORMS[FORM],used=new Set(),pick=slots.map(()=>[]);
+  // starters first, then backups round by round, never repeating a player
+  for(let round=0;round<3;round++)slots.forEach((s,i)=>{const c=(DEPTH[s[0]]||[]).concat(round?(POOL[s[0]]||[]):[]).find(n=>inSquad.has(n)&&!used.has(n));if(c&&(round===0||pick[i].length))if(round<3){pick[i].push(c);used.add(c)}});
+  const lines='<i class="ln half"></i><i class="ln circ"></i><i class="ln box t"></i><i class="ln box b"></i><i class="ln six t"></i><i class="ln six b"></i>';
+  document.getElementById("pitch").innerHTML=lines+slots.map((s,i)=>{const [st,...bk]=pick[i];if(!st)return"";const no=(squad.find(p=>p[2]===st)||[])[0];
+    return `<button class="slot" style="left:${s[1]}%;top:${s[2]}%" data-p="${st}" aria-label="${POSLAB[s[0]]}: ${st}${bk.length?", backups "+bk.join(", "):""}">${avatar(st,{num:no})}<span class="st">${sname(st)}</span>${bk.map(b=>`<span class="bk2">${sname(b)}</span>`).join("")}</button>`}).join("");
+}
+document.getElementById("fmchips").addEventListener("click",e=>{const b=e.target.closest("[data-fm]");if(!b)return;FORM=b.dataset.fm;try{localStorage.setItem("formation",FORM)}catch(e){}renderDepth()});
+document.getElementById("pitch").addEventListener("click",e=>{const b=e.target.closest("[data-p]");if(b){lastCard=b;openPlayer(b.dataset.p)}});
+(()=>{const bar=document.getElementById("sqsubs");let cur="list";try{cur=localStorage.getItem("sqSub")||"list"}catch(e){}
+  const set=v=>{bar.querySelectorAll("[data-sq]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.sq===v));document.querySelectorAll("#squad [data-sqv]").forEach(d=>d.hidden=d.dataset.sqv!==v);try{localStorage.setItem("sqSub",v)}catch(e){}};
+  set(cur);bar.addEventListener("click",e=>{const b=e.target.closest("[data-sq]");if(b)set(b.dataset.sq)});})();
+Promise.resolve().then(()=>Promise.resolve()).then(renderDepth);
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}</script>
 </body>
