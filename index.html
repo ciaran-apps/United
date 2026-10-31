@@ -423,6 +423,27 @@ table.mtx tr.tot td{font-weight:700;background:var(--bg);cursor:default}
 .slot .bk2{font:600 10.5px var(--display);letter-spacing:.03em;text-transform:uppercase;color:#ffd84a;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .slot .ps{font:600 9px var(--mono);color:rgba(255,255,255,.75);letter-spacing:.06em}
 @media (min-width:621px){.slot .st{font-size:15px}.slot .bk2{font-size:12.5px}.slot .av{--s:52px}}
+.dctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:-4px 0 10px}
+.dctl .chip{font-size:12.5px;padding:4px 11px}
+.dnote{font-size:12px;color:var(--muted)}
+.pitch.editing .slot .av{outline:2px dashed #ffd84a;outline-offset:2px}
+.pitch.editing .slot.empty{opacity:.9}
+.slot.empty .av{background:rgba(255,255,255,.25);color:#fff;border-style:dashed}
+dialog#pickdlg{box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:18px;width:min(460px,calc(100vw - 24px));max-height:calc(100vh - 40px);overflow-y:auto;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog#pickdlg::backdrop{background:rgba(20,10,12,.55)}
+#pickbody h3{font-family:var(--display);font-size:22px;text-transform:uppercase;margin:0 40px 2px 0}
+#pickbody h4{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:14px 0 6px}
+.pkcur{display:flex;flex-wrap:wrap;gap:6px}
+.pkcur .chip{display:inline-flex;align-items:center;gap:6px}
+.pkcur .chip.st{background:var(--red);border-color:var(--red);color:#fff}
+.pklist{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.pklist li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 2px;border-bottom:1px solid var(--line)}
+.pklist .av{--s:28px;border-width:1px}
+.pklist .nm{font-weight:600;font-size:14px;line-height:1.2}
+.pklist .nm small{display:block;font:400 11.5px var(--body);color:var(--muted)}
+.pklist .acts{display:flex;gap:4px}
+.pklist .acts button{font:600 12px var(--body);border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:4px 9px;cursor:pointer}
+.pklist .acts button.on{background:var(--red);border-color:var(--red);color:#fff}
 /* Compact header and sticky tabs */
 .status{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 nav{position:sticky;top:0;z-index:20;background:var(--bg);padding-top:env(safe-area-inset-top,0px);scrollbar-width:none}
@@ -501,8 +522,10 @@ section{scroll-margin-top:60px}
   </div>
   <div data-sqv="depth" hidden>
   <div class="chips" id="fmchips" role="group" aria-label="Formation"></div>
+  <div class="dctl"><button class="chip" id="dedit" aria-pressed="false">Edit line-up</button><button class="chip" id="dreset" hidden>Reset to default</button><span class="dnote" id="dnote"></span></div>
   <div class="pitch" id="pitch"></div>
-  <p class="meta" style="font-size:12px;margin:8px 0 0">White = first choice, then backups in order. Based on this season's selections; tap a player for their profile.</p>
+  <p class="meta" style="font-size:12px;margin:8px 0 0" id="dhelp">White = first choice, then backups in order. Tap a player for their profile, or tap Edit line-up to pick your own.</p>
+  <dialog id="pickdlg" aria-labelledby="picktitle"><button class="pclose" id="pickclose" aria-label="Close">×</button><div id="pickbody"></div></dialog>
   </div>
 </section>
 
@@ -1558,15 +1581,42 @@ let FORM="4-3-3";try{FORM=localStorage.getItem("formation")||FORM}catch(e){}
 function renderDepth(){
   if(!FORMS[FORM])FORM="4-3-3";
   document.getElementById("fmchips").innerHTML=Object.keys(FORMS).map(f=>`<button class="chip" data-fm="${f}" aria-pressed="${f===FORM}">${f}</button>`).join("");
-  const inSquad=new Set(squad.map(p=>p[2])),slots=FORMS[FORM],used=new Set(),pick=slots.map(()=>[]);
+  const inSquad=new Set(squad.map(p=>p[2])),slots=FORMS[FORM],used=new Set();let pick=slots.map(()=>[]);
   // starters first, then backups round by round, never repeating a player
   for(let round=0;round<3;round++)slots.forEach((s,i)=>{const c=(DEPTH[s[0]]||[]).concat(round?(POOL[s[0]]||[]):[]).find(n=>inSquad.has(n)&&!used.has(n));if(c&&(round===0||pick[i].length))if(round<3){pick[i].push(c);used.add(c)}});
+  DEFPICK[FORM]=pick.map(a=>a.slice());
+  const cust=CUSTOM[FORM];if(cust&&cust.length===slots.length)pick=cust.map(a=>a.filter(n=>inSquad.has(n)));
+  CURPICK=pick;
+  document.getElementById("pitch").classList.toggle("editing",DEDIT);
+  document.getElementById("dedit").setAttribute("aria-pressed",DEDIT);document.getElementById("dedit").textContent=DEDIT?"Done":"Edit line-up";
+  document.getElementById("dreset").hidden=!cust;
+  document.getElementById("dnote").textContent=cust?"Your line-up":"";
+  document.getElementById("dhelp").textContent=DEDIT?"Tap a position to choose its starter and backups.":"White = first choice, then backups in order. Tap a player for their profile, or tap Edit line-up to pick your own.";
   const lines='<i class="ln half"></i><i class="ln circ"></i><i class="ln box t"></i><i class="ln box b"></i><i class="ln six t"></i><i class="ln six b"></i>';
-  document.getElementById("pitch").innerHTML=lines+slots.map((s,i)=>{const [st,...bk]=pick[i];if(!st)return"";const no=(squad.find(p=>p[2]===st)||[])[0];
-    return `<button class="slot" style="left:${s[1]}%;top:${s[2]}%" data-p="${st}" aria-label="${POSLAB[s[0]]}: ${st}${bk.length?", backups "+bk.join(", "):""}">${avatar(st,{num:no})}<span class="st">${sname(st)}</span>${bk.map(b=>`<span class="bk2">${sname(b)}</span>`).join("")}</button>`}).join("");
+  document.getElementById("pitch").innerHTML=lines+slots.map((s,i)=>{const [st,...bk]=pick[i];if(!st)return `<button class="slot empty" style="left:${s[1]}%;top:${s[2]}%" data-slot="${i}" aria-label="${POSLAB[s[0]]}: empty"><span class="av" aria-hidden="true">+</span><span class="st">${POSLAB[s[0]]}</span></button>`;const no=(squad.find(p=>p[2]===st)||[])[0];
+    return `<button class="slot" style="left:${s[1]}%;top:${s[2]}%" data-slot="${i}" data-p="${st}" aria-label="${POSLAB[s[0]]}: ${st}${bk.length?", backups "+bk.join(", "):""}">${avatar(st,{num:no})}<span class="st">${sname(st)}</span>${bk.map(b=>`<span class="bk2">${sname(b)}</span>`).join("")}</button>`}).join("");
 }
 document.getElementById("fmchips").addEventListener("click",e=>{const b=e.target.closest("[data-fm]");if(!b)return;FORM=b.dataset.fm;try{localStorage.setItem("formation",FORM)}catch(e){}renderDepth()});
-document.getElementById("pitch").addEventListener("click",e=>{const b=e.target.closest("[data-p]");if(b){lastCard=b;openPlayer(b.dataset.p)}});
+let CUSTOM={},DEFPICK={},CURPICK=[],DEDIT=false,PSLOT=null;try{CUSTOM=JSON.parse(localStorage.getItem("lineups")||"{}")}catch(e){}
+const saveCustom=()=>{try{localStorage.setItem("lineups",JSON.stringify(CUSTOM))}catch(e){}};
+document.getElementById("pitch").addEventListener("click",e=>{const b=e.target.closest(".slot");if(!b)return;if(DEDIT){openPick(+b.dataset.slot)}else if(b.dataset.p){lastCard=b;openPlayer(b.dataset.p)}});
+document.getElementById("dedit").addEventListener("click",()=>{DEDIT=!DEDIT;renderDepth()});
+document.getElementById("dreset").addEventListener("click",()=>{delete CUSTOM[FORM];saveCustom();renderDepth()});
+function openPick(i){PSLOT=i;drawPick();const d=document.getElementById("pickdlg");if(!d.open)d.showModal();d.scrollTop=0}
+function drawPick(){const i=PSLOT,s=FORMS[FORM][i],cur=CURPICK[i]||[],where={};CURPICK.forEach((a,j)=>a.forEach((n,k)=>{if(j!==i)where[n]=`${k?"backup ":""}${POSLAB[FORMS[FORM][j][0]]}`}));
+  const grp={GK:"Goalkeepers",DF:"Defenders",MF:"Midfielders",FW:"Forwards"};
+  const row=p=>{const n=p[2],isSt=cur[0]===n,isBk=cur.indexOf(n)>0;return `<li><span>${avatar(n,{size:28})}</span><span class="nm">${sname(n)}<small>${p[1]}${where[n]?` · now ${where[n]}`:""}</small></span><span class="acts"><button data-act="st" data-n="${n}" class="${isSt?"on":""}">${isSt?"Starting":"Start"}</button><button data-act="bk" data-n="${n}" class="${isBk?"on":""}">${isBk?"Backup ✓":"Backup"}</button></span></li>`};
+  document.getElementById("pickbody").innerHTML=`<h3 id="picktitle">${POSLAB[s[0]]} · ${FORM}</h3><div class="meta">Choose the starter and up to three backups, in order.</div>
+  <h4>Current</h4><div class="pkcur">${cur.length?cur.map((n,k)=>`<span class="chip${k?"":" st"}">${k?k+". ":""}${sname(n)}</span>`).join(""):'<span class="meta">Nobody picked</span>'}</div>
+  ${(()=>{const r=s[0],first=r==="GK"?"GK":/B$|CB/.test(r)?"DF":/M$|^CM|^DM|^AM/.test(r)?"MF":"FW";return [first,...Object.keys(grp).filter(g=>g!==first)]})().map(g=>`<h4>${grp[g]}</h4><ul class="pklist">${squad.filter(p=>p[1]===g).map(row).join("")}</ul>`).join("")}`;
+}
+document.getElementById("pickbody").addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(!b)return;const n=b.dataset.n,i=PSLOT;
+  const P=CURPICK.map(a=>a.slice());let cur=P[i];
+  if(b.dataset.act==="st"){if(cur[0]===n){cur.shift()}else{P.forEach((a,j)=>{if(j!==i){const k=a.indexOf(n);if(k>=0)a.splice(k,1)}});cur=cur.filter(x=>x!==n);cur.unshift(n)}}
+  else{const k=cur.indexOf(n);if(k>0)cur.splice(k,1);else if(k<0){P.forEach((a,j)=>{if(j!==i){const q=a.indexOf(n);if(q>0)a.splice(q,1);else if(q===0&&false)a.splice(q,1)}});if(cur.length<4)cur.push(n)}}
+  P[i]=cur.slice(0,4);CUSTOM[FORM]=P;saveCustom();renderDepth();drawPick()});
+document.getElementById("pickclose").addEventListener("click",()=>document.getElementById("pickdlg").close());
+document.getElementById("pickdlg").addEventListener("click",e=>{if(e.target.id==="pickdlg")e.target.close()});
 (()=>{const bar=document.getElementById("sqsubs");let cur="list";try{cur=localStorage.getItem("sqSub")||"list"}catch(e){}
   const set=v=>{bar.querySelectorAll("[data-sq]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.sq===v));document.querySelectorAll("#squad [data-sqv]").forEach(d=>d.hidden=d.dataset.sqv!==v);try{localStorage.setItem("sqSub",v)}catch(e){}};
   set(cur);bar.addEventListener("click",e=>{const b=e.target.closest("[data-sq]");if(b)set(b.dataset.sq)});})();
