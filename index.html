@@ -1652,6 +1652,10 @@ const FIX=[["2026-08-22","PL","1","Hull City","A","0–2"],["2026-08-30","PL","2
 const FXC={ALL:"All",PL:"Prem",UCL:"Champions League",LC:"League Cup",FA:"FA Cup"};
 const FXRND=(c,r)=>c==="PL"?`Matchweek ${r}`:c==="UCL"?`League phase ${r.replace("MD","matchday ")}`:c==="FA"?(r==="R3"?"Third round":r):c==="LC"?(r==="R3"?"Third round":r):r;
 let fxC="ALL",fxW="all";try{fxC=localStorage.getItem("fxC")||"ALL";fxW=localStorage.getItem("fxW")||"all"}catch(e){}
+const fxToday=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
+const fxNextI=()=>FIX.findIndex(f=>!f[5]&&f[0]>=fxToday());
+(()=>{const i=fxNextI(),el=document.getElementById("nextup");if(i<0||!el)return;const f=FIX[i];if(f[4]==="?")return;const d=new Date(f[0]+"T12:00:00");
+  el.textContent=`Next up: ${f[3]} (${f[4]}), ${d.toLocaleDateString("en-GB",{weekday:"short"})} ${d.getDate()} ${"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ")[d.getMonth()]}`})();
 const fxRes=s=>{if(!s)return null;const [a,b]=s.split("–").map(Number);return a>b?"W":a<b?"L":"D"};
 function renderFixtures(){
   const comps=Object.keys(FXC).filter(c=>c==="ALL"||FIX.some(f=>f[1]===c));
@@ -1659,14 +1663,14 @@ function renderFixtures(){
   document.getElementById("fxwhen").innerHTML=[["all","All games"],["res","Results"],["up","Upcoming"]].map(([k,l])=>`<button class="chip" data-fw="${k}" aria-pressed="${k===fxW}">${l}</button>`).join("");
   const inC=FIX.filter(f=>fxC==="ALL"||f[1]===fxC),played=inC.filter(f=>f[5]);
   const t={W:0,D:0,L:0,gf:0,ga:0};played.forEach(f=>{t[fxRes(f[5])]++;const [a,b]=f[5].split("–").map(Number);t.gf+=a;t.ga+=b});
-  const nextI=FIX.findIndex(f=>!f[5]);
+  const nextI=fxNextI();
   document.getElementById("fxtot").innerHTML=`<span><b>${played.length}</b>played</span><span><b>${t.W}-${t.D}-${t.L}</b>W-D-L</span><span><b>${t.gf}–${t.ga}</b>goals</span><span><b>${inC.length-played.length}</b>to play</span>`;
   let rows=inC.filter(f=>fxW==="all"||(fxW==="res"?f[5]:!f[5]));if(fxW==="res")rows=rows.slice().reverse();
   const mon=d=>new Date(d+"T12:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"});
   let html="",cur="";
   rows.forEach(f=>{const m=mon(f[0]);if(m!==cur){if(cur)html+="</ul>";html+=`<h3 class="fxm">${m}</h3><ul class="fxl">`;cur=m}
     const d=new Date(f[0]+"T12:00:00"),res=fxRes(f[5]),isNext=FIX.indexOf(f)===nextI,tbc=f[4]==="?";
-    html+=`<li class="${isNext?"next":""}"><span class="fxd">${d.toLocaleDateString("en-GB",{weekday:"short"})}<b>${d.getDate()} ${"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ")[d.getMonth()]}</b></span><span class="fxc ${f[1]}">${f[1]}</span><span class="fxo">${f[3]}${tbc?"":` <span style="font-weight:400;color:var(--muted)">(${f[4]})</span>`}<small>${FXRND(f[1],f[2])}${tbc?" · date approximate":""}</small></span>${res?`<span class="fxr"><span class="r ${res}">${res}</span>${f[5]}</span>`:`<span class="fxr up">${isNext?"Next up":"–"}</span>`}</li>`});
+    html+=`<li class="${isNext?"next":""}"><span class="fxd">${d.toLocaleDateString("en-GB",{weekday:"short"})}<b>${d.getDate()} ${"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ")[d.getMonth()]}</b></span><span class="fxc ${f[1]}">${f[1]}</span><span class="fxo">${f[3]}${tbc?"":` <span style="font-weight:400;color:var(--muted)">(${f[4]})</span>`}<small>${FXRND(f[1],f[2])}${tbc?" · date approximate":""}</small></span>${res?`<span class="fxr"><span class="r ${res}">${res}</span>${f[5]}</span>`:`<span class="fxr up">${isNext?"Next up":f[0]<fxToday()?"Result to come":"–"}</span>`}</li>`});
   if(cur)html+="</ul>";
   document.getElementById("fxlist").innerHTML=html||`<div class="empty">No ${fxW==="res"?"results":"fixtures"} yet.</div>`;
 }
